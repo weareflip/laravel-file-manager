@@ -1,0 +1,50 @@
+{
+  "scripts": {
+    "dev": "./node_modules/.bin/webpack --env dev",
+    "prod": "./node_modules/.bin/webpack --env prod",
+    "start": "./node_modules/.bin/webpack-dev-server --env dev"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.0.0-beta.32.3",
+    "@angular/compiler-cli": "latest",
+    "@angular/platform-server": "latest",
+    "@angular/upgrade": "^2.4.7",
+    "@types/node": "^7.0.5",
+    "angular2-template-loader": "^0.6.2",
+    "assets-webpack-plugin": "^3.5.1",
+    "awesome-typescript-loader": "^3.0.4",
+    "bootstrap": "4.0.0-alpha.6",
+    "clean-webpack-plugin": "^0.1.15",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "font64-loader": "^2.1.7",
+    "node-sass": "^4.5.0",
+    "normalize.css": "^5.0.0",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.1",
+    "style-loader": "^0.13.1",
+    "ts-loader": "^2.0.0",
+    "typescript": "latest",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0",
+    "webpack-merge": "^3.0.0"
+  },
+  "dependencies": {
+    "@angular/animations": "latest",
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/forms": "latest",
+    "@angular/http": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/platform-browser-dynamic": "latest",
+    "@angular/router": "latest",
+    "@ngtools/webpack": "^1.2.10",
+    "core-js": "^2.4.1",
+    "icon-maker-loader": "^0.1.11",
+    "resolve-url-loader": "^2.0.2",
+    "rxjs": "^5.1.1",
+    "whatwg-fetch": "^2.0.2",
+    "zone.js": "^0.7.7"
+  }
+}

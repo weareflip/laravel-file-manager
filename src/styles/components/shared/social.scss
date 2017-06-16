@@ -1,0 +1,23 @@
+a.social {
+  font-family: 'icon';
+  @extend .icon;
+}
+
+$social-icons: (
+  skype:   (content: url(../../../images/skype.svg), color: #4C9DE7),
+  steam:   (content: url(../../../images/steam.svg), color: #221F20),
+  twitch:  (content: url(../../../images/twitch.svg), color: #6441A5),
+  twitter: (content: url(../../../images/twitter.svg), color: #4090FF),
+  vimeo:   (content: url(../../../images/vimeo.svg), color: #59B6EF),
+  youtube: (content: url(../../../images/youtube.svg), color: #BB0000)
+);
+
+@each $social, $config in $social-icons {
+  a.social[onHover*="#{$social}"] {
+    color: white;
+    background: map-get($config, color);
+    &:before {
+      content: map-get($config, content);
+    }
+  }
+}

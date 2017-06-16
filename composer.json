@@ -1,0 +1,22 @@
+{
+  "name": "flipninja/file-manager",
+  "description": "Laravel x Froala File Manager",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Lachlan du Preez",
+      "email": "naph@getgood.gg"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "app/helpers.php"
+    ],
+    "psr-4": {
+      "Flip\\FileManager\\": "app/"
+    }
+  },
+  "require": {
+    "laravel/framework": "^5.4"
+  }
+}

@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+  font: $font-weight-base unquote(14px + '/' + $line-height-base) $font-family-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  @extend .container-fluid;
+}
