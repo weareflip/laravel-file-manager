@@ -1,12 +1,12 @@
 <?php
 
-namespace Flip\FileManager\Mimes;
+namespace Flip\FileManager\Filesystem;
 
 use Illuminate\Support\Facades\Storage;
 
-class MediaFactory
+class FileFactory
 {
-    public static function create(string $path): Media
+    public static function create(string $path): File
     {
         $mime = Storage::getMimeType($path);
         $media = config('file-manager.media');
@@ -17,6 +17,6 @@ class MediaFactory
             }
         }
 
-        return new File($path);
+        return new Document($path);
     }
 }

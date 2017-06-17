@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpService } from "../shared";
-import { List } from "../file/list";
+import { List } from "./list";
+import { HttpService } from "../../shared/http.service";
 
 @Injectable()
 export class FilesystemService {
@@ -9,6 +9,6 @@ export class FilesystemService {
   ) { }
 
   getFullList(): Promise<List> {
-    return Promise.resolve(this.http.post('/file-manager', {}))
+    return Promise.resolve(this.http.post('system', {}))
   }
 }

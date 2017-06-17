@@ -1,8 +1,8 @@
 <?php
 
-namespace Flip\FileManager\Mimes;
+namespace Flip\FileManager\Filesystem;
 
-class Video extends Media
+class Video extends File
 {
     public function getMediaType()
     {

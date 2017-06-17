@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StyleGuideComponent } from "./shared/style-guide.component";
-import { FilesystemModule } from "./manager/filesystem.module";
 import { SharedModule } from "./shared/shared.module";
+import { ManagerModule } from "./manager/manager.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     SharedModule.forRoot(),
-    FilesystemModule
+    ManagerModule
   ],
   declarations: [
     AppComponent,

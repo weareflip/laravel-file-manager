@@ -5,11 +5,8 @@ Route::group([
     'namespace' => 'Flip\FileManager\Controllers\Api'
 ], function () {
 
-    Route::resource('system', 'SystemController', ['only' => [
-        'show'
-    ]]);
+    Route::post('system', 'SystemController@show');
 
-    Route::resource('file', 'FileController', ['only' => [
-        'store', 'destroy'
-    ]]);
+    Route::put('file', 'FileController@store');
+    Route::delete('file', 'FileController@destroy');
 });

@@ -7,8 +7,6 @@ use Flip\FileManager\Commands\Symlink;
 
 class FileManagerServiceProvider extends ServiceProvider
 {
-    protected $defer = true;
-
     public function boot()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/file-manager.php', 'file-manager');
@@ -27,10 +25,5 @@ class FileManagerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([Symlink::class]);
         }
-    }
-
-    public function provides()
-    {
-        return [FileManager::class];
     }
 }

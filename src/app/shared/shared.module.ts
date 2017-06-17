@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpService } from "./http.service";
-import { FilesystemService } from "../manager/filesystem.service";
+import { FilesystemService } from "../manager/filesystem/filesystem.service";
 
 const MODULES: any = [
 
@@ -18,14 +18,14 @@ const PROVIDERS: any = [
 
 @NgModule({
   imports: [
-    ...MODULES
+    ...MODULES,
   ],
   declarations: [
-    ...DECLARATIONS
+    ...DECLARATIONS,
   ],
   exports: [
     ...MODULES,
-    ...DECLARATIONS
+    ...DECLARATIONS,
   ],
 })
 export class SharedModule {
@@ -33,7 +33,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ...PROVIDERS
+        ...PROVIDERS,
       ]
     }
   }

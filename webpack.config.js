@@ -77,10 +77,10 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('css/[name].[chunkhash].css'),
     new webpack.optimize.CommonsChunkPlugin({ name: ['manifest'] }),
-    new webpack.NodeEnvironmentPlugin({
+    new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(env || 'dev'),
-        'API_LOCATION': '/api/file-manager/'
+        'API_LOCATION': JSON.stringify('/api/file-manager/')
       }
     })
   ]

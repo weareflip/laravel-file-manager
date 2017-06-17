@@ -4,19 +4,19 @@ namespace Flip\FileManager;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Flip\FileManager\Mimes\Media;
-use Flip\FileManager\Mimes\MediaFactory;
+use Flip\FileManager\FileSystem\File;
+use Flip\FileManager\FileSystem\FileFactory;
 
 class FileManager
 {
-    const PUBLIC_DIR = '/file_manager';
+    const PUBLIC_DIR = 'file_manager';
 
     public function list(string $path)
     {
         $files = [];
 
         foreach (Storage::files($path) as $path) {
-            $files[] = MediaFactory::create($path);
+            $files[] = FileFactory::create($path);
         };
 
         $directories = [];
@@ -35,14 +35,14 @@ class FileManager
 
     }
 
-    public function upload(string $path, UploadedFile $file): Media
+    public function upload(string $path, UploadedFile $file): File
     {
         $mime = $file->getMimeType();
         $media = config('file-manager.media');
 
         foreach ($media as $type => $config) {
             if (in_array($mime, $config['mimes'])) {
-                return MediaFactory::create($file->storePubliclyAs($path, $file->getClientOriginalName()));
+                return FileFactory::create($file->storePubliclyAs($path, $file->getClientOriginalName()));
             }
         }
 

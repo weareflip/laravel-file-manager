@@ -1,11 +1,11 @@
 <?php
 
-namespace Flip\FileManager\Mimes;
+namespace Flip\FileManager\Filesystem;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\Storage;
 
-abstract class Media implements Arrayable
+abstract class File implements Arrayable
 {
     /**
      * All possible extensions
@@ -33,6 +33,10 @@ abstract class Media implements Arrayable
 
     public function toArray()
     {
-        return [];
+        return [
+            'type' => $this->getMediaType(),
+            'path' => $this->path,
+            'metadata' => $this->metadata,
+        ];
     }
 }
