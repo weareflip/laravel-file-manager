@@ -10,13 +10,19 @@ class FileManagerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/file-manager.php', 'file-manager');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
+        if (config('file-manager.routes.api')) {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        }
+
+        if (config('file-manager.routes.web')) {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        }
     }
 
     public function register()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'file-manager');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'flipninja');
 
         $this->app->singleton(FileManager::class, function () {
             return new FileManager();

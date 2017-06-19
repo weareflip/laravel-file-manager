@@ -4,6 +4,4 @@ import { Component } from "@angular/core";
   selector: 'manager',
   templateUrl: 'manager.component.html'
 })
-export class ManagerComponent {
-
-}
+export class ManagerComponent {}

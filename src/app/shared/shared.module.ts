@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 import { HttpService } from "./http.service";
-import { FilesystemService } from "../manager/filesystem/filesystem.service";
-import { UploadService } from "../manager/upload/upload.service";
+import { FilesystemService } from "../filesystem/filesystem.service";
+import { UploadService } from "../upload/upload.service";
 
 const MODULES: any = [
   CommonModule,

@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
-import { SharedModule } from "../shared/shared.module";
+import { BrowserModule } from "@angular/platform-browser";
+import { SharedModule } from "./shared/shared.module";
 
 import { ManagerComponent } from "./manager.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
+import { TreeComponent } from "./tree/tree.component";
 import { UploadForm } from "./upload/upload.form";
 
 import { FileValueAccessor } from "./upload/validation/file-value-accessor.directive";
@@ -12,7 +13,7 @@ import { ProgressBarComponent } from "./upload/progress-bar.component";
 const DECLARATIONS: any = [
   // Component
   ManagerComponent,
-  SidebarComponent,
+  TreeComponent,
   UploadForm,
   ProgressBarComponent,
 
@@ -23,13 +24,15 @@ const DECLARATIONS: any = [
 
 @NgModule({
   imports: [
-    SharedModule,
+    BrowserModule,
+    SharedModule.forRoot(),
   ],
   declarations: [
     ...DECLARATIONS,
   ],
   exports: [
     ...DECLARATIONS,
-  ]
+  ],
+  bootstrap: [ManagerComponent]
 })
 export class ManagerModule { }

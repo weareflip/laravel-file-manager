@@ -11,7 +11,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
   entry: {
     polyfills: 'polyfills.ts',
     vendor: 'vendor.ts',
-    main: 'main.ts'
+    manager: 'manager.ts'
   },
   output: {
     publicPath,
@@ -23,14 +23,9 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
       test: /\.html$/,
       loader: 'raw-loader'
     }, {
-      test: /\.scss$/,
+      test: /\.s?css$/,
       loaders: ExtractTextPlugin.extract({
         fallback: 'style-loader', use: 'css-loader?-url!resolve-url-loader?root!sass-loader?sourceMap'
-      })
-    }, {
-      test: /\.css$/,
-      use: ExtractTextPlugin.extract({
-        use: 'css-loader?-url'
       })
     }, {
       test: /\.woff2?$/,
@@ -46,18 +41,19 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
         name: 'images/[name].[ext]'
       }
     }, {
-        test: /icons\.json$/,
-        loaders: ExtractTextPlugin.extract({
-            fallback: 'style-loader', use: [
-                'css-loader',
-                {
-                    loader: 'webfonts-loader',
-                    options: {
-                        fileName: 'fonts/[fontname].[hash].[ext]'
-                    }
-                }
-            ]
-        })
+      test: /icons\.json$/,
+      loaders: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          'css-loader',
+          {
+            loader: 'webfonts-loader',
+            options: {
+              fileName: 'fonts/[fontname].[hash].[ext]'
+            }
+          }
+        ]
+      })
     }]
   },
   resolve: {

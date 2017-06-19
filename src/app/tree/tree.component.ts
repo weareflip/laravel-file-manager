@@ -3,10 +3,10 @@ import { FilesystemService } from "../filesystem/filesystem.service";
 import { Directory } from "../filesystem/directory";
 
 @Component({
-  selector: 'sidebar',
-  templateUrl: './sidebar.component.html'
+  selector: 'tree',
+  templateUrl: './tree.component.html'
 })
-export class SidebarComponent implements OnInit {
+export class TreeComponent implements OnInit {
   public system: Directory;
 
   constructor(

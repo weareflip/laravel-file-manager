@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Directory } from "./directory";
-import { HttpService } from "../../shared/http.service";
-import { Response } from "../../shared/http/response";
+import { HttpService } from "../shared/http.service";
 import { UploadService } from "../upload/upload.service";
 
 @Injectable()

@@ -1,6 +1,16 @@
 <?php
 
 return [
+
+    /**
+     * Included routes
+     */
+    'routes' => [
+        'api' => true,
+
+        'web' => true,
+    ],
+
     'media' => [
 
         'file' => [
@@ -14,7 +24,7 @@ return [
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
                 'application/zip',
-                'text/plain'
+                'text/plain',
             ]
         ],
 
@@ -23,7 +33,7 @@ return [
             'mimes' => [
                 'image/gif',
                 'image/jpeg',
-                'image/png'
+                'image/png',
             ]
         ],
 
@@ -32,7 +42,7 @@ return [
             'mimes' => [
                 'video/mp4',
                 'video/x-msvideo',
-                'video/x-ms-wmv'
+                'video/x-ms-wmv',
             ]
         ],
     ]

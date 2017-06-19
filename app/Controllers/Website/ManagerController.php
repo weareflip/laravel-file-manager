@@ -8,6 +8,6 @@ class ManagerController extends Controller
 {
     public function index()
     {
-        return response()->view('file-manager::index');
+        return response()->view('flipninja::index');
     }
 }
