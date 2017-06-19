@@ -14,9 +14,6 @@ export class SidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.filesystem.getFullList().then((system: Directory) => {
-      console.log(system, system.name);
-      this.system = system
-    });
+    this.filesystem.getFullList().then((system: Directory) => this.system = system);
   }
 }

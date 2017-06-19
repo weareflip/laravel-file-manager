@@ -1,7 +1,8 @@
 <?php
 
 Route::group([
+    'prefix' => 'file-manager/',
     'namespace' => 'Flip\FileManager\Controllers\Website'
 ], function () {
-    Route::get('file-manager', 'ManagerController@index');
+    Route::get('/', 'ManagerController@index');
 });

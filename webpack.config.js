@@ -80,7 +80,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify(env || 'dev'),
-        'API_LOCATION': JSON.stringify('/api/file-manager/')
+        'API_LOCATION': JSON.stringify('/file-manager/api/')
       }
     })
   ]

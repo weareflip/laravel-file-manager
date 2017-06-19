@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-    'prefix' => 'api/file-manager/',
+    'prefix' => 'file-manager/api/',
     'namespace' => 'Flip\FileManager\Controllers\Api'
 ], function () {
 
