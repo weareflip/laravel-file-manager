@@ -1,9 +1,10 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpService } from "./http.service";
 import { FilesystemService } from "../manager/filesystem/filesystem.service";
+import { CommonModule } from "@angular/common";
 
 const MODULES: any = [
-
+  CommonModule
 ];
 
 const DECLARATIONS: any = [

@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/webpack --env dev",
     "prod": "./node_modules/.bin/webpack --env prod",
-    "start": "./node_modules/.bin/webpack-dev-server --env dev"
+    "start": "./node_modules/.bin/webpack-dev-server --env dev",
+    "watch": "./node_modules/.bin/webpack -w --env dev"
   },
   "devDependencies": {
     "@angular/cli": "^1.0.0-beta.32.3",

@@ -1,3 +1,9 @@
 export class File {
-  path: string
+  path: string;
+
+  type: string;
+
+  get name() {
+    return this.path.replace(/\//, '');
+  }
 }

@@ -15,19 +15,19 @@ class FileManager
     {
         $files = [];
 
-        foreach (Storage::files($path) as $path) {
-            $files[] = FileFactory::create($path);
+        foreach (Storage::files($path) as $file) {
+            $files[] = FileFactory::create($file)->toArray();
         };
 
         $directories = [];
 
         foreach (Storage::directories($path) as $directory) {
-            $directories = [
-                'name' => $directory
+            $directories[] = [
+                'path' => $directory
             ];
         }
 
-        return compact('files', 'directories');
+        return compact('path', 'files', 'directories');
     }
 
     public function info()
