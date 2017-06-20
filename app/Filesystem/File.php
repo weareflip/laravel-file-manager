@@ -36,6 +36,7 @@ abstract class File implements Arrayable
         return [
             'type' => $this->getMediaType(),
             'path' => $this->path,
+            'url' => Storage::url($this->path),
             'metadata' => $this->metadata,
         ];
     }

@@ -1,0 +1,19 @@
+// Override requirement for display
+.modal-open .modal {
+    display: block;
+}
+
+.modal-header .close {
+    height: 1em;
+    width: 1em;
+    font-size: 2em;
+    line-height: 1em;
+    text-align: center;
+    color: $brand-primary;
+
+    &:hover {
+        color: lighten($brand-primary, 50%);
+        @include border-radius($border-radius);
+        @include box-shadow($btn-box-shadow);
+    }
+}

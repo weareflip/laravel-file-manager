@@ -6,13 +6,10 @@
     <title>File Manager</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ fm_asset('manager', 'css') }}" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
-<manager></manager>
-<script src="{{ fm_asset('manifest') }}"></script>
-<script src="{{ fm_asset('vendor') }}"></script>
-<script src="{{ fm_asset('polyfills') }}"></script>
-<script src="{{ fm_asset('manager') }}"></script>
+@yield('content')
+@stack('scripts')
 </body>
 </html>

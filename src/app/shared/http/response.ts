@@ -1,5 +1,4 @@
 export class Response {
-  code: number;
-  message: string;
-  body: JSON
+  code: number = 200;
+  message: string = '';
 }

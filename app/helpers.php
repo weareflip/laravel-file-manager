@@ -1,5 +1,18 @@
 <?php
 
+if (! function_exists('fm_max_upload_size')) {
+    function fm_format_bytes($bytes) {
+        $formats = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+
+        while ($bytes / 1024 >= 1 && count($formats) > 1) {
+            $bytes /= 1024;
+            array_shift($formats);
+        }
+
+        return (int) $bytes.' '.$formats[0];
+    }
+}
+
 if (! function_exists('fm_asset')) {
 
     /**

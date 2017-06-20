@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
+
 import { Directory } from "./directory";
 import { HttpService } from "../shared/http.service";
 import { UploadService } from "../upload/upload.service";
+import { UploadResponse } from "../shared/http/upload.response";
 
 @Injectable()
 export class FilesystemService {
@@ -19,7 +21,7 @@ export class FilesystemService {
       .then((json) => Object.assign(new Directory(), json));
   }
 
-  upload(fileList: FileList): Promise<any> {
+  upload(fileList: FileList): Promise<UploadResponse> {
     let files = [];
 
     for (let i = 0; i <  fileList.length; i++) {

@@ -11,12 +11,13 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
   entry: {
     polyfills: 'polyfills.ts',
     vendor: 'vendor.ts',
-    manager: 'manager.ts'
+    manager: 'manager.ts',
+    uploader: 'uploader.ts',
   },
   output: {
     publicPath,
-    filename: 'js/[name].[hash].js',
-    sourceMapFilename: 'js/[name].[hash].map'
+    filename: 'js/[name].js',
+    sourceMapFilename: 'js/[name].map'
   },
   module: {
     rules: [{
@@ -49,7 +50,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
           {
             loader: 'webfonts-loader',
             options: {
-              fileName: 'fonts/[fontname].[hash].[ext]'
+              fileName: 'fonts/[fontname].[ext]'
             }
           }
         ]
@@ -71,7 +72,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
       path: path.join('dist')
     }),
     new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin('css/[name].[chunkhash].css'),
+    new ExtractTextPlugin('css/[name].css'),
     new webpack.optimize.CommonsChunkPlugin({ name: ['manifest'] }),
     new webpack.DefinePlugin({
       'process.env': {

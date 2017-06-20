@@ -1,5 +1,5 @@
-@section('manager')
-    <manager></manager>
+@section('uploader')
+    <uploader></uploader>
 @endsection
 
 @push('styles')
@@ -10,5 +10,5 @@
 <script src="{{ fm_asset('manifest') }}"></script>
 <script src="{{ fm_asset('vendor') }}"></script>
 <script src="{{ fm_asset('polyfills') }}"></script>
-<script src="{{ fm_asset('manager') }}"></script>
+<script src="{{ fm_asset('uploader') }}"></script>
 @endpush

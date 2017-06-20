@@ -2,6 +2,8 @@
 
 return [
 
+    'max_file_size' => 1, // MB
+
     /**
      * Included routes
      */

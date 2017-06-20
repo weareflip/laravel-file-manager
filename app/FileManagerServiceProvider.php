@@ -22,7 +22,7 @@ class FileManagerServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->loadViewsFrom(__DIR__ . '/../views', 'flipninja');
+        $this->loadViewsFrom(__DIR__ . '/../views', 'flipninja/file-manager');
 
         $this->app->singleton(FileManager::class, function () {
             return new FileManager();

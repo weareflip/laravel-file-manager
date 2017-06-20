@@ -2,6 +2,7 @@
 
 namespace Flip\FileManager;
 
+use Flip\FileManager\Exceptions\FileNotSupported;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Flip\FileManager\FileSystem\File;
@@ -46,7 +47,7 @@ class FileManager
             }
         }
 
-        throw new \Exception('Not a supported file type.');
+        throw new FileNotSupported('.'.$file->getClientOriginalExtension().' is not a supported file type.');
     }
 
     public function move()

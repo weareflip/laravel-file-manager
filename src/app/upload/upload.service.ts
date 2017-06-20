@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Subscriber } from "rxjs/Subscriber";
 
+import { UploadResponse } from "../shared/http/upload.response";
+
 @Injectable()
 export class UploadService {
 
@@ -23,7 +25,7 @@ export class UploadService {
     return this.progress$;
   }
 
-  public upload(url: string, files: File[]): Promise<any> {
+  public upload(url: string, files: File[]): Promise<UploadResponse> {
     return new Promise((resolve, reject) => {
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -35,7 +37,7 @@ export class UploadService {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           xhr.status >= 200 && xhr.status < 300
-            ? resolve(xhr.response)
+            ? resolve(JSON.parse(xhr.response))
             : reject(xhr.response);
         }
       };
