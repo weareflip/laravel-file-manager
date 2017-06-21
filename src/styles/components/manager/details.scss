@@ -1,0 +1,12 @@
+.details-view {
+    .icon {
+        color: $gray-dark;
+        margin-right: .5em;
+
+        &.icon-folder {
+            color: $brand-secondary;
+            &.open { cursor: n-resize }
+            &.closed { cursor: s-resize }
+        }
+    }
+}

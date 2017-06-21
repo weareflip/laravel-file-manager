@@ -1,4 +1,4 @@
-import { Directory } from "./directory";
+import { FilesystemService } from "./filesystem.service";
 
 export class File {
   path: string;
@@ -7,7 +7,17 @@ export class File {
 
   type: string;
 
+  date_modified: string;
+
   get name(): string {
-    return Directory.lastPathSegment(this.path);
+    return FilesystemService.lastPathSegment(this.path);
+  }
+
+  get location(): string {
+    return FilesystemService.lastPathDirectory(this.path);
+  }
+
+  get icon(): string {
+    return 'icon-' + this.type;
   }
 }

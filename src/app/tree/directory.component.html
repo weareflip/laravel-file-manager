@@ -1,9 +1,0 @@
-<p (click)="toggle()">{{ name }}</p>
-<ul *ngIf="contents" [ngClass]="{'d-none': collapsed}">
-    <li *ngFor="let directory of contents.directories">
-        <directory [path]="directory.path"></directory>
-    </li>
-    <li *ngFor="let file of contents.files">
-        {{ file.name }}
-    </li>
-</ul>

@@ -1,0 +1,37 @@
+p.directory-name {
+    margin: 0;
+    cursor: pointer;
+}
+
+ul.directory {
+    list-style: none;
+    padding: 0;
+
+    li.sub-directory {
+
+    }
+
+    li.file {
+
+    }
+
+    ul.directory {
+        padding-left: 1.5em;
+    }
+}
+
+p.directory-name,
+ul.directory {
+    .icon {
+        color: $gray-dark;
+        margin-right: .5em;
+
+        &.icon-root,
+        &.icon-folder,
+        &.icon-folder-fill {
+            color: $brand-secondary;
+            &.open { cursor: n-resize }
+            &.closed { cursor: s-resize }
+        }
+    }
+}

@@ -3,9 +3,9 @@ import { Observable } from "rxjs/Observable";
 import { Subscriber } from "rxjs/Subscriber";
 
 import { Directory } from "./directory";
-import { HttpService } from "../shared/http.service";
 import { UploadService } from "../upload/upload.service";
 import { UploadResponse } from "../shared/http/upload.response";
+import { Api } from "../shared/api";
 
 @Injectable()
 export class FilesystemService {
@@ -23,7 +23,6 @@ export class FilesystemService {
   private pathSubscriber: Subscriber<string>;
 
   constructor(
-    public http: HttpService,
     public uploadService: UploadService
   ) {
     this.path$ = new Observable((subscriber: Subscriber<string>) => this.pathSubscriber = subscriber);
@@ -34,7 +33,7 @@ export class FilesystemService {
   }
 
   list(path: string): Promise<Directory> {
-    return Promise.resolve(this.http.post('system', {path}))
+    return Promise.resolve(Api.post('system', {path}))
       .then((json) => Object.assign(new Directory(), json));
   }
 
@@ -50,5 +49,33 @@ export class FilesystemService {
     }
 
     return this.uploadService.upload('file', files);
+  }
+
+  destroy(path: string) {
+
+  }
+
+  /**
+   * Last segment of path
+   *
+   * @param path
+   * @returns {string}
+   */
+  static lastPathSegment(path: string): string {
+    if (path === '/') {
+      return path;
+    }
+
+    return path.match(/[^\/]+$/)[0];
+  }
+
+  /**
+   * Last directory of path
+   *
+   * @param path
+   * @returns {string}
+   */
+  static lastPathDirectory(path: string): string {
+    return path.match(/.+\//)[0];
   }
 }

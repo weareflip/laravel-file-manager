@@ -1,0 +1,44 @@
+<div class="row" *ngIf="directory">
+    <br>
+    <div class="col">
+        <h4><i class="icon icon-folder-fill"></i>{{ directory.path }}<small *ngIf="directory.path === '/'" class="text-gray-light">&nbsp;Parent Directory</small></h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="w-100">Name</th>
+                <th>Size</th>
+                <th class="text-nowrap">Date Modified</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dir of directory.directories">
+                <td class="w-100">
+                    <i class="icon icon-folder"></i>
+                    {{ dir.name }}
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="javascript:;" (click)="destroy(dir)">Delete</a>
+                </td>
+            </tr>
+            <tr *ngFor="let file of directory.files">
+                <td class="w-100">
+                    <i class="icon" [ngClass]="file.icon"></i>
+                    {{ file.name }}
+                </td>
+                <td class="text-nowrap text-right">
+                    {{ file.size }}
+                </td>
+                <td class="text-nowrap">
+                    {{ file.date_modified }}
+                </td>
+                <td class="text-nowrap">
+                    <a href="javascript:;" (click)="destroy(file)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

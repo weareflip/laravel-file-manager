@@ -22,10 +22,12 @@
     "node-sass": "^4.5.0",
     "normalize.css": "^5.0.0",
     "raw-loader": "^0.5.1",
+    "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.1",
     "style-loader": "^0.13.1",
     "ts-loader": "^2.0.0",
     "typescript": "latest",
+    "webfonts-loader": "^1.2.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0",
     "webpack-merge": "^3.0.0"
@@ -42,8 +44,6 @@
     "@angular/router": "latest",
     "@ngtools/webpack": "^1.2.10",
     "core-js": "^2.4.1",
-    "icon-maker-loader": "^0.1.11",
-    "resolve-url-loader": "^2.0.2",
     "rxjs": "^5.1.1",
     "whatwg-fetch": "^2.0.2",
     "zone.js": "^0.7.7"

@@ -1,0 +1,16 @@
+<p class="directory-name">
+    <i class="icon"
+       [ngClass]="{
+         'icon-folder-fill': ! root && selected,
+         'icon-folder': ! root && ! selected,
+         'icon-root': root,
+         'open': ! collapsed,
+         'closed': collapsed
+       }" (click)="collapse()"></i>
+    <span (click)="toggle()">{{ name }}</span>
+</p>
+<ul class="directory" *ngIf="directory" [ngClass]="{'d-none': collapsed}">
+    <li class="sub-directory" *ngFor="let dir of directory.directories">
+        <directory [path]="dir.path"></directory>
+    </li>
+</ul>

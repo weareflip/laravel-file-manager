@@ -1,11 +1,19 @@
 .text {
-  &-primary   { color: $brand-primary; }
-  &-secondary { color: $brand-secondary; }
-  &-tertiary  { color: $brand-tertiary; }
+    &-primary   { color: $brand-primary }
+    &-secondary { color: $brand-secondary }
+    &-tertiary  { color: $brand-tertiary }
 
-  &-base-size { font-size: $font-size-base }
-  &-small     { font-size: $small-font-size }
+    &-base-size { font-size: $font-size-base }
+    &-small     { font-size: $small-font-size }
 
-  &-semi-bold { font-weight: 500; }
-  &-thin      { font-weight: 300; }
+    &-semi-bold { font-weight: 500; }
+    &-thin      { font-weight: 300; }
+
+    &-gray-lightest { color: $gray-lightest }
+    &-gray-lighter  { color: $gray-lighter }
+    &-gray-light    { color: $gray-light }
+
+    &-gray-dark     { color: $gray-dark }
+    &-gray-darker   { color: $gray-darker }
+    &-gray-darkest  { color: $gray-darkest }
 }

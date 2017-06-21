@@ -1,4 +1,5 @@
 import { File } from './file';
+import { FilesystemService } from "./filesystem.service";
 
 export class Directory {
 
@@ -69,20 +70,19 @@ export class Directory {
    * @returns {string}
    */
   get name(): string {
-    return Directory.lastPathSegment(this.path);
+    return FilesystemService.lastPathSegment(this.path);
   }
 
   /**
-   * Last segment of path
+   * Get location of directory
    *
-   * @param path
    * @returns {string}
    */
-  static lastPathSegment(path: string): string {
-    if (path === '/') {
-      return path;
-    }
+  get location(): string {
+    return FilesystemService.lastPathDirectory(this.path);
+  }
 
-    return path.match(/[^\/]+$/)[0];
+  equals(directory: Directory): boolean {
+    return this.path === directory.path;
   }
 }

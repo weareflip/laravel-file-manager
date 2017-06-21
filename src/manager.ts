@@ -4,6 +4,7 @@ import { enableProdMode } from '@angular/core';
 
 import './fonts';
 import './images';
+import './icons.json';
 import './styles.scss';
 
 if (process.env.NODE_ENV === 'production') {

@@ -2,8 +2,8 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
-import { HttpService } from "./http.service";
 import { FilesystemService } from "../filesystem/filesystem.service";
+import { ManagerService } from "../manager/manager.service";
 import { UploadService } from "../upload/upload.service";
 
 const MODULES: any = [
@@ -16,8 +16,8 @@ const DECLARATIONS: any = [
 ];
 
 const PROVIDERS: any = [
-  HttpService,
   FilesystemService,
+  ManagerService,
   UploadService,
 ];
 
