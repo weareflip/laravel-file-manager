@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
 import { FilesystemService } from "../filesystem/filesystem.service";
@@ -10,6 +10,8 @@ import { UploadResponse } from "../shared/http/upload.response";
   templateUrl: './upload.component.html'
 })
 export class UploadComponent {
+  @Input() path: string;
+
   public modalOpen: boolean = false;
 
   public open: boolean = false;
@@ -26,6 +28,9 @@ export class UploadComponent {
     protected filesystem: FilesystemService,
   ) { }
 
+  /**
+   * @todo Convert to angular2 animation
+   */
   toggle() {
     this.modalOpen
       ? setTimeout(() => {
@@ -39,13 +44,14 @@ export class UploadComponent {
       : setTimeout(() => this.open = true, 300);
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(event: Event, form: NgForm) {
+    event.preventDefault();
     this.reset();
     this.uploading = true;
 
-    this.filesystem.upload(form.value.files)
+    this.filesystem.upload(this.path, form.value.files)
       .then((res: UploadResponse) => {
-        this.files = res.files.map((file) => Object.assign(new File, file));
+        this.files = res.files;
         this.uploading = false;
       })
       .catch((err) => this.reset(JSON.parse(err).message));

@@ -1,5 +1,5 @@
 @section('manager')
-    <manager></manager>
+    <manager class="file-manager-module"></manager>
 @endsection
 
 @push('styles')

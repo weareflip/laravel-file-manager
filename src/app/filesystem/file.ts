@@ -1,3 +1,5 @@
+import { Directory } from "./directory";
+
 export class File {
   path: string;
 
@@ -5,7 +7,7 @@ export class File {
 
   type: string;
 
-  get name() {
-    return this.path.replace(/\//, '');
+  get name(): string {
+    return Directory.lastPathSegment(this.path);
   }
 }

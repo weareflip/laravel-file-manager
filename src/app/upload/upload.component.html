@@ -7,7 +7,7 @@
                     <a href="javascript:;" (click)="toggle()" class="close">&times;</a>
                 </div>
                 <div class="modal-body">
-                    <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm)">
+                    <form #uploadForm="ngForm" (ngSubmit)="onSubmit($event, uploadForm)">
                         <input type="file" name="files" [ngModel]="upload.files" required-file multiple>
                         <button type="submit" class="btn btn-success" [disabled]="! uploadForm.form.valid">Upload</button>
                     </form>

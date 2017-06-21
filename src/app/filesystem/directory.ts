@@ -16,19 +16,11 @@ export class Directory {
   private _directories: Directory[] = [];
 
   /**
-   * Contained files
-   *
-   * @type {Array}
-   * @private
-   */
-  private _files: File[] = [];
-
-  /**
    * Get directories
    *
    * @returns {Directory[]}
    */
-  get directories() {
+  get directories(): Directory[] {
     return this._directories;
   }
 
@@ -37,18 +29,26 @@ export class Directory {
    *
    * @param directories
    */
-  set directories(directories: Array<Object>) {
-    directories.forEach((json: Object) => {
+  set directories(directories: Directory[]) {
+    directories.forEach((json: Directory) => {
       this._directories.push(Object.assign(new Directory(), json))
     });
   }
+
+  /**
+   * Contained files
+   *
+   * @type {Array}
+   * @private
+   */
+  private _files: File[] = [];
 
   /**
    * Get Files
    *
    * @returns {File[]}
    */
-  get files() {
+  get files(): File[] {
     return this._files;
   }
 
@@ -57,8 +57,8 @@ export class Directory {
    *
    * @param files
    */
-  set files(files: Array<Object>) {
-    files.forEach((json: Object) => {
+  set files(files: File[]) {
+    files.forEach((json: File) => {
       this._files.push(Object.assign(new File(), json))
     });
   }
@@ -68,7 +68,21 @@ export class Directory {
    *
    * @returns {string}
    */
-  get name() {
-    return this.path.replace(/\//, '');
+  get name(): string {
+    return Directory.lastPathSegment(this.path);
+  }
+
+  /**
+   * Last segment of path
+   *
+   * @param path
+   * @returns {string}
+   */
+  static lastPathSegment(path: string): string {
+    if (path === '/') {
+      return path;
+    }
+
+    return path.match(/[^\/]+$/)[0];
   }
 }

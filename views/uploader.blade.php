@@ -1,5 +1,5 @@
 @section('uploader')
-    <uploader></uploader>
+    <uploader path="{{ $path }}" class="file-manager-module"></uploader>
 @endsection
 
 @push('styles')
