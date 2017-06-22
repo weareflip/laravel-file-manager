@@ -1,7 +1,8 @@
 import { File } from './file';
 import { FilesystemService } from "./filesystem.service";
+import { FilesystemObject } from "./file-system-object";
 
-export class Directory {
+export class Directory implements FilesystemObject {
 
   /**
    * Fully qualified path
@@ -37,6 +38,16 @@ export class Directory {
   }
 
   /**
+   * Remove Directory
+   *
+   * @param culprit {Directory|FilesystemObject}
+   */
+  removeDirectory(culprit: Directory|FilesystemObject) {
+    this._directories = this._directories
+      .filter((directory: Directory) => culprit.path !== directory.path);
+  }
+
+  /**
    * Contained files
    *
    * @type {Array}
@@ -62,6 +73,16 @@ export class Directory {
     files.forEach((json: File) => {
       this._files.push(Object.assign(new File(), json))
     });
+  }
+
+  /**
+   * Remove File
+   *
+   * @param culprit {File|FilesystemObject}
+   */
+  removeFile(culprit: File|FilesystemObject) {
+    this._files = this._files
+      .filter((file: File) => culprit.path !== file.path);
   }
 
   /**

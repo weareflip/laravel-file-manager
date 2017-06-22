@@ -1,6 +1,7 @@
 import { FilesystemService } from "./filesystem.service";
+import { FilesystemObject } from "./file-system-object";
 
-export class File {
+export class File implements FilesystemObject {
   path: string;
 
   url: string;

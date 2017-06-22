@@ -51,6 +51,14 @@ class FileController extends Controller
 
     public function destroy(FileManager $fileManager, Request $request): JsonResponse
     {
-        return response()->json($fileManager->destroy($request->json('path')), 204);
+        try {
+            if ($fileManager->destroy($request->json('path'))) {
+                return response()->json(['message' => 'File deleted.'], 200);
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
+
+        return response()->json(null, 404);
     }
 }

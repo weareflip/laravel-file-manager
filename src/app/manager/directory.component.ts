@@ -73,7 +73,6 @@ export class DirectoryComponent implements OnInit {
     this.list().then((directory: Directory) => {
       this.manager.directory = directory;
       this.collapsed = false;
-      this.cd.markForCheck();
     });
   }
 
@@ -81,9 +80,8 @@ export class DirectoryComponent implements OnInit {
    * Collapse toggle
    */
   collapse() {
-    this.list().then((directory: Directory) => {
+    this.list().then(() => {
       this.collapsed = ! this.collapsed;
-      this.cd.markForCheck();
     });
   }
 
@@ -91,11 +89,5 @@ export class DirectoryComponent implements OnInit {
     if (this.root) {
       this.toggle();
     }
-
-    this.filesystem.getObserver().subscribe((path: string) => {
-      if (this.path === path) {
-        this.toggle();
-      }
-    });
   }
 }
