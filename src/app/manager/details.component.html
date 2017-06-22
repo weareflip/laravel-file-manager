@@ -13,8 +13,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dir of directory.directories">
-                <td class="w-100">
+            <tr class="directory-list" *ngFor="let dir of directory.directories">
+                <td class="w-100" (click)="navigate(dir)">
                     <i class="icon icon-folder"></i>
                     {{ dir.name }}
                 </td>
@@ -24,7 +24,7 @@
                     <a href="javascript:;" (click)="destroy(dir)">Delete</a>
                 </td>
             </tr>
-            <tr *ngFor="let file of directory.files">
+            <tr class="file-list" *ngFor="let file of directory.files">
                 <td class="w-100">
                     <i class="icon" [ngClass]="file.icon"></i>
                     {{ file.name }}

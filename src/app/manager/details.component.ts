@@ -18,6 +18,10 @@ export class DetailsComponent {
     return this.manager.directory;
   }
 
+  navigate(directory: Directory) {
+    this.manager.navigate(directory.path);
+  }
+
   destroy(culprit: File|Directory) {
     this.manager.destroy(culprit);
   }

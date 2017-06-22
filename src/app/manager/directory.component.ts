@@ -57,21 +57,14 @@ export class DirectoryComponent implements OnInit {
    * @returns {Promise<Directory>}
    */
   list(): Promise<Directory> {
-    return new Promise((resolve, reject) => {
-      if (typeof this.directory === 'undefined') {
-        return resolve(this.filesystem.list(this.path))
-      }
-
-      return resolve(this.directory);
-    }).then((directory: Directory) => this.directory = directory);
+    return this.manager.navigate(this.path);
   }
 
   /**
    * Toggle view details
    */
   toggle() {
-    this.list().then((directory: Directory) => {
-      this.manager.directory = directory;
+    this.list().then(() => {
       this.collapsed = false;
     });
   }
@@ -86,6 +79,12 @@ export class DirectoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.manager.observer.subscribe((directory: Directory) => {
+      if (this.path === directory.path) {
+        this.directory = directory
+      }
+    });
+
     if (this.root) {
       this.toggle();
     }

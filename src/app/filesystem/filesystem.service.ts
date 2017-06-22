@@ -4,7 +4,6 @@ import { Subscriber } from "rxjs/Subscriber";
 
 import { Api } from "../shared/api";
 import { Directory } from "./directory";
-import { ManagerService } from "../manager/manager.service";
 import { UploadService } from "../upload/upload.service";
 import { UploadResponse } from "../shared/http/upload.response";
 
@@ -24,7 +23,6 @@ export class FilesystemService {
   private pathSubscriber: Subscriber<string>;
 
   constructor(
-    public manager: ManagerService,
     public uploadService: UploadService,
   ) {
     this.path$ = new Observable((subscriber: Subscriber<string>) => this.pathSubscriber = subscriber);
@@ -36,8 +34,7 @@ export class FilesystemService {
 
   list(path: string): Promise<Directory> {
     return Promise.resolve(Api.post('system', {path}))
-      .then((json) => Object.assign(new Directory(), json))
-      .then((directory: Directory) => this.manager.directory = directory);
+      .then((json) => Object.assign(new Directory(), json));
   }
 
   upload(path: string, fileList: FileList): Promise<UploadResponse> {

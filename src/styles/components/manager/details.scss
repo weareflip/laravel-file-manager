@@ -9,4 +9,10 @@
             &.closed { cursor: s-resize }
         }
     }
+
+    .directory-list {
+        td:first-of-type {
+            cursor: pointer;
+        }
+    }
 }
