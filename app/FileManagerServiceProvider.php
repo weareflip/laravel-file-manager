@@ -11,11 +11,11 @@ class FileManagerServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/file-manager.php', 'file-manager');
 
-        if (config('file-manager.routes.api')) {
+        if (config('file-manager.load_api_routes')) {
             $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
         }
 
-        if (config('file-manager.routes.web')) {
+        if (config('file-manager.load_web_routes')) {
             $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         }
     }

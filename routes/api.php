@@ -2,7 +2,8 @@
 
 Route::group([
     'prefix' => 'file-manager/api/',
-    'namespace' => 'Flip\FileManager\Controllers\Api'
+    'namespace' => 'Flip\FileManager\Controllers\Api',
+    'middleware' => config('file-manager.api_middleware')
 ], function () {
 
     Route::post('system', 'SystemController@show');

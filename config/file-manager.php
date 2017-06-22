@@ -7,13 +7,18 @@ return [
     'max_file_size' => 1, // MB
 
     /**
-     * Included routes
+     * Loaded routes
      */
-    'routes' => [
-        'api' => true,
+    'load_api_routes' => true,
 
-        'web' => true,
-    ],
+    'load_web_routes' => true,
+
+    /**
+     * Api Middleware
+     * Following middleware will be applied to api routes if
+     * defaults are loaded.
+     */
+    'api_middleware' => [],
 
     'media' => [
 
