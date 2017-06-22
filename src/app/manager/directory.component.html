@@ -1,4 +1,4 @@
-<p class="directory-name">
+<p class="directory-name" (click)="toggle()">
     <i class="icon"
        [ngClass]="{
          'icon-folder-fill': ! root && selected,
@@ -6,8 +6,8 @@
          'icon-root': root,
          'open': ! collapsed,
          'closed': collapsed
-       }" (click)="collapse()"></i>
-    <span (click)="toggle()">{{ name }}</span>
+       }" (click)="$event.stopPropagation(); collapse()"></i>
+    <span>{{ name }}</span>
 </p>
 <ul class="directory" *ngIf="directory" [ngClass]="{'d-none': collapsed}">
     <li class="sub-directory" *ngFor="let dir of directory.directories">
