@@ -40,3 +40,17 @@ if (! function_exists('fm_asset')) {
         return $manifest->$bundle->$type;
     }
 }
+
+if (! function_exists('fm_should_list')) {
+
+    /**
+     * Determine if file should be listed in manager
+     *
+     * @param string $path
+     * @return bool
+     */
+    function fm_should_list(string $path): bool
+    {
+        return ! (preg_match('/[^\/]+$/', $path, $match) && preg_match(config('file-manager.hide_matches') ?: '/$^/', $match[0]));
+    }
+}

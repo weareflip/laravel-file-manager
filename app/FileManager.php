@@ -17,7 +17,9 @@ class FileManager
         $files = [];
 
         foreach (Storage::files($path) as $file) {
-            $files[] = FileFactory::create($file)->toArray();
+            if (fm_should_list($file)) {
+                $files[] = FileFactory::create($file)->toArray();
+            }
         };
 
         $directories = [];
