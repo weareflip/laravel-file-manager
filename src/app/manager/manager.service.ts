@@ -1,17 +1,19 @@
 import { Injectable } from "@angular/core";
 
-import { Api } from "../shared/api";
 import { Directory } from "../filesystem/directory";
 import { File } from "../filesystem/file";
-import { FilesystemObject } from "../filesystem/file-system-object";
+import { FilesystemObject } from "../filesystem/filesystem-object";
 import { Observable } from "rxjs/Observable";
 import { Subscriber } from "rxjs/Subscriber";
 import { FilesystemService } from "../filesystem/filesystem.service";
+import { FilesystemCache } from "../filesystem/filesystem-cache";
 
 @Injectable()
 export class ManagerService {
 
   private _directory: Directory;
+
+  private cache: FilesystemCache;
 
   private manager$: Observable<Directory>;
 
@@ -20,6 +22,7 @@ export class ManagerService {
   constructor(
     protected filesystem: FilesystemService
   ) {
+    this.cache = new FilesystemCache();
     this.manager$ = new Observable((subscriber: Subscriber<Directory>) => this.managerSubscriber = subscriber);
   }
 
@@ -32,7 +35,7 @@ export class ManagerService {
   }
 
   navigate(path: string): Promise<Directory> {
-    return new Promise((resolve, reject) => resolve(this.filesystem.list(path)))
+    return this.cache.retrieve(path, this.filesystem.list)
       .then((directory: Directory) => {
         this.managerSubscriber.next(directory);
         this._directory = directory;
@@ -49,6 +52,8 @@ export class ManagerService {
         if (culprit.constructor.name === Directory.name) {
           this.directory.removeDirectory(culprit);
         }
+
+        this.cache.bust(this.directory);
       })
       .catch((err) => console.log(err.message));
   }

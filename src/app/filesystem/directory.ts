@@ -1,6 +1,6 @@
 import { File } from './file';
 import { FilesystemService } from "./filesystem.service";
-import { FilesystemObject } from "./file-system-object";
+import { FilesystemObject } from "./filesystem-object";
 
 export class Directory implements FilesystemObject {
 
