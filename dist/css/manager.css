@@ -1,0 +1,4639 @@
+@font-face {
+	font-family: "icon";
+	src: url("/file_manager/fonts/icon.woff") format("woff");
+}
+
+.icon {
+	line-height: 1;
+}
+
+.icon:before {
+	font-family: icon !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.icon-file:before {
+	content: "\F101";
+}
+.icon-folder-fill:before {
+	content: "\F102";
+}
+.icon-folder:before {
+	content: "\F103";
+}
+.icon-image:before {
+	content: "\F104";
+}
+.icon-root:before {
+	content: "\F105";
+}
+.icon-video:before {
+	content: "\F106";
+}
+@charset "UTF-8";
+.file-manager-module html {
+  box-sizing: border-box; }
+
+.file-manager-module *,
+.file-manager-module *::before,
+.file-manager-module *::after {
+  box-sizing: inherit; }
+
+@-ms-viewport {
+  width: device-width; }
+
+.file-manager-module html {
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent; }
+
+.file-manager-module body {
+  font-family: Raleway, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #040404;
+  background-color: #F0EEE9; }
+
+.file-manager-module [tabindex="-1"]:focus {
+  outline: none !important; }
+
+.file-manager-module h1, .file-manager-module h2, .file-manager-module h3, .file-manager-module h4, .file-manager-module h5, .file-manager-module h6 {
+  margin-top: 0;
+  margin-bottom: .5rem; }
+
+.file-manager-module p {
+  margin-top: 0;
+  margin-bottom: 1rem; }
+
+.file-manager-module abbr[title],
+.file-manager-module abbr[data-original-title] {
+  cursor: help; }
+
+.file-manager-module address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit; }
+
+.file-manager-module ol,
+.file-manager-module ul,
+.file-manager-module dl {
+  margin-top: 0;
+  margin-bottom: 1rem; }
+
+.file-manager-module ol ol,
+.file-manager-module ul ul,
+.file-manager-module ol ul,
+.file-manager-module ul ol {
+  margin-bottom: 0; }
+
+.file-manager-module dt {
+  font-weight: bold; }
+
+.file-manager-module dd {
+  margin-bottom: .5rem;
+  margin-left: 0; }
+
+.file-manager-module blockquote {
+  margin: 0 0 1rem; }
+
+.file-manager-module a {
+  color: #5FC5C7;
+  text-decoration: none; }
+  .file-manager-module a:focus, .file-manager-module a:hover {
+    color: #328c8e;
+    text-decoration: none; }
+
+.file-manager-module a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none; }
+  .file-manager-module a:not([href]):not([tabindex]):focus, .file-manager-module a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    text-decoration: none; }
+  .file-manager-module a:not([href]):not([tabindex]):focus {
+    outline: 0; }
+
+.file-manager-module pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto; }
+
+.file-manager-module figure {
+  margin: 0 0 1rem; }
+
+.file-manager-module img {
+  vertical-align: middle; }
+
+.file-manager-module [role="button"] {
+  cursor: pointer; }
+
+.file-manager-module a,
+.file-manager-module area,
+.file-manager-module button,
+.file-manager-module [role="button"],
+.file-manager-module input,
+.file-manager-module label,
+.file-manager-module select,
+.file-manager-module summary,
+.file-manager-module textarea {
+  touch-action: manipulation; }
+
+.file-manager-module table {
+  border-collapse: collapse;
+  background-color: transparent; }
+
+.file-manager-module caption {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #777777;
+  text-align: left;
+  caption-side: bottom; }
+
+.file-manager-module th {
+  text-align: left; }
+
+.file-manager-module label {
+  display: inline-block;
+  margin-bottom: .5rem; }
+
+.file-manager-module button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color; }
+
+.file-manager-module input,
+.file-manager-module button,
+.file-manager-module select,
+.file-manager-module textarea {
+  line-height: inherit; }
+
+.file-manager-module input[type="radio"]:disabled,
+.file-manager-module input[type="checkbox"]:disabled {
+  cursor: not-allowed; }
+
+.file-manager-module input[type="date"],
+.file-manager-module input[type="time"],
+.file-manager-module input[type="datetime-local"],
+.file-manager-module input[type="month"] {
+  -webkit-appearance: listbox; }
+
+.file-manager-module textarea {
+  resize: vertical; }
+
+.file-manager-module fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+.file-manager-module legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit; }
+
+.file-manager-module input[type="search"] {
+  -webkit-appearance: none; }
+
+.file-manager-module output {
+  display: inline-block; }
+
+.file-manager-module [hidden] {
+  display: none !important; }
+
+.file-manager-module .badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 90%;
+  font-weight: normal;
+  line-height: 1;
+  color: #FEFEFE;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem; }
+  .file-manager-module .badge:empty {
+    display: none; }
+
+.file-manager-module .btn .badge {
+  position: relative;
+  top: -1px; }
+
+.file-manager-module a.badge:focus, .file-manager-module a.badge:hover {
+  color: #FEFEFE;
+  text-decoration: none;
+  cursor: pointer; }
+
+.file-manager-module .badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem; }
+
+.file-manager-module .badge-default {
+  background-color: #5FC5C7; }
+  .file-manager-module .badge-default[href]:focus, .file-manager-module .badge-default[href]:hover {
+    background-color: #3fb2b4; }
+
+.file-manager-module .badge-primary {
+  background-color: #241E28; }
+  .file-manager-module .badge-primary[href]:focus, .file-manager-module .badge-primary[href]:hover {
+    background-color: #0a080b; }
+
+.file-manager-module .badge-success {
+  background-color: #5CB85C; }
+  .file-manager-module .badge-success[href]:focus, .file-manager-module .badge-success[href]:hover {
+    background-color: #449d44; }
+
+.file-manager-module .badge-info {
+  background-color: #5BC0DE; }
+  .file-manager-module .badge-info[href]:focus, .file-manager-module .badge-info[href]:hover {
+    background-color: #31b0d5; }
+
+.file-manager-module .badge-warning {
+  background-color: #F0AD4E; }
+  .file-manager-module .badge-warning[href]:focus, .file-manager-module .badge-warning[href]:hover {
+    background-color: #ec971f; }
+
+.file-manager-module .badge-danger {
+  background-color: #D9534F; }
+  .file-manager-module .badge-danger[href]:focus, .file-manager-module .badge-danger[href]:hover {
+    background-color: #c9302c; }
+
+.file-manager-module .breadcrumb {
+  padding: 0.75rem 0;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #c4c4c4;
+  border-radius: 0.25rem; }
+  .file-manager-module .breadcrumb::after {
+    display: block;
+    content: "";
+    clear: both; }
+
+.file-manager-module .breadcrumb-item {
+  float: left; }
+  .file-manager-module .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: #515151;
+    content: "\203A"; }
+  .file-manager-module .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: underline; }
+  .file-manager-module .breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: none; }
+  .file-manager-module .breadcrumb-item.active {
+    color: #515151; }
+
+.file-manager-module .btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out; }
+  .file-manager-module .btn:focus, .file-manager-module .btn:hover {
+    text-decoration: none; }
+  .file-manager-module .btn:focus, .file-manager-module .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(36, 30, 40, 0.25); }
+  .file-manager-module .btn.disabled, .file-manager-module .btn:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+    box-shadow: none; }
+  .file-manager-module .btn:active, .file-manager-module .btn.active {
+    background-image: none;
+    box-shadow: 0 0 0 2px rgba(36, 30, 40, 0.25), inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module a.btn.disabled,
+.file-manager-module fieldset[disabled] a.btn {
+  pointer-events: none; }
+
+.file-manager-module .btn-primary {
+  color: #FEFEFE;
+  background-color: #241E28;
+  border-color: #241E28;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-primary:hover {
+    color: #FEFEFE;
+    background-color: #0a080b;
+    border-color: #050405; }
+  .file-manager-module .btn-primary:focus, .file-manager-module .btn-primary.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(36, 30, 40, 0.5); }
+  .file-manager-module .btn-primary.disabled, .file-manager-module .btn-primary:disabled {
+    background-color: #241E28;
+    border-color: #241E28; }
+  .file-manager-module .btn-primary:active, .file-manager-module .btn-primary.active,
+  .show > .file-manager-module .btn-primary.dropdown-toggle {
+    color: #FEFEFE;
+    background-color: #0a080b;
+    background-image: none;
+    border-color: #050405;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-secondary {
+  color: #515151;
+  background-color: #FEFEFE;
+  border-color: #ccc;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-secondary:hover {
+    color: #515151;
+    background-color: #e5e5e5;
+    border-color: #adadad; }
+  .file-manager-module .btn-secondary:focus, .file-manager-module .btn-secondary.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(204, 204, 204, 0.5); }
+  .file-manager-module .btn-secondary.disabled, .file-manager-module .btn-secondary:disabled {
+    background-color: #FEFEFE;
+    border-color: #ccc; }
+  .file-manager-module .btn-secondary:active, .file-manager-module .btn-secondary.active,
+  .show > .file-manager-module .btn-secondary.dropdown-toggle {
+    color: #515151;
+    background-color: #e5e5e5;
+    background-image: none;
+    border-color: #adadad;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-info {
+  color: #FEFEFE;
+  background-color: #5BC0DE;
+  border-color: #5BC0DE;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-info:hover {
+    color: #FEFEFE;
+    background-color: #31b0d5;
+    border-color: #2aabd2; }
+  .file-manager-module .btn-info:focus, .file-manager-module .btn-info.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(91, 192, 222, 0.5); }
+  .file-manager-module .btn-info.disabled, .file-manager-module .btn-info:disabled {
+    background-color: #5BC0DE;
+    border-color: #5BC0DE; }
+  .file-manager-module .btn-info:active, .file-manager-module .btn-info.active,
+  .show > .file-manager-module .btn-info.dropdown-toggle {
+    color: #FEFEFE;
+    background-color: #31b0d5;
+    background-image: none;
+    border-color: #2aabd2;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-success {
+  color: #FEFEFE;
+  background-color: #5CB85C;
+  border-color: #5CB85C;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-success:hover {
+    color: #FEFEFE;
+    background-color: #449d44;
+    border-color: #419641; }
+  .file-manager-module .btn-success:focus, .file-manager-module .btn-success.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(92, 184, 92, 0.5); }
+  .file-manager-module .btn-success.disabled, .file-manager-module .btn-success:disabled {
+    background-color: #5CB85C;
+    border-color: #5CB85C; }
+  .file-manager-module .btn-success:active, .file-manager-module .btn-success.active,
+  .show > .file-manager-module .btn-success.dropdown-toggle {
+    color: #FEFEFE;
+    background-color: #449d44;
+    background-image: none;
+    border-color: #419641;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-warning {
+  color: #FEFEFE;
+  background-color: #F0AD4E;
+  border-color: #F0AD4E;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-warning:hover {
+    color: #FEFEFE;
+    background-color: #ec971f;
+    border-color: #eb9316; }
+  .file-manager-module .btn-warning:focus, .file-manager-module .btn-warning.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(240, 173, 78, 0.5); }
+  .file-manager-module .btn-warning.disabled, .file-manager-module .btn-warning:disabled {
+    background-color: #F0AD4E;
+    border-color: #F0AD4E; }
+  .file-manager-module .btn-warning:active, .file-manager-module .btn-warning.active,
+  .show > .file-manager-module .btn-warning.dropdown-toggle {
+    color: #FEFEFE;
+    background-color: #ec971f;
+    background-image: none;
+    border-color: #eb9316;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-danger {
+  color: #FEFEFE;
+  background-color: #D9534F;
+  border-color: #D9534F;
+  box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+  .file-manager-module .btn-danger:hover {
+    color: #FEFEFE;
+    background-color: #c9302c;
+    border-color: #c12e2a; }
+  .file-manager-module .btn-danger:focus, .file-manager-module .btn-danger.focus {
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 0 2px rgba(217, 83, 79, 0.5); }
+  .file-manager-module .btn-danger.disabled, .file-manager-module .btn-danger:disabled {
+    background-color: #D9534F;
+    border-color: #D9534F; }
+  .file-manager-module .btn-danger:active, .file-manager-module .btn-danger.active,
+  .show > .file-manager-module .btn-danger.dropdown-toggle {
+    color: #FEFEFE;
+    background-color: #c9302c;
+    background-image: none;
+    border-color: #c12e2a;
+    box-shadow: inset 0 3px 5px rgba(17, 17, 17, 0.125); }
+
+.file-manager-module .btn-outline-primary {
+  color: #241E28;
+  background-image: none;
+  background-color: transparent;
+  border-color: #241E28; }
+  .file-manager-module .btn-outline-primary:hover {
+    color: #fff;
+    background-color: #241E28;
+    border-color: #241E28; }
+  .file-manager-module .btn-outline-primary:focus, .file-manager-module .btn-outline-primary.focus {
+    box-shadow: 0 0 0 2px rgba(36, 30, 40, 0.5); }
+  .file-manager-module .btn-outline-primary.disabled, .file-manager-module .btn-outline-primary:disabled {
+    color: #241E28;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-primary:active, .file-manager-module .btn-outline-primary.active,
+  .show > .file-manager-module .btn-outline-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #241E28;
+    border-color: #241E28; }
+
+.file-manager-module .btn-outline-secondary {
+  color: #ccc;
+  background-image: none;
+  background-color: transparent;
+  border-color: #ccc; }
+  .file-manager-module .btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc; }
+  .file-manager-module .btn-outline-secondary:focus, .file-manager-module .btn-outline-secondary.focus {
+    box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5); }
+  .file-manager-module .btn-outline-secondary.disabled, .file-manager-module .btn-outline-secondary:disabled {
+    color: #ccc;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-secondary:active, .file-manager-module .btn-outline-secondary.active,
+  .show > .file-manager-module .btn-outline-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc; }
+
+.file-manager-module .btn-outline-info {
+  color: #5BC0DE;
+  background-image: none;
+  background-color: transparent;
+  border-color: #5BC0DE; }
+  .file-manager-module .btn-outline-info:hover {
+    color: #fff;
+    background-color: #5BC0DE;
+    border-color: #5BC0DE; }
+  .file-manager-module .btn-outline-info:focus, .file-manager-module .btn-outline-info.focus {
+    box-shadow: 0 0 0 2px rgba(91, 192, 222, 0.5); }
+  .file-manager-module .btn-outline-info.disabled, .file-manager-module .btn-outline-info:disabled {
+    color: #5BC0DE;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-info:active, .file-manager-module .btn-outline-info.active,
+  .show > .file-manager-module .btn-outline-info.dropdown-toggle {
+    color: #fff;
+    background-color: #5BC0DE;
+    border-color: #5BC0DE; }
+
+.file-manager-module .btn-outline-success {
+  color: #5CB85C;
+  background-image: none;
+  background-color: transparent;
+  border-color: #5CB85C; }
+  .file-manager-module .btn-outline-success:hover {
+    color: #fff;
+    background-color: #5CB85C;
+    border-color: #5CB85C; }
+  .file-manager-module .btn-outline-success:focus, .file-manager-module .btn-outline-success.focus {
+    box-shadow: 0 0 0 2px rgba(92, 184, 92, 0.5); }
+  .file-manager-module .btn-outline-success.disabled, .file-manager-module .btn-outline-success:disabled {
+    color: #5CB85C;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-success:active, .file-manager-module .btn-outline-success.active,
+  .show > .file-manager-module .btn-outline-success.dropdown-toggle {
+    color: #fff;
+    background-color: #5CB85C;
+    border-color: #5CB85C; }
+
+.file-manager-module .btn-outline-warning {
+  color: #F0AD4E;
+  background-image: none;
+  background-color: transparent;
+  border-color: #F0AD4E; }
+  .file-manager-module .btn-outline-warning:hover {
+    color: #fff;
+    background-color: #F0AD4E;
+    border-color: #F0AD4E; }
+  .file-manager-module .btn-outline-warning:focus, .file-manager-module .btn-outline-warning.focus {
+    box-shadow: 0 0 0 2px rgba(240, 173, 78, 0.5); }
+  .file-manager-module .btn-outline-warning.disabled, .file-manager-module .btn-outline-warning:disabled {
+    color: #F0AD4E;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-warning:active, .file-manager-module .btn-outline-warning.active,
+  .show > .file-manager-module .btn-outline-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #F0AD4E;
+    border-color: #F0AD4E; }
+
+.file-manager-module .btn-outline-danger {
+  color: #D9534F;
+  background-image: none;
+  background-color: transparent;
+  border-color: #D9534F; }
+  .file-manager-module .btn-outline-danger:hover {
+    color: #fff;
+    background-color: #D9534F;
+    border-color: #D9534F; }
+  .file-manager-module .btn-outline-danger:focus, .file-manager-module .btn-outline-danger.focus {
+    box-shadow: 0 0 0 2px rgba(217, 83, 79, 0.5); }
+  .file-manager-module .btn-outline-danger.disabled, .file-manager-module .btn-outline-danger:disabled {
+    color: #D9534F;
+    background-color: transparent; }
+  .file-manager-module .btn-outline-danger:active, .file-manager-module .btn-outline-danger.active,
+  .show > .file-manager-module .btn-outline-danger.dropdown-toggle {
+    color: #fff;
+    background-color: #D9534F;
+    border-color: #D9534F; }
+
+.file-manager-module .btn-link {
+  font-weight: normal;
+  color: #5FC5C7;
+  border-radius: 0; }
+  .file-manager-module .btn-link, .file-manager-module .btn-link:active, .file-manager-module .btn-link.active, .file-manager-module .btn-link:disabled {
+    background-color: transparent;
+    box-shadow: none; }
+  .file-manager-module .btn-link, .file-manager-module .btn-link:focus, .file-manager-module .btn-link:active {
+    border-color: transparent; }
+  .file-manager-module .btn-link:hover {
+    border-color: transparent; }
+  .file-manager-module .btn-link:focus, .file-manager-module .btn-link:hover {
+    color: #328c8e;
+    text-decoration: none;
+    background-color: transparent; }
+  .file-manager-module .btn-link:disabled {
+    color: #9d9d9d; }
+    .file-manager-module .btn-link:disabled:focus, .file-manager-module .btn-link:disabled:hover {
+      text-decoration: none; }
+
+.file-manager-module .btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem; }
+
+.file-manager-module .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.2rem; }
+
+.file-manager-module .btn-block {
+  display: block;
+  width: 100%; }
+
+.file-manager-module .btn-block + .btn-block {
+  margin-top: 0.5rem; }
+
+.file-manager-module input[type="submit"].btn-block,
+.file-manager-module input[type="reset"].btn-block,
+.file-manager-module input[type="button"].btn-block {
+  width: 100%; }
+
+.file-manager-module .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FEFEFE;
+  border: 0 solid rgba(17, 17, 17, 0.125);
+  border-radius: 0; }
+
+.file-manager-module .card-block {
+  flex: 1 1 auto;
+  padding: 1.25rem; }
+
+.file-manager-module .card-title {
+  margin-bottom: 0.75rem; }
+
+.file-manager-module .card-subtitle {
+  margin-top: -0.375rem;
+  margin-bottom: 0; }
+
+.file-manager-module .card-text:last-child {
+  margin-bottom: 0; }
+
+.file-manager-module .card-link:hover {
+  text-decoration: none; }
+
+.file-manager-module .card-link + .card-link {
+  margin-left: 1.25rem; }
+
+.file-manager-module .card > .list-group:first-child .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+.file-manager-module .card > .list-group:last-child .list-group-item:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.file-manager-module .card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #eaeaea;
+  border-bottom: 0 solid rgba(17, 17, 17, 0.125); }
+  .file-manager-module .card-header:first-child {
+    border-radius: calc(0 - 0) calc(0 - 0) 0 0; }
+
+.file-manager-module .card-footer {
+  padding: 0.75rem 1.25rem;
+  background-color: #eaeaea;
+  border-top: 0 solid rgba(17, 17, 17, 0.125); }
+  .file-manager-module .card-footer:last-child {
+    border-radius: 0 0 calc(0 - 0) calc(0 - 0); }
+
+.file-manager-module .card-header-tabs {
+  margin-right: -0.625rem;
+  margin-bottom: -0.75rem;
+  margin-left: -0.625rem;
+  border-bottom: 0; }
+
+.file-manager-module .card-header-pills {
+  margin-right: -0.625rem;
+  margin-left: -0.625rem; }
+
+.file-manager-module .card-primary {
+  background-color: #241E28;
+  border-color: #241E28; }
+  .file-manager-module .card-primary .card-header,
+  .file-manager-module .card-primary .card-footer {
+    background-color: transparent; }
+
+.file-manager-module .card-success {
+  background-color: #5CB85C;
+  border-color: #5CB85C; }
+  .file-manager-module .card-success .card-header,
+  .file-manager-module .card-success .card-footer {
+    background-color: transparent; }
+
+.file-manager-module .card-info {
+  background-color: #5BC0DE;
+  border-color: #5BC0DE; }
+  .file-manager-module .card-info .card-header,
+  .file-manager-module .card-info .card-footer {
+    background-color: transparent; }
+
+.file-manager-module .card-warning {
+  background-color: #F0AD4E;
+  border-color: #F0AD4E; }
+  .file-manager-module .card-warning .card-header,
+  .file-manager-module .card-warning .card-footer {
+    background-color: transparent; }
+
+.file-manager-module .card-danger {
+  background-color: #D9534F;
+  border-color: #D9534F; }
+  .file-manager-module .card-danger .card-header,
+  .file-manager-module .card-danger .card-footer {
+    background-color: transparent; }
+
+.file-manager-module .card-outline-primary {
+  background-color: transparent;
+  border-color: #241E28; }
+
+.file-manager-module .card-outline-secondary {
+  background-color: transparent;
+  border-color: #ccc; }
+
+.file-manager-module .card-outline-info {
+  background-color: transparent;
+  border-color: #5BC0DE; }
+
+.file-manager-module .card-outline-success {
+  background-color: transparent;
+  border-color: #5CB85C; }
+
+.file-manager-module .card-outline-warning {
+  background-color: transparent;
+  border-color: #F0AD4E; }
+
+.file-manager-module .card-outline-danger {
+  background-color: transparent;
+  border-color: #D9534F; }
+
+.file-manager-module .card-inverse {
+  color: rgba(255, 255, 255, 0.65); }
+  .file-manager-module .card-inverse .card-header,
+  .file-manager-module .card-inverse .card-footer {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2); }
+  .file-manager-module .card-inverse .card-header,
+  .file-manager-module .card-inverse .card-footer,
+  .file-manager-module .card-inverse .card-title,
+  .file-manager-module .card-inverse .card-blockquote {
+    color: #fff; }
+  .file-manager-module .card-inverse .card-link,
+  .file-manager-module .card-inverse .card-text,
+  .file-manager-module .card-inverse .card-subtitle,
+  .file-manager-module .card-inverse .card-blockquote .blockquote-footer {
+    color: rgba(255, 255, 255, 0.65); }
+  .file-manager-module .card-inverse .card-link:focus, .file-manager-module .card-inverse .card-link:hover {
+    color: #FEFEFE; }
+
+.file-manager-module .card-blockquote {
+  padding: 0;
+  margin-bottom: 0;
+  border-left: 0; }
+
+.file-manager-module .card-img {
+  border-radius: calc(0 - 0); }
+
+.file-manager-module .card-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem; }
+
+.file-manager-module .card-img-top {
+  border-top-right-radius: calc(0 - 0);
+  border-top-left-radius: calc(0 - 0); }
+
+.file-manager-module .card-img-bottom {
+  border-bottom-right-radius: calc(0 - 0);
+  border-bottom-left-radius: calc(0 - 0); }
+
+@media (min-width: 576px) {
+  .file-manager-module .card-deck {
+    display: flex;
+    flex-flow: row wrap; }
+    .file-manager-module .card-deck .card {
+      display: flex;
+      flex: 1 0 0;
+      flex-direction: column; }
+      .file-manager-module .card-deck .card:not(:first-child) {
+        margin-left: 15px; }
+      .file-manager-module .card-deck .card:not(:last-child) {
+        margin-right: 15px; } }
+
+@media (min-width: 576px) {
+  .file-manager-module .card-group {
+    display: flex;
+    flex-flow: row wrap; }
+    .file-manager-module .card-group .card {
+      flex: 1 0 0; }
+      .file-manager-module .card-group .card + .card {
+        margin-left: 0;
+        border-left: 0; }
+      .file-manager-module .card-group .card:first-child {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0; }
+        .file-manager-module .card-group .card:first-child .card-img-top {
+          border-top-right-radius: 0; }
+        .file-manager-module .card-group .card:first-child .card-img-bottom {
+          border-bottom-right-radius: 0; }
+      .file-manager-module .card-group .card:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0; }
+        .file-manager-module .card-group .card:last-child .card-img-top {
+          border-top-left-radius: 0; }
+        .file-manager-module .card-group .card:last-child .card-img-bottom {
+          border-bottom-left-radius: 0; }
+      .file-manager-module .card-group .card:not(:first-child):not(:last-child) {
+        border-radius: 0; }
+        .file-manager-module .card-group .card:not(:first-child):not(:last-child) .card-img-top,
+        .file-manager-module .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {
+          border-radius: 0; } }
+
+@media (min-width: 576px) {
+  .file-manager-module .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem; }
+    .file-manager-module .card-columns .card {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 0.75rem; } }
+
+.file-manager-module .form-control {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #2b2b2b;
+  background-color: #FEFEFE;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(17, 17, 17, 0.15);
+  border-radius: 0;
+  box-shadow: inset 0 1px 1px rgba(17, 17, 17, 0.075);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
+  .file-manager-module .form-control::-ms-expand {
+    background-color: transparent;
+    border: 0; }
+  .file-manager-module .form-control:focus {
+    color: #2b2b2b;
+    background-color: #FEFEFE;
+    border-color: #3fb2b4;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(17, 17, 17, 0.075), rgba(63, 178, 180, 0.6); }
+  .file-manager-module .form-control::placeholder {
+    color: #F0EEE9;
+    opacity: 1; }
+  .file-manager-module .form-control:disabled, .file-manager-module .form-control[readonly] {
+    background-color: #c4c4c4;
+    opacity: 1; }
+  .file-manager-module .form-control:disabled {
+    cursor: not-allowed; }
+
+.file-manager-module select.form-control:not([size]):not([multiple]) {
+  height: calc(2.85rem + 2px); }
+
+.file-manager-module select.form-control:focus::-ms-value {
+  color: #2b2b2b;
+  background-color: #FEFEFE; }
+
+.file-manager-module .form-control-file,
+.file-manager-module .form-control-range {
+  display: block; }
+
+.file-manager-module .col-form-label {
+  padding-top: calc(0.8rem - 1px * 2);
+  padding-bottom: calc(0.8rem - 1px * 2);
+  margin-bottom: 0; }
+
+.file-manager-module .col-form-label-lg {
+  padding-top: calc(0.75rem - 1px * 2);
+  padding-bottom: calc(0.75rem - 1px * 2);
+  font-size: 1.25rem; }
+
+.file-manager-module .col-form-label-sm {
+  padding-top: calc(0.25rem - 1px * 2);
+  padding-bottom: calc(0.25rem - 1px * 2);
+  font-size: 0.875rem; }
+
+.file-manager-module .col-form-legend {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0;
+  font-size: 1rem; }
+
+.file-manager-module .form-control-static {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0;
+  line-height: 1.25;
+  border: solid transparent;
+  border-width: 1px 0; }
+  .file-manager-module .form-control-static.form-control-sm, .file-manager-module .form-control-static.form-control-lg {
+    padding-right: 0;
+    padding-left: 0; }
+
+.file-manager-module .form-control-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 0; }
+
+.file-manager-module select.form-control-sm:not([size]):not([multiple]) {
+  height: 1.8125rem; }
+
+.file-manager-module .form-control-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0; }
+
+.file-manager-module select.form-control-lg:not([size]):not([multiple]) {
+  height: 3.16667rem; }
+
+.file-manager-module .form-group {
+  margin-bottom: 1rem; }
+
+.file-manager-module .form-text {
+  display: block;
+  margin-top: 0.25rem; }
+
+.file-manager-module .form-check {
+  position: relative;
+  display: block;
+  margin-bottom: 0.5rem; }
+  .file-manager-module .form-check.disabled .form-check-label {
+    color: #777777;
+    cursor: not-allowed; }
+
+.file-manager-module .form-check-label {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+  cursor: pointer; }
+
+.file-manager-module .form-check-input {
+  position: absolute;
+  margin-top: 0.25rem;
+  margin-left: -1.25rem; }
+  .file-manager-module .form-check-input:only-child {
+    position: static; }
+
+.file-manager-module .form-check-inline {
+  display: inline-block; }
+  .file-manager-module .form-check-inline .form-check-label {
+    vertical-align: middle; }
+  .file-manager-module .form-check-inline + .form-check-inline {
+    margin-left: 0.75rem; }
+
+.file-manager-module .form-control-feedback {
+  margin-top: 0.25rem; }
+
+.file-manager-module .form-control-success,
+.file-manager-module .form-control-warning,
+.file-manager-module .form-control-danger {
+  padding-right: 2.25rem;
+  background-repeat: no-repeat;
+  background-position: center right 0.7125rem;
+  background-size: 1.425rem 1.425rem; }
+
+.file-manager-module .has-success .form-control-feedback,
+.file-manager-module .has-success .form-control-label,
+.file-manager-module .has-success .col-form-label,
+.file-manager-module .has-success .form-check-label,
+.file-manager-module .has-success .custom-control {
+  color: #5CB85C; }
+
+.file-manager-module .has-success .form-control {
+  border-color: #5CB85C; }
+  .file-manager-module .has-success .form-control:focus {
+    box-shadow: inset 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 6px #a3d7a3; }
+
+.file-manager-module .has-success .input-group-addon {
+  color: #5CB85C;
+  border-color: #5CB85C;
+  background-color: #eaf6ea; }
+
+.file-manager-module .has-success .form-control-success {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235CB85C' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"); }
+
+.file-manager-module .has-warning .form-control-feedback,
+.file-manager-module .has-warning .form-control-label,
+.file-manager-module .has-warning .col-form-label,
+.file-manager-module .has-warning .form-check-label,
+.file-manager-module .has-warning .custom-control {
+  color: #F0AD4E; }
+
+.file-manager-module .has-warning .form-control {
+  border-color: #F0AD4E; }
+  .file-manager-module .has-warning .form-control:focus {
+    box-shadow: inset 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 6px #f8d9ac; }
+
+.file-manager-module .has-warning .input-group-addon {
+  color: #F0AD4E;
+  border-color: #F0AD4E;
+  background-color: white; }
+
+.file-manager-module .has-warning .form-control-warning {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23F0AD4E' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"); }
+
+.file-manager-module .has-danger .form-control-feedback,
+.file-manager-module .has-danger .form-control-label,
+.file-manager-module .has-danger .col-form-label,
+.file-manager-module .has-danger .form-check-label,
+.file-manager-module .has-danger .custom-control {
+  color: #D9534F; }
+
+.file-manager-module .has-danger .form-control {
+  border-color: #D9534F; }
+  .file-manager-module .has-danger .form-control:focus {
+    box-shadow: inset 0 1px 1px rgba(17, 17, 17, 0.075), 0 0 6px #eba5a3; }
+
+.file-manager-module .has-danger .input-group-addon {
+  color: #D9534F;
+  border-color: #D9534F;
+  background-color: #fdf7f7; }
+
+.file-manager-module .has-danger .form-control-danger {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23D9534F' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"); }
+
+.file-manager-module .form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center; }
+  .file-manager-module .form-inline .form-check {
+    width: 100%; }
+  @media (min-width: 576px) {
+    .file-manager-module .form-inline label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0; }
+    .file-manager-module .form-inline .form-group {
+      display: flex;
+      flex: 0 0 auto;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 0; }
+    .file-manager-module .form-inline .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle; }
+    .file-manager-module .form-inline .form-control-static {
+      display: inline-block; }
+    .file-manager-module .form-inline .input-group {
+      width: auto; }
+    .file-manager-module .form-inline .form-control-label {
+      margin-bottom: 0;
+      vertical-align: middle; }
+    .file-manager-module .form-inline .form-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      margin-top: 0;
+      margin-bottom: 0; }
+    .file-manager-module .form-inline .form-check-label {
+      padding-left: 0; }
+    .file-manager-module .form-inline .form-check-input {
+      position: relative;
+      margin-top: 0;
+      margin-right: 0.25rem;
+      margin-left: 0; }
+    .file-manager-module .form-inline .custom-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 0; }
+    .file-manager-module .form-inline .custom-control-indicator {
+      position: static;
+      display: inline-block;
+      margin-right: 0.25rem;
+      vertical-align: text-bottom; }
+    .file-manager-module .form-inline .has-feedback .form-control-feedback {
+      top: 0; } }
+
+.file-manager-module .container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px; }
+  @media (min-width: 576px) {
+    .file-manager-module .container {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .file-manager-module .container {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 992px) {
+    .file-manager-module .container {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .container {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 576px) {
+    .file-manager-module .container {
+      width: 540px;
+      max-width: 100%; } }
+  @media (min-width: 768px) {
+    .file-manager-module .container {
+      width: 720px;
+      max-width: 100%; } }
+  @media (min-width: 992px) {
+    .file-manager-module .container {
+      width: 960px;
+      max-width: 100%; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .container {
+      width: 1140px;
+      max-width: 100%; } }
+
+.file-manager-module .container-fluid, .file-manager-module main {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px; }
+  @media (min-width: 576px) {
+    .file-manager-module .container-fluid, .file-manager-module main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .file-manager-module .container-fluid, .file-manager-module main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 992px) {
+    .file-manager-module .container-fluid, .file-manager-module main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .container-fluid, .file-manager-module main {
+      padding-right: 15px;
+      padding-left: 15px; } }
+
+.file-manager-module .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  @media (min-width: 576px) {
+    .file-manager-module .row {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 768px) {
+    .file-manager-module .row {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 992px) {
+    .file-manager-module .row {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .row {
+      margin-right: -15px;
+      margin-left: -15px; } }
+
+.file-manager-module .no-gutters {
+  margin-right: 0;
+  margin-left: 0; }
+  .file-manager-module .no-gutters > .col,
+  .file-manager-module .no-gutters > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0; }
+
+.file-manager-module .col-1, .file-manager-module .col-2, .file-manager-module .col-3, .file-manager-module .col-4, .file-manager-module .col-5, .file-manager-module .col-6, .file-manager-module .col-7, .file-manager-module .col-8, .file-manager-module .col-9, .file-manager-module .col-10, .file-manager-module .col-11, .file-manager-module .col-12, .file-manager-module .col, .file-manager-module .col-sm-1, .file-manager-module .col-sm-2, .file-manager-module .col-sm-3, .file-manager-module .col-sm-4, .file-manager-module .col-sm-5, .file-manager-module .col-sm-6, .file-manager-module .col-sm-7, .file-manager-module .col-sm-8, .file-manager-module .col-sm-9, .file-manager-module .col-sm-10, .file-manager-module .col-sm-11, .file-manager-module .col-sm-12, .file-manager-module .col-sm, .file-manager-module .col-md-1, .file-manager-module .col-md-2, .file-manager-module .col-md-3, .file-manager-module .col-md-4, .file-manager-module .col-md-5, .file-manager-module .col-md-6, .file-manager-module .col-md-7, .file-manager-module .col-md-8, .file-manager-module .col-md-9, .file-manager-module .col-md-10, .file-manager-module .col-md-11, .file-manager-module .col-md-12, .file-manager-module .col-md, .file-manager-module .col-lg-1, .file-manager-module .col-lg-2, .file-manager-module .col-lg-3, .file-manager-module .col-lg-4, .file-manager-module .col-lg-5, .file-manager-module .col-lg-6, .file-manager-module .col-lg-7, .file-manager-module .col-lg-8, .file-manager-module .col-lg-9, .file-manager-module .col-lg-10, .file-manager-module .col-lg-11, .file-manager-module .col-lg-12, .file-manager-module .col-lg, .file-manager-module .col-xl-1, .file-manager-module .col-xl-2, .file-manager-module .col-xl-3, .file-manager-module .col-xl-4, .file-manager-module .col-xl-5, .file-manager-module .col-xl-6, .file-manager-module .col-xl-7, .file-manager-module .col-xl-8, .file-manager-module .col-xl-9, .file-manager-module .col-xl-10, .file-manager-module .col-xl-11, .file-manager-module .col-xl-12, .file-manager-module .col-xl {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px; }
+  @media (min-width: 576px) {
+    .file-manager-module .col-1, .file-manager-module .col-2, .file-manager-module .col-3, .file-manager-module .col-4, .file-manager-module .col-5, .file-manager-module .col-6, .file-manager-module .col-7, .file-manager-module .col-8, .file-manager-module .col-9, .file-manager-module .col-10, .file-manager-module .col-11, .file-manager-module .col-12, .file-manager-module .col, .file-manager-module .col-sm-1, .file-manager-module .col-sm-2, .file-manager-module .col-sm-3, .file-manager-module .col-sm-4, .file-manager-module .col-sm-5, .file-manager-module .col-sm-6, .file-manager-module .col-sm-7, .file-manager-module .col-sm-8, .file-manager-module .col-sm-9, .file-manager-module .col-sm-10, .file-manager-module .col-sm-11, .file-manager-module .col-sm-12, .file-manager-module .col-sm, .file-manager-module .col-md-1, .file-manager-module .col-md-2, .file-manager-module .col-md-3, .file-manager-module .col-md-4, .file-manager-module .col-md-5, .file-manager-module .col-md-6, .file-manager-module .col-md-7, .file-manager-module .col-md-8, .file-manager-module .col-md-9, .file-manager-module .col-md-10, .file-manager-module .col-md-11, .file-manager-module .col-md-12, .file-manager-module .col-md, .file-manager-module .col-lg-1, .file-manager-module .col-lg-2, .file-manager-module .col-lg-3, .file-manager-module .col-lg-4, .file-manager-module .col-lg-5, .file-manager-module .col-lg-6, .file-manager-module .col-lg-7, .file-manager-module .col-lg-8, .file-manager-module .col-lg-9, .file-manager-module .col-lg-10, .file-manager-module .col-lg-11, .file-manager-module .col-lg-12, .file-manager-module .col-lg, .file-manager-module .col-xl-1, .file-manager-module .col-xl-2, .file-manager-module .col-xl-3, .file-manager-module .col-xl-4, .file-manager-module .col-xl-5, .file-manager-module .col-xl-6, .file-manager-module .col-xl-7, .file-manager-module .col-xl-8, .file-manager-module .col-xl-9, .file-manager-module .col-xl-10, .file-manager-module .col-xl-11, .file-manager-module .col-xl-12, .file-manager-module .col-xl {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 768px) {
+    .file-manager-module .col-1, .file-manager-module .col-2, .file-manager-module .col-3, .file-manager-module .col-4, .file-manager-module .col-5, .file-manager-module .col-6, .file-manager-module .col-7, .file-manager-module .col-8, .file-manager-module .col-9, .file-manager-module .col-10, .file-manager-module .col-11, .file-manager-module .col-12, .file-manager-module .col, .file-manager-module .col-sm-1, .file-manager-module .col-sm-2, .file-manager-module .col-sm-3, .file-manager-module .col-sm-4, .file-manager-module .col-sm-5, .file-manager-module .col-sm-6, .file-manager-module .col-sm-7, .file-manager-module .col-sm-8, .file-manager-module .col-sm-9, .file-manager-module .col-sm-10, .file-manager-module .col-sm-11, .file-manager-module .col-sm-12, .file-manager-module .col-sm, .file-manager-module .col-md-1, .file-manager-module .col-md-2, .file-manager-module .col-md-3, .file-manager-module .col-md-4, .file-manager-module .col-md-5, .file-manager-module .col-md-6, .file-manager-module .col-md-7, .file-manager-module .col-md-8, .file-manager-module .col-md-9, .file-manager-module .col-md-10, .file-manager-module .col-md-11, .file-manager-module .col-md-12, .file-manager-module .col-md, .file-manager-module .col-lg-1, .file-manager-module .col-lg-2, .file-manager-module .col-lg-3, .file-manager-module .col-lg-4, .file-manager-module .col-lg-5, .file-manager-module .col-lg-6, .file-manager-module .col-lg-7, .file-manager-module .col-lg-8, .file-manager-module .col-lg-9, .file-manager-module .col-lg-10, .file-manager-module .col-lg-11, .file-manager-module .col-lg-12, .file-manager-module .col-lg, .file-manager-module .col-xl-1, .file-manager-module .col-xl-2, .file-manager-module .col-xl-3, .file-manager-module .col-xl-4, .file-manager-module .col-xl-5, .file-manager-module .col-xl-6, .file-manager-module .col-xl-7, .file-manager-module .col-xl-8, .file-manager-module .col-xl-9, .file-manager-module .col-xl-10, .file-manager-module .col-xl-11, .file-manager-module .col-xl-12, .file-manager-module .col-xl {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 992px) {
+    .file-manager-module .col-1, .file-manager-module .col-2, .file-manager-module .col-3, .file-manager-module .col-4, .file-manager-module .col-5, .file-manager-module .col-6, .file-manager-module .col-7, .file-manager-module .col-8, .file-manager-module .col-9, .file-manager-module .col-10, .file-manager-module .col-11, .file-manager-module .col-12, .file-manager-module .col, .file-manager-module .col-sm-1, .file-manager-module .col-sm-2, .file-manager-module .col-sm-3, .file-manager-module .col-sm-4, .file-manager-module .col-sm-5, .file-manager-module .col-sm-6, .file-manager-module .col-sm-7, .file-manager-module .col-sm-8, .file-manager-module .col-sm-9, .file-manager-module .col-sm-10, .file-manager-module .col-sm-11, .file-manager-module .col-sm-12, .file-manager-module .col-sm, .file-manager-module .col-md-1, .file-manager-module .col-md-2, .file-manager-module .col-md-3, .file-manager-module .col-md-4, .file-manager-module .col-md-5, .file-manager-module .col-md-6, .file-manager-module .col-md-7, .file-manager-module .col-md-8, .file-manager-module .col-md-9, .file-manager-module .col-md-10, .file-manager-module .col-md-11, .file-manager-module .col-md-12, .file-manager-module .col-md, .file-manager-module .col-lg-1, .file-manager-module .col-lg-2, .file-manager-module .col-lg-3, .file-manager-module .col-lg-4, .file-manager-module .col-lg-5, .file-manager-module .col-lg-6, .file-manager-module .col-lg-7, .file-manager-module .col-lg-8, .file-manager-module .col-lg-9, .file-manager-module .col-lg-10, .file-manager-module .col-lg-11, .file-manager-module .col-lg-12, .file-manager-module .col-lg, .file-manager-module .col-xl-1, .file-manager-module .col-xl-2, .file-manager-module .col-xl-3, .file-manager-module .col-xl-4, .file-manager-module .col-xl-5, .file-manager-module .col-xl-6, .file-manager-module .col-xl-7, .file-manager-module .col-xl-8, .file-manager-module .col-xl-9, .file-manager-module .col-xl-10, .file-manager-module .col-xl-11, .file-manager-module .col-xl-12, .file-manager-module .col-xl {
+      padding-right: 15px;
+      padding-left: 15px; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .col-1, .file-manager-module .col-2, .file-manager-module .col-3, .file-manager-module .col-4, .file-manager-module .col-5, .file-manager-module .col-6, .file-manager-module .col-7, .file-manager-module .col-8, .file-manager-module .col-9, .file-manager-module .col-10, .file-manager-module .col-11, .file-manager-module .col-12, .file-manager-module .col, .file-manager-module .col-sm-1, .file-manager-module .col-sm-2, .file-manager-module .col-sm-3, .file-manager-module .col-sm-4, .file-manager-module .col-sm-5, .file-manager-module .col-sm-6, .file-manager-module .col-sm-7, .file-manager-module .col-sm-8, .file-manager-module .col-sm-9, .file-manager-module .col-sm-10, .file-manager-module .col-sm-11, .file-manager-module .col-sm-12, .file-manager-module .col-sm, .file-manager-module .col-md-1, .file-manager-module .col-md-2, .file-manager-module .col-md-3, .file-manager-module .col-md-4, .file-manager-module .col-md-5, .file-manager-module .col-md-6, .file-manager-module .col-md-7, .file-manager-module .col-md-8, .file-manager-module .col-md-9, .file-manager-module .col-md-10, .file-manager-module .col-md-11, .file-manager-module .col-md-12, .file-manager-module .col-md, .file-manager-module .col-lg-1, .file-manager-module .col-lg-2, .file-manager-module .col-lg-3, .file-manager-module .col-lg-4, .file-manager-module .col-lg-5, .file-manager-module .col-lg-6, .file-manager-module .col-lg-7, .file-manager-module .col-lg-8, .file-manager-module .col-lg-9, .file-manager-module .col-lg-10, .file-manager-module .col-lg-11, .file-manager-module .col-lg-12, .file-manager-module .col-lg, .file-manager-module .col-xl-1, .file-manager-module .col-xl-2, .file-manager-module .col-xl-3, .file-manager-module .col-xl-4, .file-manager-module .col-xl-5, .file-manager-module .col-xl-6, .file-manager-module .col-xl-7, .file-manager-module .col-xl-8, .file-manager-module .col-xl-9, .file-manager-module .col-xl-10, .file-manager-module .col-xl-11, .file-manager-module .col-xl-12, .file-manager-module .col-xl {
+      padding-right: 15px;
+      padding-left: 15px; } }
+
+.file-manager-module .col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%; }
+
+.file-manager-module .col-auto {
+  flex: 0 0 auto;
+  width: auto; }
+
+.file-manager-module .col-1 {
+  flex: 0 0 8.33333%;
+  max-width: 8.33333%; }
+
+.file-manager-module .col-2 {
+  flex: 0 0 16.66667%;
+  max-width: 16.66667%; }
+
+.file-manager-module .col-3 {
+  flex: 0 0 25%;
+  max-width: 25%; }
+
+.file-manager-module .col-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%; }
+
+.file-manager-module .col-5 {
+  flex: 0 0 41.66667%;
+  max-width: 41.66667%; }
+
+.file-manager-module .col-6 {
+  flex: 0 0 50%;
+  max-width: 50%; }
+
+.file-manager-module .col-7 {
+  flex: 0 0 58.33333%;
+  max-width: 58.33333%; }
+
+.file-manager-module .col-8 {
+  flex: 0 0 66.66667%;
+  max-width: 66.66667%; }
+
+.file-manager-module .col-9 {
+  flex: 0 0 75%;
+  max-width: 75%; }
+
+.file-manager-module .col-10 {
+  flex: 0 0 83.33333%;
+  max-width: 83.33333%; }
+
+.file-manager-module .col-11 {
+  flex: 0 0 91.66667%;
+  max-width: 91.66667%; }
+
+.file-manager-module .col-12 {
+  flex: 0 0 100%;
+  max-width: 100%; }
+
+.file-manager-module .pull-0 {
+  right: auto; }
+
+.file-manager-module .pull-1 {
+  right: 8.33333%; }
+
+.file-manager-module .pull-2 {
+  right: 16.66667%; }
+
+.file-manager-module .pull-3 {
+  right: 25%; }
+
+.file-manager-module .pull-4 {
+  right: 33.33333%; }
+
+.file-manager-module .pull-5 {
+  right: 41.66667%; }
+
+.file-manager-module .pull-6 {
+  right: 50%; }
+
+.file-manager-module .pull-7 {
+  right: 58.33333%; }
+
+.file-manager-module .pull-8 {
+  right: 66.66667%; }
+
+.file-manager-module .pull-9 {
+  right: 75%; }
+
+.file-manager-module .pull-10 {
+  right: 83.33333%; }
+
+.file-manager-module .pull-11 {
+  right: 91.66667%; }
+
+.file-manager-module .pull-12 {
+  right: 100%; }
+
+.file-manager-module .push-0 {
+  left: auto; }
+
+.file-manager-module .push-1 {
+  left: 8.33333%; }
+
+.file-manager-module .push-2 {
+  left: 16.66667%; }
+
+.file-manager-module .push-3 {
+  left: 25%; }
+
+.file-manager-module .push-4 {
+  left: 33.33333%; }
+
+.file-manager-module .push-5 {
+  left: 41.66667%; }
+
+.file-manager-module .push-6 {
+  left: 50%; }
+
+.file-manager-module .push-7 {
+  left: 58.33333%; }
+
+.file-manager-module .push-8 {
+  left: 66.66667%; }
+
+.file-manager-module .push-9 {
+  left: 75%; }
+
+.file-manager-module .push-10 {
+  left: 83.33333%; }
+
+.file-manager-module .push-11 {
+  left: 91.66667%; }
+
+.file-manager-module .push-12 {
+  left: 100%; }
+
+.file-manager-module .offset-1 {
+  margin-left: 8.33333%; }
+
+.file-manager-module .offset-2 {
+  margin-left: 16.66667%; }
+
+.file-manager-module .offset-3 {
+  margin-left: 25%; }
+
+.file-manager-module .offset-4 {
+  margin-left: 33.33333%; }
+
+.file-manager-module .offset-5 {
+  margin-left: 41.66667%; }
+
+.file-manager-module .offset-6 {
+  margin-left: 50%; }
+
+.file-manager-module .offset-7 {
+  margin-left: 58.33333%; }
+
+.file-manager-module .offset-8 {
+  margin-left: 66.66667%; }
+
+.file-manager-module .offset-9 {
+  margin-left: 75%; }
+
+.file-manager-module .offset-10 {
+  margin-left: 83.33333%; }
+
+.file-manager-module .offset-11 {
+  margin-left: 91.66667%; }
+
+@media (min-width: 576px) {
+  .file-manager-module .col-sm {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%; }
+  .file-manager-module .col-sm-auto {
+    flex: 0 0 auto;
+    width: auto; }
+  .file-manager-module .col-sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%; }
+  .file-manager-module .col-sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%; }
+  .file-manager-module .col-sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .file-manager-module .col-sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; }
+  .file-manager-module .col-sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%; }
+  .file-manager-module .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%; }
+  .file-manager-module .col-sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%; }
+  .file-manager-module .col-sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%; }
+  .file-manager-module .col-sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%; }
+  .file-manager-module .col-sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%; }
+  .file-manager-module .col-sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%; }
+  .file-manager-module .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%; }
+  .file-manager-module .pull-sm-0 {
+    right: auto; }
+  .file-manager-module .pull-sm-1 {
+    right: 8.33333%; }
+  .file-manager-module .pull-sm-2 {
+    right: 16.66667%; }
+  .file-manager-module .pull-sm-3 {
+    right: 25%; }
+  .file-manager-module .pull-sm-4 {
+    right: 33.33333%; }
+  .file-manager-module .pull-sm-5 {
+    right: 41.66667%; }
+  .file-manager-module .pull-sm-6 {
+    right: 50%; }
+  .file-manager-module .pull-sm-7 {
+    right: 58.33333%; }
+  .file-manager-module .pull-sm-8 {
+    right: 66.66667%; }
+  .file-manager-module .pull-sm-9 {
+    right: 75%; }
+  .file-manager-module .pull-sm-10 {
+    right: 83.33333%; }
+  .file-manager-module .pull-sm-11 {
+    right: 91.66667%; }
+  .file-manager-module .pull-sm-12 {
+    right: 100%; }
+  .file-manager-module .push-sm-0 {
+    left: auto; }
+  .file-manager-module .push-sm-1 {
+    left: 8.33333%; }
+  .file-manager-module .push-sm-2 {
+    left: 16.66667%; }
+  .file-manager-module .push-sm-3 {
+    left: 25%; }
+  .file-manager-module .push-sm-4 {
+    left: 33.33333%; }
+  .file-manager-module .push-sm-5 {
+    left: 41.66667%; }
+  .file-manager-module .push-sm-6 {
+    left: 50%; }
+  .file-manager-module .push-sm-7 {
+    left: 58.33333%; }
+  .file-manager-module .push-sm-8 {
+    left: 66.66667%; }
+  .file-manager-module .push-sm-9 {
+    left: 75%; }
+  .file-manager-module .push-sm-10 {
+    left: 83.33333%; }
+  .file-manager-module .push-sm-11 {
+    left: 91.66667%; }
+  .file-manager-module .push-sm-12 {
+    left: 100%; }
+  .file-manager-module .offset-sm-0 {
+    margin-left: 0%; }
+  .file-manager-module .offset-sm-1 {
+    margin-left: 8.33333%; }
+  .file-manager-module .offset-sm-2 {
+    margin-left: 16.66667%; }
+  .file-manager-module .offset-sm-3 {
+    margin-left: 25%; }
+  .file-manager-module .offset-sm-4 {
+    margin-left: 33.33333%; }
+  .file-manager-module .offset-sm-5 {
+    margin-left: 41.66667%; }
+  .file-manager-module .offset-sm-6 {
+    margin-left: 50%; }
+  .file-manager-module .offset-sm-7 {
+    margin-left: 58.33333%; }
+  .file-manager-module .offset-sm-8 {
+    margin-left: 66.66667%; }
+  .file-manager-module .offset-sm-9 {
+    margin-left: 75%; }
+  .file-manager-module .offset-sm-10 {
+    margin-left: 83.33333%; }
+  .file-manager-module .offset-sm-11 {
+    margin-left: 91.66667%; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .col-md {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%; }
+  .file-manager-module .col-md-auto {
+    flex: 0 0 auto;
+    width: auto; }
+  .file-manager-module .col-md-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%; }
+  .file-manager-module .col-md-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%; }
+  .file-manager-module .col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .file-manager-module .col-md-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; }
+  .file-manager-module .col-md-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%; }
+  .file-manager-module .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%; }
+  .file-manager-module .col-md-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%; }
+  .file-manager-module .col-md-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%; }
+  .file-manager-module .col-md-9 {
+    flex: 0 0 75%;
+    max-width: 75%; }
+  .file-manager-module .col-md-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%; }
+  .file-manager-module .col-md-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%; }
+  .file-manager-module .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%; }
+  .file-manager-module .pull-md-0 {
+    right: auto; }
+  .file-manager-module .pull-md-1 {
+    right: 8.33333%; }
+  .file-manager-module .pull-md-2 {
+    right: 16.66667%; }
+  .file-manager-module .pull-md-3 {
+    right: 25%; }
+  .file-manager-module .pull-md-4 {
+    right: 33.33333%; }
+  .file-manager-module .pull-md-5 {
+    right: 41.66667%; }
+  .file-manager-module .pull-md-6 {
+    right: 50%; }
+  .file-manager-module .pull-md-7 {
+    right: 58.33333%; }
+  .file-manager-module .pull-md-8 {
+    right: 66.66667%; }
+  .file-manager-module .pull-md-9 {
+    right: 75%; }
+  .file-manager-module .pull-md-10 {
+    right: 83.33333%; }
+  .file-manager-module .pull-md-11 {
+    right: 91.66667%; }
+  .file-manager-module .pull-md-12 {
+    right: 100%; }
+  .file-manager-module .push-md-0 {
+    left: auto; }
+  .file-manager-module .push-md-1 {
+    left: 8.33333%; }
+  .file-manager-module .push-md-2 {
+    left: 16.66667%; }
+  .file-manager-module .push-md-3 {
+    left: 25%; }
+  .file-manager-module .push-md-4 {
+    left: 33.33333%; }
+  .file-manager-module .push-md-5 {
+    left: 41.66667%; }
+  .file-manager-module .push-md-6 {
+    left: 50%; }
+  .file-manager-module .push-md-7 {
+    left: 58.33333%; }
+  .file-manager-module .push-md-8 {
+    left: 66.66667%; }
+  .file-manager-module .push-md-9 {
+    left: 75%; }
+  .file-manager-module .push-md-10 {
+    left: 83.33333%; }
+  .file-manager-module .push-md-11 {
+    left: 91.66667%; }
+  .file-manager-module .push-md-12 {
+    left: 100%; }
+  .file-manager-module .offset-md-0 {
+    margin-left: 0%; }
+  .file-manager-module .offset-md-1 {
+    margin-left: 8.33333%; }
+  .file-manager-module .offset-md-2 {
+    margin-left: 16.66667%; }
+  .file-manager-module .offset-md-3 {
+    margin-left: 25%; }
+  .file-manager-module .offset-md-4 {
+    margin-left: 33.33333%; }
+  .file-manager-module .offset-md-5 {
+    margin-left: 41.66667%; }
+  .file-manager-module .offset-md-6 {
+    margin-left: 50%; }
+  .file-manager-module .offset-md-7 {
+    margin-left: 58.33333%; }
+  .file-manager-module .offset-md-8 {
+    margin-left: 66.66667%; }
+  .file-manager-module .offset-md-9 {
+    margin-left: 75%; }
+  .file-manager-module .offset-md-10 {
+    margin-left: 83.33333%; }
+  .file-manager-module .offset-md-11 {
+    margin-left: 91.66667%; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .col-lg {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%; }
+  .file-manager-module .col-lg-auto {
+    flex: 0 0 auto;
+    width: auto; }
+  .file-manager-module .col-lg-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%; }
+  .file-manager-module .col-lg-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%; }
+  .file-manager-module .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .file-manager-module .col-lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; }
+  .file-manager-module .col-lg-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%; }
+  .file-manager-module .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%; }
+  .file-manager-module .col-lg-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%; }
+  .file-manager-module .col-lg-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%; }
+  .file-manager-module .col-lg-9 {
+    flex: 0 0 75%;
+    max-width: 75%; }
+  .file-manager-module .col-lg-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%; }
+  .file-manager-module .col-lg-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%; }
+  .file-manager-module .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%; }
+  .file-manager-module .pull-lg-0 {
+    right: auto; }
+  .file-manager-module .pull-lg-1 {
+    right: 8.33333%; }
+  .file-manager-module .pull-lg-2 {
+    right: 16.66667%; }
+  .file-manager-module .pull-lg-3 {
+    right: 25%; }
+  .file-manager-module .pull-lg-4 {
+    right: 33.33333%; }
+  .file-manager-module .pull-lg-5 {
+    right: 41.66667%; }
+  .file-manager-module .pull-lg-6 {
+    right: 50%; }
+  .file-manager-module .pull-lg-7 {
+    right: 58.33333%; }
+  .file-manager-module .pull-lg-8 {
+    right: 66.66667%; }
+  .file-manager-module .pull-lg-9 {
+    right: 75%; }
+  .file-manager-module .pull-lg-10 {
+    right: 83.33333%; }
+  .file-manager-module .pull-lg-11 {
+    right: 91.66667%; }
+  .file-manager-module .pull-lg-12 {
+    right: 100%; }
+  .file-manager-module .push-lg-0 {
+    left: auto; }
+  .file-manager-module .push-lg-1 {
+    left: 8.33333%; }
+  .file-manager-module .push-lg-2 {
+    left: 16.66667%; }
+  .file-manager-module .push-lg-3 {
+    left: 25%; }
+  .file-manager-module .push-lg-4 {
+    left: 33.33333%; }
+  .file-manager-module .push-lg-5 {
+    left: 41.66667%; }
+  .file-manager-module .push-lg-6 {
+    left: 50%; }
+  .file-manager-module .push-lg-7 {
+    left: 58.33333%; }
+  .file-manager-module .push-lg-8 {
+    left: 66.66667%; }
+  .file-manager-module .push-lg-9 {
+    left: 75%; }
+  .file-manager-module .push-lg-10 {
+    left: 83.33333%; }
+  .file-manager-module .push-lg-11 {
+    left: 91.66667%; }
+  .file-manager-module .push-lg-12 {
+    left: 100%; }
+  .file-manager-module .offset-lg-0 {
+    margin-left: 0%; }
+  .file-manager-module .offset-lg-1 {
+    margin-left: 8.33333%; }
+  .file-manager-module .offset-lg-2 {
+    margin-left: 16.66667%; }
+  .file-manager-module .offset-lg-3 {
+    margin-left: 25%; }
+  .file-manager-module .offset-lg-4 {
+    margin-left: 33.33333%; }
+  .file-manager-module .offset-lg-5 {
+    margin-left: 41.66667%; }
+  .file-manager-module .offset-lg-6 {
+    margin-left: 50%; }
+  .file-manager-module .offset-lg-7 {
+    margin-left: 58.33333%; }
+  .file-manager-module .offset-lg-8 {
+    margin-left: 66.66667%; }
+  .file-manager-module .offset-lg-9 {
+    margin-left: 75%; }
+  .file-manager-module .offset-lg-10 {
+    margin-left: 83.33333%; }
+  .file-manager-module .offset-lg-11 {
+    margin-left: 91.66667%; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .col-xl {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%; }
+  .file-manager-module .col-xl-auto {
+    flex: 0 0 auto;
+    width: auto; }
+  .file-manager-module .col-xl-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%; }
+  .file-manager-module .col-xl-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%; }
+  .file-manager-module .col-xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%; }
+  .file-manager-module .col-xl-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%; }
+  .file-manager-module .col-xl-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%; }
+  .file-manager-module .col-xl-6 {
+    flex: 0 0 50%;
+    max-width: 50%; }
+  .file-manager-module .col-xl-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%; }
+  .file-manager-module .col-xl-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%; }
+  .file-manager-module .col-xl-9 {
+    flex: 0 0 75%;
+    max-width: 75%; }
+  .file-manager-module .col-xl-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%; }
+  .file-manager-module .col-xl-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%; }
+  .file-manager-module .col-xl-12 {
+    flex: 0 0 100%;
+    max-width: 100%; }
+  .file-manager-module .pull-xl-0 {
+    right: auto; }
+  .file-manager-module .pull-xl-1 {
+    right: 8.33333%; }
+  .file-manager-module .pull-xl-2 {
+    right: 16.66667%; }
+  .file-manager-module .pull-xl-3 {
+    right: 25%; }
+  .file-manager-module .pull-xl-4 {
+    right: 33.33333%; }
+  .file-manager-module .pull-xl-5 {
+    right: 41.66667%; }
+  .file-manager-module .pull-xl-6 {
+    right: 50%; }
+  .file-manager-module .pull-xl-7 {
+    right: 58.33333%; }
+  .file-manager-module .pull-xl-8 {
+    right: 66.66667%; }
+  .file-manager-module .pull-xl-9 {
+    right: 75%; }
+  .file-manager-module .pull-xl-10 {
+    right: 83.33333%; }
+  .file-manager-module .pull-xl-11 {
+    right: 91.66667%; }
+  .file-manager-module .pull-xl-12 {
+    right: 100%; }
+  .file-manager-module .push-xl-0 {
+    left: auto; }
+  .file-manager-module .push-xl-1 {
+    left: 8.33333%; }
+  .file-manager-module .push-xl-2 {
+    left: 16.66667%; }
+  .file-manager-module .push-xl-3 {
+    left: 25%; }
+  .file-manager-module .push-xl-4 {
+    left: 33.33333%; }
+  .file-manager-module .push-xl-5 {
+    left: 41.66667%; }
+  .file-manager-module .push-xl-6 {
+    left: 50%; }
+  .file-manager-module .push-xl-7 {
+    left: 58.33333%; }
+  .file-manager-module .push-xl-8 {
+    left: 66.66667%; }
+  .file-manager-module .push-xl-9 {
+    left: 75%; }
+  .file-manager-module .push-xl-10 {
+    left: 83.33333%; }
+  .file-manager-module .push-xl-11 {
+    left: 91.66667%; }
+  .file-manager-module .push-xl-12 {
+    left: 100%; }
+  .file-manager-module .offset-xl-0 {
+    margin-left: 0%; }
+  .file-manager-module .offset-xl-1 {
+    margin-left: 8.33333%; }
+  .file-manager-module .offset-xl-2 {
+    margin-left: 16.66667%; }
+  .file-manager-module .offset-xl-3 {
+    margin-left: 25%; }
+  .file-manager-module .offset-xl-4 {
+    margin-left: 33.33333%; }
+  .file-manager-module .offset-xl-5 {
+    margin-left: 41.66667%; }
+  .file-manager-module .offset-xl-6 {
+    margin-left: 50%; }
+  .file-manager-module .offset-xl-7 {
+    margin-left: 58.33333%; }
+  .file-manager-module .offset-xl-8 {
+    margin-left: 66.66667%; }
+  .file-manager-module .offset-xl-9 {
+    margin-left: 75%; }
+  .file-manager-module .offset-xl-10 {
+    margin-left: 83.33333%; }
+  .file-manager-module .offset-xl-11 {
+    margin-left: 91.66667%; } }
+
+.file-manager-module .modal-open {
+  overflow: hidden; }
+
+.file-manager-module .modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  outline: 0; }
+  .file-manager-module .modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -25%); }
+  .file-manager-module .modal.show .modal-dialog {
+    transform: translate(0, 0); }
+
+.file-manager-module .modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.file-manager-module .modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px; }
+
+.file-manager-module .modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FEFEFE;
+  background-clip: padding-box;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  border-radius: 0.3rem;
+  box-shadow: 0 3px 9px rgba(17, 17, 17, 0.5);
+  outline: 0; }
+
+.file-manager-module .modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #111111; }
+  .file-manager-module .modal-backdrop.fade {
+    opacity: 0; }
+  .file-manager-module .modal-backdrop.show {
+    opacity: 0.5; }
+
+.file-manager-module .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid #c4c4c4; }
+
+.file-manager-module .modal-title {
+  margin-bottom: 0;
+  line-height: 1.5; }
+
+.file-manager-module .modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 15px; }
+
+.file-manager-module .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 15px;
+  border-top: 1px solid #c4c4c4; }
+  .file-manager-module .modal-footer > :not(:first-child) {
+    margin-left: .25rem; }
+  .file-manager-module .modal-footer > :not(:last-child) {
+    margin-right: .25rem; }
+
+.file-manager-module .modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll; }
+
+@media (min-width: 576px) {
+  .file-manager-module .modal-dialog {
+    max-width: 500px;
+    margin: 30px auto; }
+  .file-manager-module .modal-content {
+    box-shadow: 0 5px 15px rgba(17, 17, 17, 0.5); }
+  .file-manager-module .modal-sm {
+    max-width: 300px; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .modal-lg {
+    max-width: 800px; } }
+
+.file-manager-module .nav {
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none; }
+
+.file-manager-module .nav-link {
+  display: block;
+  padding: 0.2em 0.35em; }
+  .file-manager-module .nav-link:focus, .file-manager-module .nav-link:hover {
+    text-decoration: none; }
+  .file-manager-module .nav-link.disabled {
+    color: #9d9d9d;
+    cursor: not-allowed; }
+
+.file-manager-module .nav-tabs {
+  border-bottom: 1px solid #ddd; }
+  .file-manager-module .nav-tabs .nav-item {
+    margin-bottom: -1px; }
+  .file-manager-module .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-right-radius: 0.25rem;
+    border-top-left-radius: 0.25rem; }
+    .file-manager-module .nav-tabs .nav-link:focus, .file-manager-module .nav-tabs .nav-link:hover {
+      border-color: #c4c4c4 #c4c4c4 #ddd; }
+    .file-manager-module .nav-tabs .nav-link.disabled {
+      color: #9d9d9d;
+      background-color: transparent;
+      border-color: transparent; }
+  .file-manager-module .nav-tabs .nav-link.active,
+  .file-manager-module .nav-tabs .nav-item.show .nav-link {
+    color: #777777;
+    background-color: #F0EEE9;
+    border-color: #ddd #ddd #F0EEE9; }
+  .file-manager-module .nav-tabs .dropdown-menu {
+    margin-top: -1px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0; }
+
+.file-manager-module .nav-pills .nav-link {
+  border-radius: 0.25rem; }
+
+.file-manager-module .nav-pills .nav-link.active,
+.file-manager-module .nav-pills .nav-item.show .nav-link {
+  color: #FEFEFE;
+  cursor: default;
+  background-color: #241E28; }
+
+.file-manager-module .nav-fill .nav-item {
+  flex: 1 1 auto;
+  text-align: center; }
+
+.file-manager-module .nav-justified .nav-item {
+  flex: 1 1 100%;
+  text-align: center; }
+
+.file-manager-module .tab-content > .tab-pane {
+  display: none; }
+
+.file-manager-module .tab-content > .active {
+  display: block; }
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0; }
+  to {
+    background-position: 0 0; } }
+
+.file-manager-module .progress {
+  display: flex;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: center;
+  background-color: #c4c4c4;
+  border-radius: 0.25rem; }
+
+.file-manager-module .progress-bar {
+  height: 1rem;
+  color: #FEFEFE;
+  background-color: #241E28; }
+
+.file-manager-module .progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem; }
+
+.file-manager-module .progress-bar-animated {
+  animation: progress-bar-stripes 1s linear infinite; }
+
+.file-manager-module .table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem; }
+  .file-manager-module .table th,
+  .file-manager-module .table td {
+    padding: 0.5rem;
+    vertical-align: top;
+    border-top: 0 solid #c4c4c4; }
+  .file-manager-module .table thead th {
+    vertical-align: bottom;
+    border-bottom: 0 solid #c4c4c4; }
+  .file-manager-module .table tbody + tbody {
+    border-top: 0 solid #c4c4c4; }
+  .file-manager-module .table .table {
+    background-color: #F0EEE9; }
+
+.file-manager-module .table-sm th,
+.file-manager-module .table-sm td {
+  padding: 0.3rem; }
+
+.file-manager-module .table-bordered {
+  border: 0 solid #c4c4c4; }
+  .file-manager-module .table-bordered th,
+  .file-manager-module .table-bordered td {
+    border: 0 solid #c4c4c4; }
+  .file-manager-module .table-bordered thead th,
+  .file-manager-module .table-bordered thead td {
+    border-bottom-width: 0; }
+
+.file-manager-module .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(119, 119, 119, 0.05); }
+
+.file-manager-module .table-hover tbody tr:hover {
+  background-color: rgba(119, 119, 119, 0.1); }
+
+.file-manager-module .table-active,
+.file-manager-module .table-active > th,
+.file-manager-module .table-active > td {
+  background-color: rgba(119, 119, 119, 0.1); }
+
+.file-manager-module .table-hover .table-active:hover {
+  background-color: rgba(106, 106, 106, 0.1); }
+  .file-manager-module .table-hover .table-active:hover > td,
+  .file-manager-module .table-hover .table-active:hover > th {
+    background-color: rgba(106, 106, 106, 0.1); }
+
+.file-manager-module .table-success,
+.file-manager-module .table-success > th,
+.file-manager-module .table-success > td {
+  background-color: #dff0d8; }
+
+.file-manager-module .table-hover .table-success:hover {
+  background-color: #d0e9c6; }
+  .file-manager-module .table-hover .table-success:hover > td,
+  .file-manager-module .table-hover .table-success:hover > th {
+    background-color: #d0e9c6; }
+
+.file-manager-module .table-info,
+.file-manager-module .table-info > th,
+.file-manager-module .table-info > td {
+  background-color: #d9edf7; }
+
+.file-manager-module .table-hover .table-info:hover {
+  background-color: #c4e3f3; }
+  .file-manager-module .table-hover .table-info:hover > td,
+  .file-manager-module .table-hover .table-info:hover > th {
+    background-color: #c4e3f3; }
+
+.file-manager-module .table-warning,
+.file-manager-module .table-warning > th,
+.file-manager-module .table-warning > td {
+  background-color: #fcf8e3; }
+
+.file-manager-module .table-hover .table-warning:hover {
+  background-color: #faf2cc; }
+  .file-manager-module .table-hover .table-warning:hover > td,
+  .file-manager-module .table-hover .table-warning:hover > th {
+    background-color: #faf2cc; }
+
+.file-manager-module .table-danger,
+.file-manager-module .table-danger > th,
+.file-manager-module .table-danger > td {
+  background-color: #f2dede; }
+
+.file-manager-module .table-hover .table-danger:hover {
+  background-color: #ebcccc; }
+  .file-manager-module .table-hover .table-danger:hover > td,
+  .file-manager-module .table-hover .table-danger:hover > th {
+    background-color: #ebcccc; }
+
+.file-manager-module .thead-inverse th {
+  color: #F0EEE9;
+  background-color: #515151; }
+
+.file-manager-module .thead-default th {
+  color: #777777;
+  background-color: #c4c4c4; }
+
+.file-manager-module .table-inverse {
+  color: #F0EEE9;
+  background-color: #515151; }
+  .file-manager-module .table-inverse th,
+  .file-manager-module .table-inverse td,
+  .file-manager-module .table-inverse thead th {
+    border-color: #F0EEE9; }
+  .file-manager-module .table-inverse.table-bordered {
+    border: 0; }
+
+.file-manager-module .table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar; }
+  .file-manager-module .table-responsive.table-bordered {
+    border: 0; }
+
+.file-manager-module .fade {
+  opacity: 0;
+  transition: opacity 0.15s linear; }
+  .file-manager-module .fade.show {
+    opacity: 1; }
+
+.file-manager-module .collapse {
+  display: none; }
+  .file-manager-module .collapse.show {
+    display: block; }
+
+.file-manager-module tr.collapse.show {
+  display: table-row; }
+
+.file-manager-module tbody.collapse.show {
+  display: table-row-group; }
+
+.file-manager-module .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease; }
+
+.file-manager-module h1, .file-manager-module h2, .file-manager-module h3, .file-manager-module h4, .file-manager-module h5, .file-manager-module h6,
+.file-manager-module .h1, .file-manager-module .h2, .file-manager-module .h3, .file-manager-module .h4, .file-manager-module .h5, .file-manager-module .h6 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit; }
+
+.file-manager-module h1, .file-manager-module .h1 {
+  font-size: 2.5rem; }
+
+.file-manager-module h2, .file-manager-module .h2 {
+  font-size: 2rem; }
+
+.file-manager-module h3, .file-manager-module .h3 {
+  font-size: 1.75rem; }
+
+.file-manager-module h4, .file-manager-module .h4 {
+  font-size: 1.5rem; }
+
+.file-manager-module h5, .file-manager-module .h5 {
+  font-size: 1.25rem; }
+
+.file-manager-module h6, .file-manager-module .h6 {
+  font-size: 1rem; }
+
+.file-manager-module .lead {
+  font-size: 1.25rem;
+  font-weight: 300; }
+
+.file-manager-module .display-1 {
+  font-size: 6rem;
+  font-weight: 300;
+  line-height: 1.1; }
+
+.file-manager-module .display-2 {
+  font-size: 5.5rem;
+  font-weight: 300;
+  line-height: 1.1; }
+
+.file-manager-module .display-3 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.1; }
+
+.file-manager-module .display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.1; }
+
+.file-manager-module hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.1); }
+
+.file-manager-module small,
+.file-manager-module .small {
+  font-size: 90%;
+  font-weight: normal; }
+
+.file-manager-module mark,
+.file-manager-module .mark {
+  padding: 0.2em;
+  background-color: #fcf8e3; }
+
+.file-manager-module .list-unstyled {
+  padding-left: 0;
+  list-style: none; }
+
+.file-manager-module .list-inline {
+  padding-left: 0;
+  list-style: none; }
+
+.file-manager-module .list-inline-item {
+  display: inline-block; }
+  .file-manager-module .list-inline-item:not(:last-child) {
+    margin-right: 5px; }
+
+.file-manager-module .initialism {
+  font-size: 90%;
+  text-transform: uppercase; }
+
+.file-manager-module .blockquote {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-left: 0.25rem solid #c4c4c4; }
+
+.file-manager-module .blockquote-footer {
+  display: block;
+  font-size: 80%;
+  color: #9d9d9d; }
+  .file-manager-module .blockquote-footer::before {
+    content: "\2014   \A0"; }
+
+.file-manager-module .blockquote-reverse {
+  padding-right: 1rem;
+  padding-left: 0;
+  text-align: right;
+  border-right: 0.25rem solid #c4c4c4;
+  border-left: 0; }
+
+.file-manager-module .blockquote-reverse .blockquote-footer::before {
+  content: ""; }
+
+.file-manager-module .blockquote-reverse .blockquote-footer::after {
+  content: "\A0   \2014"; }
+
+.file-manager-module .embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden; }
+  .file-manager-module .embed-responsive::before {
+    display: block;
+    content: ""; }
+  .file-manager-module .embed-responsive .embed-responsive-item,
+  .file-manager-module .embed-responsive iframe,
+  .file-manager-module .embed-responsive embed,
+  .file-manager-module .embed-responsive object,
+  .file-manager-module .embed-responsive video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; }
+
+.file-manager-module .embed-responsive-21by9::before {
+  padding-top: 42.85714%; }
+
+.file-manager-module .embed-responsive-16by9::before {
+  padding-top: 56.25%; }
+
+.file-manager-module .embed-responsive-4by3::before {
+  padding-top: 75%; }
+
+.file-manager-module .embed-responsive-1by1::before {
+  padding-top: 100%; }
+
+.file-manager-module .align-baseline {
+  vertical-align: baseline !important; }
+
+.file-manager-module .align-top {
+  vertical-align: top !important; }
+
+.file-manager-module .align-middle {
+  vertical-align: middle !important; }
+
+.file-manager-module .align-bottom {
+  vertical-align: bottom !important; }
+
+.file-manager-module .align-text-bottom {
+  vertical-align: text-bottom !important; }
+
+.file-manager-module .align-text-top {
+  vertical-align: text-top !important; }
+
+.file-manager-module .bg-faded {
+  background-color: #eae7e0; }
+
+.file-manager-module .bg-primary {
+  background-color: #241E28 !important; }
+
+.file-manager-module a.bg-primary:focus, .file-manager-module a.bg-primary:hover {
+  background-color: #0a080b !important; }
+
+.file-manager-module .bg-success {
+  background-color: #5CB85C !important; }
+
+.file-manager-module a.bg-success:focus, .file-manager-module a.bg-success:hover {
+  background-color: #449d44 !important; }
+
+.file-manager-module .bg-info {
+  background-color: #5BC0DE !important; }
+
+.file-manager-module a.bg-info:focus, .file-manager-module a.bg-info:hover {
+  background-color: #31b0d5 !important; }
+
+.file-manager-module .bg-warning {
+  background-color: #F0AD4E !important; }
+
+.file-manager-module a.bg-warning:focus, .file-manager-module a.bg-warning:hover {
+  background-color: #ec971f !important; }
+
+.file-manager-module .bg-danger {
+  background-color: #D9534F !important; }
+
+.file-manager-module a.bg-danger:focus, .file-manager-module a.bg-danger:hover {
+  background-color: #c9302c !important; }
+
+.file-manager-module .bg-inverse {
+  background-color: #515151 !important; }
+
+.file-manager-module a.bg-inverse:focus, .file-manager-module a.bg-inverse:hover {
+  background-color: #373737 !important; }
+
+.file-manager-module .border-0 {
+  border: 0 !important; }
+
+.file-manager-module .border-top-0 {
+  border-top: 0 !important; }
+
+.file-manager-module .border-right-0 {
+  border-right: 0 !important; }
+
+.file-manager-module .border-bottom-0 {
+  border-bottom: 0 !important; }
+
+.file-manager-module .border-left-0 {
+  border-left: 0 !important; }
+
+.file-manager-module .rounded {
+  border-radius: 0.25rem; }
+
+.file-manager-module .rounded-top {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem; }
+
+.file-manager-module .rounded-right {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem; }
+
+.file-manager-module .rounded-bottom {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem; }
+
+.file-manager-module .rounded-left {
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem; }
+
+.file-manager-module .rounded-circle {
+  border-radius: 50%; }
+
+.file-manager-module .rounded-0 {
+  border-radius: 0; }
+
+.file-manager-module .clearfix::after {
+  display: block;
+  content: "";
+  clear: both; }
+
+.file-manager-module .d-none {
+  display: none !important; }
+
+.file-manager-module .d-inline {
+  display: inline !important; }
+
+.file-manager-module .d-inline-block {
+  display: inline-block !important; }
+
+.file-manager-module .d-block {
+  display: block !important; }
+
+.file-manager-module .d-table {
+  display: table !important; }
+
+.file-manager-module .d-table-cell {
+  display: table-cell !important; }
+
+.file-manager-module .d-flex {
+  display: flex !important; }
+
+.file-manager-module .d-inline-flex {
+  display: inline-flex !important; }
+
+@media (min-width: 576px) {
+  .file-manager-module .d-sm-none {
+    display: none !important; }
+  .file-manager-module .d-sm-inline {
+    display: inline !important; }
+  .file-manager-module .d-sm-inline-block {
+    display: inline-block !important; }
+  .file-manager-module .d-sm-block {
+    display: block !important; }
+  .file-manager-module .d-sm-table {
+    display: table !important; }
+  .file-manager-module .d-sm-table-cell {
+    display: table-cell !important; }
+  .file-manager-module .d-sm-flex {
+    display: flex !important; }
+  .file-manager-module .d-sm-inline-flex {
+    display: inline-flex !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .d-md-none {
+    display: none !important; }
+  .file-manager-module .d-md-inline {
+    display: inline !important; }
+  .file-manager-module .d-md-inline-block {
+    display: inline-block !important; }
+  .file-manager-module .d-md-block {
+    display: block !important; }
+  .file-manager-module .d-md-table {
+    display: table !important; }
+  .file-manager-module .d-md-table-cell {
+    display: table-cell !important; }
+  .file-manager-module .d-md-flex {
+    display: flex !important; }
+  .file-manager-module .d-md-inline-flex {
+    display: inline-flex !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .d-lg-none {
+    display: none !important; }
+  .file-manager-module .d-lg-inline {
+    display: inline !important; }
+  .file-manager-module .d-lg-inline-block {
+    display: inline-block !important; }
+  .file-manager-module .d-lg-block {
+    display: block !important; }
+  .file-manager-module .d-lg-table {
+    display: table !important; }
+  .file-manager-module .d-lg-table-cell {
+    display: table-cell !important; }
+  .file-manager-module .d-lg-flex {
+    display: flex !important; }
+  .file-manager-module .d-lg-inline-flex {
+    display: inline-flex !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .d-xl-none {
+    display: none !important; }
+  .file-manager-module .d-xl-inline {
+    display: inline !important; }
+  .file-manager-module .d-xl-inline-block {
+    display: inline-block !important; }
+  .file-manager-module .d-xl-block {
+    display: block !important; }
+  .file-manager-module .d-xl-table {
+    display: table !important; }
+  .file-manager-module .d-xl-table-cell {
+    display: table-cell !important; }
+  .file-manager-module .d-xl-flex {
+    display: flex !important; }
+  .file-manager-module .d-xl-inline-flex {
+    display: inline-flex !important; } }
+
+.file-manager-module .flex-first {
+  order: -1; }
+
+.file-manager-module .flex-last {
+  order: 1; }
+
+.file-manager-module .flex-unordered {
+  order: 0; }
+
+.file-manager-module .flex-row {
+  flex-direction: row !important; }
+
+.file-manager-module .flex-column, .file-manager-module .nav-column {
+  flex-direction: column !important; }
+
+.file-manager-module .flex-row-reverse {
+  flex-direction: row-reverse !important; }
+
+.file-manager-module .flex-column-reverse {
+  flex-direction: column-reverse !important; }
+
+.file-manager-module .flex-wrap {
+  flex-wrap: wrap !important; }
+
+.file-manager-module .flex-nowrap {
+  flex-wrap: nowrap !important; }
+
+.file-manager-module .flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important; }
+
+.file-manager-module .justify-content-start {
+  justify-content: flex-start !important; }
+
+.file-manager-module .justify-content-end {
+  justify-content: flex-end !important; }
+
+.file-manager-module .justify-content-center {
+  justify-content: center !important; }
+
+.file-manager-module .justify-content-between {
+  justify-content: space-between !important; }
+
+.file-manager-module .justify-content-around {
+  justify-content: space-around !important; }
+
+.file-manager-module .align-items-start {
+  align-items: flex-start !important; }
+
+.file-manager-module .align-items-end {
+  align-items: flex-end !important; }
+
+.file-manager-module .align-items-center {
+  align-items: center !important; }
+
+.file-manager-module .align-items-baseline {
+  align-items: baseline !important; }
+
+.file-manager-module .align-items-stretch {
+  align-items: stretch !important; }
+
+.file-manager-module .align-content-start {
+  align-content: flex-start !important; }
+
+.file-manager-module .align-content-end {
+  align-content: flex-end !important; }
+
+.file-manager-module .align-content-center {
+  align-content: center !important; }
+
+.file-manager-module .align-content-between {
+  align-content: space-between !important; }
+
+.file-manager-module .align-content-around {
+  align-content: space-around !important; }
+
+.file-manager-module .align-content-stretch {
+  align-content: stretch !important; }
+
+.file-manager-module .align-self-auto {
+  align-self: auto !important; }
+
+.file-manager-module .align-self-start {
+  align-self: flex-start !important; }
+
+.file-manager-module .align-self-end {
+  align-self: flex-end !important; }
+
+.file-manager-module .align-self-center {
+  align-self: center !important; }
+
+.file-manager-module .align-self-baseline {
+  align-self: baseline !important; }
+
+.file-manager-module .align-self-stretch {
+  align-self: stretch !important; }
+
+@media (min-width: 576px) {
+  .file-manager-module .flex-sm-first {
+    order: -1; }
+  .file-manager-module .flex-sm-last {
+    order: 1; }
+  .file-manager-module .flex-sm-unordered {
+    order: 0; }
+  .file-manager-module .flex-sm-row {
+    flex-direction: row !important; }
+  .file-manager-module .flex-sm-column {
+    flex-direction: column !important; }
+  .file-manager-module .flex-sm-row-reverse {
+    flex-direction: row-reverse !important; }
+  .file-manager-module .flex-sm-column-reverse {
+    flex-direction: column-reverse !important; }
+  .file-manager-module .flex-sm-wrap {
+    flex-wrap: wrap !important; }
+  .file-manager-module .flex-sm-nowrap {
+    flex-wrap: nowrap !important; }
+  .file-manager-module .flex-sm-wrap-reverse {
+    flex-wrap: wrap-reverse !important; }
+  .file-manager-module .justify-content-sm-start {
+    justify-content: flex-start !important; }
+  .file-manager-module .justify-content-sm-end {
+    justify-content: flex-end !important; }
+  .file-manager-module .justify-content-sm-center {
+    justify-content: center !important; }
+  .file-manager-module .justify-content-sm-between {
+    justify-content: space-between !important; }
+  .file-manager-module .justify-content-sm-around {
+    justify-content: space-around !important; }
+  .file-manager-module .align-items-sm-start {
+    align-items: flex-start !important; }
+  .file-manager-module .align-items-sm-end {
+    align-items: flex-end !important; }
+  .file-manager-module .align-items-sm-center {
+    align-items: center !important; }
+  .file-manager-module .align-items-sm-baseline {
+    align-items: baseline !important; }
+  .file-manager-module .align-items-sm-stretch {
+    align-items: stretch !important; }
+  .file-manager-module .align-content-sm-start {
+    align-content: flex-start !important; }
+  .file-manager-module .align-content-sm-end {
+    align-content: flex-end !important; }
+  .file-manager-module .align-content-sm-center {
+    align-content: center !important; }
+  .file-manager-module .align-content-sm-between {
+    align-content: space-between !important; }
+  .file-manager-module .align-content-sm-around {
+    align-content: space-around !important; }
+  .file-manager-module .align-content-sm-stretch {
+    align-content: stretch !important; }
+  .file-manager-module .align-self-sm-auto {
+    align-self: auto !important; }
+  .file-manager-module .align-self-sm-start {
+    align-self: flex-start !important; }
+  .file-manager-module .align-self-sm-end {
+    align-self: flex-end !important; }
+  .file-manager-module .align-self-sm-center {
+    align-self: center !important; }
+  .file-manager-module .align-self-sm-baseline {
+    align-self: baseline !important; }
+  .file-manager-module .align-self-sm-stretch {
+    align-self: stretch !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .flex-md-first {
+    order: -1; }
+  .file-manager-module .flex-md-last {
+    order: 1; }
+  .file-manager-module .flex-md-unordered {
+    order: 0; }
+  .file-manager-module .flex-md-row {
+    flex-direction: row !important; }
+  .file-manager-module .flex-md-column {
+    flex-direction: column !important; }
+  .file-manager-module .flex-md-row-reverse {
+    flex-direction: row-reverse !important; }
+  .file-manager-module .flex-md-column-reverse {
+    flex-direction: column-reverse !important; }
+  .file-manager-module .flex-md-wrap {
+    flex-wrap: wrap !important; }
+  .file-manager-module .flex-md-nowrap {
+    flex-wrap: nowrap !important; }
+  .file-manager-module .flex-md-wrap-reverse {
+    flex-wrap: wrap-reverse !important; }
+  .file-manager-module .justify-content-md-start {
+    justify-content: flex-start !important; }
+  .file-manager-module .justify-content-md-end {
+    justify-content: flex-end !important; }
+  .file-manager-module .justify-content-md-center {
+    justify-content: center !important; }
+  .file-manager-module .justify-content-md-between {
+    justify-content: space-between !important; }
+  .file-manager-module .justify-content-md-around {
+    justify-content: space-around !important; }
+  .file-manager-module .align-items-md-start {
+    align-items: flex-start !important; }
+  .file-manager-module .align-items-md-end {
+    align-items: flex-end !important; }
+  .file-manager-module .align-items-md-center {
+    align-items: center !important; }
+  .file-manager-module .align-items-md-baseline {
+    align-items: baseline !important; }
+  .file-manager-module .align-items-md-stretch {
+    align-items: stretch !important; }
+  .file-manager-module .align-content-md-start {
+    align-content: flex-start !important; }
+  .file-manager-module .align-content-md-end {
+    align-content: flex-end !important; }
+  .file-manager-module .align-content-md-center {
+    align-content: center !important; }
+  .file-manager-module .align-content-md-between {
+    align-content: space-between !important; }
+  .file-manager-module .align-content-md-around {
+    align-content: space-around !important; }
+  .file-manager-module .align-content-md-stretch {
+    align-content: stretch !important; }
+  .file-manager-module .align-self-md-auto {
+    align-self: auto !important; }
+  .file-manager-module .align-self-md-start {
+    align-self: flex-start !important; }
+  .file-manager-module .align-self-md-end {
+    align-self: flex-end !important; }
+  .file-manager-module .align-self-md-center {
+    align-self: center !important; }
+  .file-manager-module .align-self-md-baseline {
+    align-self: baseline !important; }
+  .file-manager-module .align-self-md-stretch {
+    align-self: stretch !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .flex-lg-first {
+    order: -1; }
+  .file-manager-module .flex-lg-last {
+    order: 1; }
+  .file-manager-module .flex-lg-unordered {
+    order: 0; }
+  .file-manager-module .flex-lg-row {
+    flex-direction: row !important; }
+  .file-manager-module .flex-lg-column {
+    flex-direction: column !important; }
+  .file-manager-module .flex-lg-row-reverse {
+    flex-direction: row-reverse !important; }
+  .file-manager-module .flex-lg-column-reverse {
+    flex-direction: column-reverse !important; }
+  .file-manager-module .flex-lg-wrap {
+    flex-wrap: wrap !important; }
+  .file-manager-module .flex-lg-nowrap {
+    flex-wrap: nowrap !important; }
+  .file-manager-module .flex-lg-wrap-reverse {
+    flex-wrap: wrap-reverse !important; }
+  .file-manager-module .justify-content-lg-start {
+    justify-content: flex-start !important; }
+  .file-manager-module .justify-content-lg-end {
+    justify-content: flex-end !important; }
+  .file-manager-module .justify-content-lg-center {
+    justify-content: center !important; }
+  .file-manager-module .justify-content-lg-between {
+    justify-content: space-between !important; }
+  .file-manager-module .justify-content-lg-around {
+    justify-content: space-around !important; }
+  .file-manager-module .align-items-lg-start {
+    align-items: flex-start !important; }
+  .file-manager-module .align-items-lg-end {
+    align-items: flex-end !important; }
+  .file-manager-module .align-items-lg-center {
+    align-items: center !important; }
+  .file-manager-module .align-items-lg-baseline {
+    align-items: baseline !important; }
+  .file-manager-module .align-items-lg-stretch {
+    align-items: stretch !important; }
+  .file-manager-module .align-content-lg-start {
+    align-content: flex-start !important; }
+  .file-manager-module .align-content-lg-end {
+    align-content: flex-end !important; }
+  .file-manager-module .align-content-lg-center {
+    align-content: center !important; }
+  .file-manager-module .align-content-lg-between {
+    align-content: space-between !important; }
+  .file-manager-module .align-content-lg-around {
+    align-content: space-around !important; }
+  .file-manager-module .align-content-lg-stretch {
+    align-content: stretch !important; }
+  .file-manager-module .align-self-lg-auto {
+    align-self: auto !important; }
+  .file-manager-module .align-self-lg-start {
+    align-self: flex-start !important; }
+  .file-manager-module .align-self-lg-end {
+    align-self: flex-end !important; }
+  .file-manager-module .align-self-lg-center {
+    align-self: center !important; }
+  .file-manager-module .align-self-lg-baseline {
+    align-self: baseline !important; }
+  .file-manager-module .align-self-lg-stretch {
+    align-self: stretch !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .flex-xl-first {
+    order: -1; }
+  .file-manager-module .flex-xl-last {
+    order: 1; }
+  .file-manager-module .flex-xl-unordered {
+    order: 0; }
+  .file-manager-module .flex-xl-row {
+    flex-direction: row !important; }
+  .file-manager-module .flex-xl-column {
+    flex-direction: column !important; }
+  .file-manager-module .flex-xl-row-reverse {
+    flex-direction: row-reverse !important; }
+  .file-manager-module .flex-xl-column-reverse {
+    flex-direction: column-reverse !important; }
+  .file-manager-module .flex-xl-wrap {
+    flex-wrap: wrap !important; }
+  .file-manager-module .flex-xl-nowrap {
+    flex-wrap: nowrap !important; }
+  .file-manager-module .flex-xl-wrap-reverse {
+    flex-wrap: wrap-reverse !important; }
+  .file-manager-module .justify-content-xl-start {
+    justify-content: flex-start !important; }
+  .file-manager-module .justify-content-xl-end {
+    justify-content: flex-end !important; }
+  .file-manager-module .justify-content-xl-center {
+    justify-content: center !important; }
+  .file-manager-module .justify-content-xl-between {
+    justify-content: space-between !important; }
+  .file-manager-module .justify-content-xl-around {
+    justify-content: space-around !important; }
+  .file-manager-module .align-items-xl-start {
+    align-items: flex-start !important; }
+  .file-manager-module .align-items-xl-end {
+    align-items: flex-end !important; }
+  .file-manager-module .align-items-xl-center {
+    align-items: center !important; }
+  .file-manager-module .align-items-xl-baseline {
+    align-items: baseline !important; }
+  .file-manager-module .align-items-xl-stretch {
+    align-items: stretch !important; }
+  .file-manager-module .align-content-xl-start {
+    align-content: flex-start !important; }
+  .file-manager-module .align-content-xl-end {
+    align-content: flex-end !important; }
+  .file-manager-module .align-content-xl-center {
+    align-content: center !important; }
+  .file-manager-module .align-content-xl-between {
+    align-content: space-between !important; }
+  .file-manager-module .align-content-xl-around {
+    align-content: space-around !important; }
+  .file-manager-module .align-content-xl-stretch {
+    align-content: stretch !important; }
+  .file-manager-module .align-self-xl-auto {
+    align-self: auto !important; }
+  .file-manager-module .align-self-xl-start {
+    align-self: flex-start !important; }
+  .file-manager-module .align-self-xl-end {
+    align-self: flex-end !important; }
+  .file-manager-module .align-self-xl-center {
+    align-self: center !important; }
+  .file-manager-module .align-self-xl-baseline {
+    align-self: baseline !important; }
+  .file-manager-module .align-self-xl-stretch {
+    align-self: stretch !important; } }
+
+.file-manager-module .float-left {
+  float: left !important; }
+
+.file-manager-module .float-right {
+  float: right !important; }
+
+.file-manager-module .float-none {
+  float: none !important; }
+
+@media (min-width: 576px) {
+  .file-manager-module .float-sm-left {
+    float: left !important; }
+  .file-manager-module .float-sm-right {
+    float: right !important; }
+  .file-manager-module .float-sm-none {
+    float: none !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .float-md-left {
+    float: left !important; }
+  .file-manager-module .float-md-right {
+    float: right !important; }
+  .file-manager-module .float-md-none {
+    float: none !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .float-lg-left {
+    float: left !important; }
+  .file-manager-module .float-lg-right {
+    float: right !important; }
+  .file-manager-module .float-lg-none {
+    float: none !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .float-xl-left {
+    float: left !important; }
+  .file-manager-module .float-xl-right {
+    float: right !important; }
+  .file-manager-module .float-xl-none {
+    float: none !important; } }
+
+.file-manager-module .fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030; }
+
+.file-manager-module .fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030; }
+
+.file-manager-module .sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1030; }
+
+.file-manager-module .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+.file-manager-module .sr-only-focusable:active, .file-manager-module .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto; }
+
+.file-manager-module .w-25 {
+  width: 25% !important; }
+
+.file-manager-module .w-50 {
+  width: 50% !important; }
+
+.file-manager-module .w-75 {
+  width: 75% !important; }
+
+.file-manager-module .w-100 {
+  width: 100% !important; }
+
+.file-manager-module .h-25 {
+  height: 25% !important; }
+
+.file-manager-module .h-50 {
+  height: 50% !important; }
+
+.file-manager-module .h-75 {
+  height: 75% !important; }
+
+.file-manager-module .h-100 {
+  height: 100% !important; }
+
+.file-manager-module .mw-100 {
+  max-width: 100% !important; }
+
+.file-manager-module .mh-100 {
+  max-height: 100% !important; }
+
+.file-manager-module .m-0 {
+  margin: 0 0 !important; }
+
+.file-manager-module .mt-0 {
+  margin-top: 0 !important; }
+
+.file-manager-module .mr-0 {
+  margin-right: 0 !important; }
+
+.file-manager-module .mb-0 {
+  margin-bottom: 0 !important; }
+
+.file-manager-module .ml-0 {
+  margin-left: 0 !important; }
+
+.file-manager-module .mx-0 {
+  margin-right: 0 !important;
+  margin-left: 0 !important; }
+
+.file-manager-module .my-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important; }
+
+.file-manager-module .m-1 {
+  margin: 0.25rem 0.25rem !important; }
+
+.file-manager-module .mt-1 {
+  margin-top: 0.25rem !important; }
+
+.file-manager-module .mr-1 {
+  margin-right: 0.25rem !important; }
+
+.file-manager-module .mb-1 {
+  margin-bottom: 0.25rem !important; }
+
+.file-manager-module .ml-1 {
+  margin-left: 0.25rem !important; }
+
+.file-manager-module .mx-1 {
+  margin-right: 0.25rem !important;
+  margin-left: 0.25rem !important; }
+
+.file-manager-module .my-1 {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important; }
+
+.file-manager-module .m-2 {
+  margin: 0.5rem 0.5rem !important; }
+
+.file-manager-module .mt-2 {
+  margin-top: 0.5rem !important; }
+
+.file-manager-module .mr-2 {
+  margin-right: 0.5rem !important; }
+
+.file-manager-module .mb-2 {
+  margin-bottom: 0.5rem !important; }
+
+.file-manager-module .ml-2 {
+  margin-left: 0.5rem !important; }
+
+.file-manager-module .mx-2 {
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important; }
+
+.file-manager-module .my-2 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important; }
+
+.file-manager-module .m-3 {
+  margin: 1rem 1rem !important; }
+
+.file-manager-module .mt-3 {
+  margin-top: 1rem !important; }
+
+.file-manager-module .mr-3 {
+  margin-right: 1rem !important; }
+
+.file-manager-module .mb-3 {
+  margin-bottom: 1rem !important; }
+
+.file-manager-module .ml-3 {
+  margin-left: 1rem !important; }
+
+.file-manager-module .mx-3 {
+  margin-right: 1rem !important;
+  margin-left: 1rem !important; }
+
+.file-manager-module .my-3 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important; }
+
+.file-manager-module .m-4 {
+  margin: 1.5rem 1.5rem !important; }
+
+.file-manager-module .mt-4 {
+  margin-top: 1.5rem !important; }
+
+.file-manager-module .mr-4 {
+  margin-right: 1.5rem !important; }
+
+.file-manager-module .mb-4 {
+  margin-bottom: 1.5rem !important; }
+
+.file-manager-module .ml-4 {
+  margin-left: 1.5rem !important; }
+
+.file-manager-module .mx-4 {
+  margin-right: 1.5rem !important;
+  margin-left: 1.5rem !important; }
+
+.file-manager-module .my-4 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important; }
+
+.file-manager-module .m-5 {
+  margin: 3rem 3rem !important; }
+
+.file-manager-module .mt-5 {
+  margin-top: 3rem !important; }
+
+.file-manager-module .mr-5 {
+  margin-right: 3rem !important; }
+
+.file-manager-module .mb-5 {
+  margin-bottom: 3rem !important; }
+
+.file-manager-module .ml-5 {
+  margin-left: 3rem !important; }
+
+.file-manager-module .mx-5 {
+  margin-right: 3rem !important;
+  margin-left: 3rem !important; }
+
+.file-manager-module .my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important; }
+
+.file-manager-module .p-0 {
+  padding: 0 0 !important; }
+
+.file-manager-module .pt-0 {
+  padding-top: 0 !important; }
+
+.file-manager-module .pr-0 {
+  padding-right: 0 !important; }
+
+.file-manager-module .pb-0 {
+  padding-bottom: 0 !important; }
+
+.file-manager-module .pl-0 {
+  padding-left: 0 !important; }
+
+.file-manager-module .px-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important; }
+
+.file-manager-module .py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+.file-manager-module .p-1 {
+  padding: 0.25rem 0.25rem !important; }
+
+.file-manager-module .pt-1 {
+  padding-top: 0.25rem !important; }
+
+.file-manager-module .pr-1 {
+  padding-right: 0.25rem !important; }
+
+.file-manager-module .pb-1 {
+  padding-bottom: 0.25rem !important; }
+
+.file-manager-module .pl-1 {
+  padding-left: 0.25rem !important; }
+
+.file-manager-module .px-1 {
+  padding-right: 0.25rem !important;
+  padding-left: 0.25rem !important; }
+
+.file-manager-module .py-1 {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important; }
+
+.file-manager-module .p-2 {
+  padding: 0.5rem 0.5rem !important; }
+
+.file-manager-module .pt-2 {
+  padding-top: 0.5rem !important; }
+
+.file-manager-module .pr-2 {
+  padding-right: 0.5rem !important; }
+
+.file-manager-module .pb-2 {
+  padding-bottom: 0.5rem !important; }
+
+.file-manager-module .pl-2 {
+  padding-left: 0.5rem !important; }
+
+.file-manager-module .px-2 {
+  padding-right: 0.5rem !important;
+  padding-left: 0.5rem !important; }
+
+.file-manager-module .py-2 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important; }
+
+.file-manager-module .p-3 {
+  padding: 1rem 1rem !important; }
+
+.file-manager-module .pt-3 {
+  padding-top: 1rem !important; }
+
+.file-manager-module .pr-3 {
+  padding-right: 1rem !important; }
+
+.file-manager-module .pb-3 {
+  padding-bottom: 1rem !important; }
+
+.file-manager-module .pl-3 {
+  padding-left: 1rem !important; }
+
+.file-manager-module .px-3 {
+  padding-right: 1rem !important;
+  padding-left: 1rem !important; }
+
+.file-manager-module .py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important; }
+
+.file-manager-module .p-4 {
+  padding: 1.5rem 1.5rem !important; }
+
+.file-manager-module .pt-4 {
+  padding-top: 1.5rem !important; }
+
+.file-manager-module .pr-4 {
+  padding-right: 1.5rem !important; }
+
+.file-manager-module .pb-4 {
+  padding-bottom: 1.5rem !important; }
+
+.file-manager-module .pl-4 {
+  padding-left: 1.5rem !important; }
+
+.file-manager-module .px-4 {
+  padding-right: 1.5rem !important;
+  padding-left: 1.5rem !important; }
+
+.file-manager-module .py-4 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important; }
+
+.file-manager-module .p-5 {
+  padding: 3rem 3rem !important; }
+
+.file-manager-module .pt-5 {
+  padding-top: 3rem !important; }
+
+.file-manager-module .pr-5 {
+  padding-right: 3rem !important; }
+
+.file-manager-module .pb-5 {
+  padding-bottom: 3rem !important; }
+
+.file-manager-module .pl-5 {
+  padding-left: 3rem !important; }
+
+.file-manager-module .px-5 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important; }
+
+.file-manager-module .py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important; }
+
+.file-manager-module .m-auto {
+  margin: auto !important; }
+
+.file-manager-module .mt-auto {
+  margin-top: auto !important; }
+
+.file-manager-module .mr-auto {
+  margin-right: auto !important; }
+
+.file-manager-module .mb-auto {
+  margin-bottom: auto !important; }
+
+.file-manager-module .ml-auto {
+  margin-left: auto !important; }
+
+.file-manager-module .mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important; }
+
+.file-manager-module .my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important; }
+
+@media (min-width: 576px) {
+  .file-manager-module .m-sm-0 {
+    margin: 0 0 !important; }
+  .file-manager-module .mt-sm-0 {
+    margin-top: 0 !important; }
+  .file-manager-module .mr-sm-0 {
+    margin-right: 0 !important; }
+  .file-manager-module .mb-sm-0 {
+    margin-bottom: 0 !important; }
+  .file-manager-module .ml-sm-0 {
+    margin-left: 0 !important; }
+  .file-manager-module .mx-sm-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important; }
+  .file-manager-module .my-sm-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; }
+  .file-manager-module .m-sm-1 {
+    margin: 0.25rem 0.25rem !important; }
+  .file-manager-module .mt-sm-1 {
+    margin-top: 0.25rem !important; }
+  .file-manager-module .mr-sm-1 {
+    margin-right: 0.25rem !important; }
+  .file-manager-module .mb-sm-1 {
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .ml-sm-1 {
+    margin-left: 0.25rem !important; }
+  .file-manager-module .mx-sm-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important; }
+  .file-manager-module .my-sm-1 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .m-sm-2 {
+    margin: 0.5rem 0.5rem !important; }
+  .file-manager-module .mt-sm-2 {
+    margin-top: 0.5rem !important; }
+  .file-manager-module .mr-sm-2 {
+    margin-right: 0.5rem !important; }
+  .file-manager-module .mb-sm-2 {
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .ml-sm-2 {
+    margin-left: 0.5rem !important; }
+  .file-manager-module .mx-sm-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important; }
+  .file-manager-module .my-sm-2 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .m-sm-3 {
+    margin: 1rem 1rem !important; }
+  .file-manager-module .mt-sm-3 {
+    margin-top: 1rem !important; }
+  .file-manager-module .mr-sm-3 {
+    margin-right: 1rem !important; }
+  .file-manager-module .mb-sm-3 {
+    margin-bottom: 1rem !important; }
+  .file-manager-module .ml-sm-3 {
+    margin-left: 1rem !important; }
+  .file-manager-module .mx-sm-3 {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important; }
+  .file-manager-module .my-sm-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important; }
+  .file-manager-module .m-sm-4 {
+    margin: 1.5rem 1.5rem !important; }
+  .file-manager-module .mt-sm-4 {
+    margin-top: 1.5rem !important; }
+  .file-manager-module .mr-sm-4 {
+    margin-right: 1.5rem !important; }
+  .file-manager-module .mb-sm-4 {
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .ml-sm-4 {
+    margin-left: 1.5rem !important; }
+  .file-manager-module .mx-sm-4 {
+    margin-right: 1.5rem !important;
+    margin-left: 1.5rem !important; }
+  .file-manager-module .my-sm-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .m-sm-5 {
+    margin: 3rem 3rem !important; }
+  .file-manager-module .mt-sm-5 {
+    margin-top: 3rem !important; }
+  .file-manager-module .mr-sm-5 {
+    margin-right: 3rem !important; }
+  .file-manager-module .mb-sm-5 {
+    margin-bottom: 3rem !important; }
+  .file-manager-module .ml-sm-5 {
+    margin-left: 3rem !important; }
+  .file-manager-module .mx-sm-5 {
+    margin-right: 3rem !important;
+    margin-left: 3rem !important; }
+  .file-manager-module .my-sm-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important; }
+  .file-manager-module .p-sm-0 {
+    padding: 0 0 !important; }
+  .file-manager-module .pt-sm-0 {
+    padding-top: 0 !important; }
+  .file-manager-module .pr-sm-0 {
+    padding-right: 0 !important; }
+  .file-manager-module .pb-sm-0 {
+    padding-bottom: 0 !important; }
+  .file-manager-module .pl-sm-0 {
+    padding-left: 0 !important; }
+  .file-manager-module .px-sm-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important; }
+  .file-manager-module .py-sm-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; }
+  .file-manager-module .p-sm-1 {
+    padding: 0.25rem 0.25rem !important; }
+  .file-manager-module .pt-sm-1 {
+    padding-top: 0.25rem !important; }
+  .file-manager-module .pr-sm-1 {
+    padding-right: 0.25rem !important; }
+  .file-manager-module .pb-sm-1 {
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .pl-sm-1 {
+    padding-left: 0.25rem !important; }
+  .file-manager-module .px-sm-1 {
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important; }
+  .file-manager-module .py-sm-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .p-sm-2 {
+    padding: 0.5rem 0.5rem !important; }
+  .file-manager-module .pt-sm-2 {
+    padding-top: 0.5rem !important; }
+  .file-manager-module .pr-sm-2 {
+    padding-right: 0.5rem !important; }
+  .file-manager-module .pb-sm-2 {
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .pl-sm-2 {
+    padding-left: 0.5rem !important; }
+  .file-manager-module .px-sm-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important; }
+  .file-manager-module .py-sm-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .p-sm-3 {
+    padding: 1rem 1rem !important; }
+  .file-manager-module .pt-sm-3 {
+    padding-top: 1rem !important; }
+  .file-manager-module .pr-sm-3 {
+    padding-right: 1rem !important; }
+  .file-manager-module .pb-sm-3 {
+    padding-bottom: 1rem !important; }
+  .file-manager-module .pl-sm-3 {
+    padding-left: 1rem !important; }
+  .file-manager-module .px-sm-3 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important; }
+  .file-manager-module .py-sm-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; }
+  .file-manager-module .p-sm-4 {
+    padding: 1.5rem 1.5rem !important; }
+  .file-manager-module .pt-sm-4 {
+    padding-top: 1.5rem !important; }
+  .file-manager-module .pr-sm-4 {
+    padding-right: 1.5rem !important; }
+  .file-manager-module .pb-sm-4 {
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .pl-sm-4 {
+    padding-left: 1.5rem !important; }
+  .file-manager-module .px-sm-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important; }
+  .file-manager-module .py-sm-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .p-sm-5 {
+    padding: 3rem 3rem !important; }
+  .file-manager-module .pt-sm-5 {
+    padding-top: 3rem !important; }
+  .file-manager-module .pr-sm-5 {
+    padding-right: 3rem !important; }
+  .file-manager-module .pb-sm-5 {
+    padding-bottom: 3rem !important; }
+  .file-manager-module .pl-sm-5 {
+    padding-left: 3rem !important; }
+  .file-manager-module .px-sm-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
+  .file-manager-module .py-sm-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important; }
+  .file-manager-module .m-sm-auto {
+    margin: auto !important; }
+  .file-manager-module .mt-sm-auto {
+    margin-top: auto !important; }
+  .file-manager-module .mr-sm-auto {
+    margin-right: auto !important; }
+  .file-manager-module .mb-sm-auto {
+    margin-bottom: auto !important; }
+  .file-manager-module .ml-sm-auto {
+    margin-left: auto !important; }
+  .file-manager-module .mx-sm-auto {
+    margin-right: auto !important;
+    margin-left: auto !important; }
+  .file-manager-module .my-sm-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .m-md-0 {
+    margin: 0 0 !important; }
+  .file-manager-module .mt-md-0 {
+    margin-top: 0 !important; }
+  .file-manager-module .mr-md-0 {
+    margin-right: 0 !important; }
+  .file-manager-module .mb-md-0 {
+    margin-bottom: 0 !important; }
+  .file-manager-module .ml-md-0 {
+    margin-left: 0 !important; }
+  .file-manager-module .mx-md-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important; }
+  .file-manager-module .my-md-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; }
+  .file-manager-module .m-md-1 {
+    margin: 0.25rem 0.25rem !important; }
+  .file-manager-module .mt-md-1 {
+    margin-top: 0.25rem !important; }
+  .file-manager-module .mr-md-1 {
+    margin-right: 0.25rem !important; }
+  .file-manager-module .mb-md-1 {
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .ml-md-1 {
+    margin-left: 0.25rem !important; }
+  .file-manager-module .mx-md-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important; }
+  .file-manager-module .my-md-1 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .m-md-2 {
+    margin: 0.5rem 0.5rem !important; }
+  .file-manager-module .mt-md-2 {
+    margin-top: 0.5rem !important; }
+  .file-manager-module .mr-md-2 {
+    margin-right: 0.5rem !important; }
+  .file-manager-module .mb-md-2 {
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .ml-md-2 {
+    margin-left: 0.5rem !important; }
+  .file-manager-module .mx-md-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important; }
+  .file-manager-module .my-md-2 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .m-md-3 {
+    margin: 1rem 1rem !important; }
+  .file-manager-module .mt-md-3 {
+    margin-top: 1rem !important; }
+  .file-manager-module .mr-md-3 {
+    margin-right: 1rem !important; }
+  .file-manager-module .mb-md-3 {
+    margin-bottom: 1rem !important; }
+  .file-manager-module .ml-md-3 {
+    margin-left: 1rem !important; }
+  .file-manager-module .mx-md-3 {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important; }
+  .file-manager-module .my-md-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important; }
+  .file-manager-module .m-md-4 {
+    margin: 1.5rem 1.5rem !important; }
+  .file-manager-module .mt-md-4 {
+    margin-top: 1.5rem !important; }
+  .file-manager-module .mr-md-4 {
+    margin-right: 1.5rem !important; }
+  .file-manager-module .mb-md-4 {
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .ml-md-4 {
+    margin-left: 1.5rem !important; }
+  .file-manager-module .mx-md-4 {
+    margin-right: 1.5rem !important;
+    margin-left: 1.5rem !important; }
+  .file-manager-module .my-md-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .m-md-5 {
+    margin: 3rem 3rem !important; }
+  .file-manager-module .mt-md-5 {
+    margin-top: 3rem !important; }
+  .file-manager-module .mr-md-5 {
+    margin-right: 3rem !important; }
+  .file-manager-module .mb-md-5 {
+    margin-bottom: 3rem !important; }
+  .file-manager-module .ml-md-5 {
+    margin-left: 3rem !important; }
+  .file-manager-module .mx-md-5 {
+    margin-right: 3rem !important;
+    margin-left: 3rem !important; }
+  .file-manager-module .my-md-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important; }
+  .file-manager-module .p-md-0 {
+    padding: 0 0 !important; }
+  .file-manager-module .pt-md-0 {
+    padding-top: 0 !important; }
+  .file-manager-module .pr-md-0 {
+    padding-right: 0 !important; }
+  .file-manager-module .pb-md-0 {
+    padding-bottom: 0 !important; }
+  .file-manager-module .pl-md-0 {
+    padding-left: 0 !important; }
+  .file-manager-module .px-md-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important; }
+  .file-manager-module .py-md-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; }
+  .file-manager-module .p-md-1 {
+    padding: 0.25rem 0.25rem !important; }
+  .file-manager-module .pt-md-1 {
+    padding-top: 0.25rem !important; }
+  .file-manager-module .pr-md-1 {
+    padding-right: 0.25rem !important; }
+  .file-manager-module .pb-md-1 {
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .pl-md-1 {
+    padding-left: 0.25rem !important; }
+  .file-manager-module .px-md-1 {
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important; }
+  .file-manager-module .py-md-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .p-md-2 {
+    padding: 0.5rem 0.5rem !important; }
+  .file-manager-module .pt-md-2 {
+    padding-top: 0.5rem !important; }
+  .file-manager-module .pr-md-2 {
+    padding-right: 0.5rem !important; }
+  .file-manager-module .pb-md-2 {
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .pl-md-2 {
+    padding-left: 0.5rem !important; }
+  .file-manager-module .px-md-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important; }
+  .file-manager-module .py-md-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .p-md-3 {
+    padding: 1rem 1rem !important; }
+  .file-manager-module .pt-md-3 {
+    padding-top: 1rem !important; }
+  .file-manager-module .pr-md-3 {
+    padding-right: 1rem !important; }
+  .file-manager-module .pb-md-3 {
+    padding-bottom: 1rem !important; }
+  .file-manager-module .pl-md-3 {
+    padding-left: 1rem !important; }
+  .file-manager-module .px-md-3 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important; }
+  .file-manager-module .py-md-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; }
+  .file-manager-module .p-md-4 {
+    padding: 1.5rem 1.5rem !important; }
+  .file-manager-module .pt-md-4 {
+    padding-top: 1.5rem !important; }
+  .file-manager-module .pr-md-4 {
+    padding-right: 1.5rem !important; }
+  .file-manager-module .pb-md-4 {
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .pl-md-4 {
+    padding-left: 1.5rem !important; }
+  .file-manager-module .px-md-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important; }
+  .file-manager-module .py-md-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .p-md-5 {
+    padding: 3rem 3rem !important; }
+  .file-manager-module .pt-md-5 {
+    padding-top: 3rem !important; }
+  .file-manager-module .pr-md-5 {
+    padding-right: 3rem !important; }
+  .file-manager-module .pb-md-5 {
+    padding-bottom: 3rem !important; }
+  .file-manager-module .pl-md-5 {
+    padding-left: 3rem !important; }
+  .file-manager-module .px-md-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
+  .file-manager-module .py-md-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important; }
+  .file-manager-module .m-md-auto {
+    margin: auto !important; }
+  .file-manager-module .mt-md-auto {
+    margin-top: auto !important; }
+  .file-manager-module .mr-md-auto {
+    margin-right: auto !important; }
+  .file-manager-module .mb-md-auto {
+    margin-bottom: auto !important; }
+  .file-manager-module .ml-md-auto {
+    margin-left: auto !important; }
+  .file-manager-module .mx-md-auto {
+    margin-right: auto !important;
+    margin-left: auto !important; }
+  .file-manager-module .my-md-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .m-lg-0 {
+    margin: 0 0 !important; }
+  .file-manager-module .mt-lg-0 {
+    margin-top: 0 !important; }
+  .file-manager-module .mr-lg-0 {
+    margin-right: 0 !important; }
+  .file-manager-module .mb-lg-0 {
+    margin-bottom: 0 !important; }
+  .file-manager-module .ml-lg-0 {
+    margin-left: 0 !important; }
+  .file-manager-module .mx-lg-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important; }
+  .file-manager-module .my-lg-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; }
+  .file-manager-module .m-lg-1 {
+    margin: 0.25rem 0.25rem !important; }
+  .file-manager-module .mt-lg-1 {
+    margin-top: 0.25rem !important; }
+  .file-manager-module .mr-lg-1 {
+    margin-right: 0.25rem !important; }
+  .file-manager-module .mb-lg-1 {
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .ml-lg-1 {
+    margin-left: 0.25rem !important; }
+  .file-manager-module .mx-lg-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important; }
+  .file-manager-module .my-lg-1 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .m-lg-2 {
+    margin: 0.5rem 0.5rem !important; }
+  .file-manager-module .mt-lg-2 {
+    margin-top: 0.5rem !important; }
+  .file-manager-module .mr-lg-2 {
+    margin-right: 0.5rem !important; }
+  .file-manager-module .mb-lg-2 {
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .ml-lg-2 {
+    margin-left: 0.5rem !important; }
+  .file-manager-module .mx-lg-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important; }
+  .file-manager-module .my-lg-2 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .m-lg-3 {
+    margin: 1rem 1rem !important; }
+  .file-manager-module .mt-lg-3 {
+    margin-top: 1rem !important; }
+  .file-manager-module .mr-lg-3 {
+    margin-right: 1rem !important; }
+  .file-manager-module .mb-lg-3 {
+    margin-bottom: 1rem !important; }
+  .file-manager-module .ml-lg-3 {
+    margin-left: 1rem !important; }
+  .file-manager-module .mx-lg-3 {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important; }
+  .file-manager-module .my-lg-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important; }
+  .file-manager-module .m-lg-4 {
+    margin: 1.5rem 1.5rem !important; }
+  .file-manager-module .mt-lg-4 {
+    margin-top: 1.5rem !important; }
+  .file-manager-module .mr-lg-4 {
+    margin-right: 1.5rem !important; }
+  .file-manager-module .mb-lg-4 {
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .ml-lg-4 {
+    margin-left: 1.5rem !important; }
+  .file-manager-module .mx-lg-4 {
+    margin-right: 1.5rem !important;
+    margin-left: 1.5rem !important; }
+  .file-manager-module .my-lg-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .m-lg-5 {
+    margin: 3rem 3rem !important; }
+  .file-manager-module .mt-lg-5 {
+    margin-top: 3rem !important; }
+  .file-manager-module .mr-lg-5 {
+    margin-right: 3rem !important; }
+  .file-manager-module .mb-lg-5 {
+    margin-bottom: 3rem !important; }
+  .file-manager-module .ml-lg-5 {
+    margin-left: 3rem !important; }
+  .file-manager-module .mx-lg-5 {
+    margin-right: 3rem !important;
+    margin-left: 3rem !important; }
+  .file-manager-module .my-lg-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important; }
+  .file-manager-module .p-lg-0 {
+    padding: 0 0 !important; }
+  .file-manager-module .pt-lg-0 {
+    padding-top: 0 !important; }
+  .file-manager-module .pr-lg-0 {
+    padding-right: 0 !important; }
+  .file-manager-module .pb-lg-0 {
+    padding-bottom: 0 !important; }
+  .file-manager-module .pl-lg-0 {
+    padding-left: 0 !important; }
+  .file-manager-module .px-lg-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important; }
+  .file-manager-module .py-lg-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; }
+  .file-manager-module .p-lg-1 {
+    padding: 0.25rem 0.25rem !important; }
+  .file-manager-module .pt-lg-1 {
+    padding-top: 0.25rem !important; }
+  .file-manager-module .pr-lg-1 {
+    padding-right: 0.25rem !important; }
+  .file-manager-module .pb-lg-1 {
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .pl-lg-1 {
+    padding-left: 0.25rem !important; }
+  .file-manager-module .px-lg-1 {
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important; }
+  .file-manager-module .py-lg-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .p-lg-2 {
+    padding: 0.5rem 0.5rem !important; }
+  .file-manager-module .pt-lg-2 {
+    padding-top: 0.5rem !important; }
+  .file-manager-module .pr-lg-2 {
+    padding-right: 0.5rem !important; }
+  .file-manager-module .pb-lg-2 {
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .pl-lg-2 {
+    padding-left: 0.5rem !important; }
+  .file-manager-module .px-lg-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important; }
+  .file-manager-module .py-lg-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .p-lg-3 {
+    padding: 1rem 1rem !important; }
+  .file-manager-module .pt-lg-3 {
+    padding-top: 1rem !important; }
+  .file-manager-module .pr-lg-3 {
+    padding-right: 1rem !important; }
+  .file-manager-module .pb-lg-3 {
+    padding-bottom: 1rem !important; }
+  .file-manager-module .pl-lg-3 {
+    padding-left: 1rem !important; }
+  .file-manager-module .px-lg-3 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important; }
+  .file-manager-module .py-lg-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; }
+  .file-manager-module .p-lg-4 {
+    padding: 1.5rem 1.5rem !important; }
+  .file-manager-module .pt-lg-4 {
+    padding-top: 1.5rem !important; }
+  .file-manager-module .pr-lg-4 {
+    padding-right: 1.5rem !important; }
+  .file-manager-module .pb-lg-4 {
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .pl-lg-4 {
+    padding-left: 1.5rem !important; }
+  .file-manager-module .px-lg-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important; }
+  .file-manager-module .py-lg-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .p-lg-5 {
+    padding: 3rem 3rem !important; }
+  .file-manager-module .pt-lg-5 {
+    padding-top: 3rem !important; }
+  .file-manager-module .pr-lg-5 {
+    padding-right: 3rem !important; }
+  .file-manager-module .pb-lg-5 {
+    padding-bottom: 3rem !important; }
+  .file-manager-module .pl-lg-5 {
+    padding-left: 3rem !important; }
+  .file-manager-module .px-lg-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
+  .file-manager-module .py-lg-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important; }
+  .file-manager-module .m-lg-auto {
+    margin: auto !important; }
+  .file-manager-module .mt-lg-auto {
+    margin-top: auto !important; }
+  .file-manager-module .mr-lg-auto {
+    margin-right: auto !important; }
+  .file-manager-module .mb-lg-auto {
+    margin-bottom: auto !important; }
+  .file-manager-module .ml-lg-auto {
+    margin-left: auto !important; }
+  .file-manager-module .mx-lg-auto {
+    margin-right: auto !important;
+    margin-left: auto !important; }
+  .file-manager-module .my-lg-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .m-xl-0 {
+    margin: 0 0 !important; }
+  .file-manager-module .mt-xl-0 {
+    margin-top: 0 !important; }
+  .file-manager-module .mr-xl-0 {
+    margin-right: 0 !important; }
+  .file-manager-module .mb-xl-0 {
+    margin-bottom: 0 !important; }
+  .file-manager-module .ml-xl-0 {
+    margin-left: 0 !important; }
+  .file-manager-module .mx-xl-0 {
+    margin-right: 0 !important;
+    margin-left: 0 !important; }
+  .file-manager-module .my-xl-0 {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important; }
+  .file-manager-module .m-xl-1 {
+    margin: 0.25rem 0.25rem !important; }
+  .file-manager-module .mt-xl-1 {
+    margin-top: 0.25rem !important; }
+  .file-manager-module .mr-xl-1 {
+    margin-right: 0.25rem !important; }
+  .file-manager-module .mb-xl-1 {
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .ml-xl-1 {
+    margin-left: 0.25rem !important; }
+  .file-manager-module .mx-xl-1 {
+    margin-right: 0.25rem !important;
+    margin-left: 0.25rem !important; }
+  .file-manager-module .my-xl-1 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important; }
+  .file-manager-module .m-xl-2 {
+    margin: 0.5rem 0.5rem !important; }
+  .file-manager-module .mt-xl-2 {
+    margin-top: 0.5rem !important; }
+  .file-manager-module .mr-xl-2 {
+    margin-right: 0.5rem !important; }
+  .file-manager-module .mb-xl-2 {
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .ml-xl-2 {
+    margin-left: 0.5rem !important; }
+  .file-manager-module .mx-xl-2 {
+    margin-right: 0.5rem !important;
+    margin-left: 0.5rem !important; }
+  .file-manager-module .my-xl-2 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important; }
+  .file-manager-module .m-xl-3 {
+    margin: 1rem 1rem !important; }
+  .file-manager-module .mt-xl-3 {
+    margin-top: 1rem !important; }
+  .file-manager-module .mr-xl-3 {
+    margin-right: 1rem !important; }
+  .file-manager-module .mb-xl-3 {
+    margin-bottom: 1rem !important; }
+  .file-manager-module .ml-xl-3 {
+    margin-left: 1rem !important; }
+  .file-manager-module .mx-xl-3 {
+    margin-right: 1rem !important;
+    margin-left: 1rem !important; }
+  .file-manager-module .my-xl-3 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important; }
+  .file-manager-module .m-xl-4 {
+    margin: 1.5rem 1.5rem !important; }
+  .file-manager-module .mt-xl-4 {
+    margin-top: 1.5rem !important; }
+  .file-manager-module .mr-xl-4 {
+    margin-right: 1.5rem !important; }
+  .file-manager-module .mb-xl-4 {
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .ml-xl-4 {
+    margin-left: 1.5rem !important; }
+  .file-manager-module .mx-xl-4 {
+    margin-right: 1.5rem !important;
+    margin-left: 1.5rem !important; }
+  .file-manager-module .my-xl-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important; }
+  .file-manager-module .m-xl-5 {
+    margin: 3rem 3rem !important; }
+  .file-manager-module .mt-xl-5 {
+    margin-top: 3rem !important; }
+  .file-manager-module .mr-xl-5 {
+    margin-right: 3rem !important; }
+  .file-manager-module .mb-xl-5 {
+    margin-bottom: 3rem !important; }
+  .file-manager-module .ml-xl-5 {
+    margin-left: 3rem !important; }
+  .file-manager-module .mx-xl-5 {
+    margin-right: 3rem !important;
+    margin-left: 3rem !important; }
+  .file-manager-module .my-xl-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important; }
+  .file-manager-module .p-xl-0 {
+    padding: 0 0 !important; }
+  .file-manager-module .pt-xl-0 {
+    padding-top: 0 !important; }
+  .file-manager-module .pr-xl-0 {
+    padding-right: 0 !important; }
+  .file-manager-module .pb-xl-0 {
+    padding-bottom: 0 !important; }
+  .file-manager-module .pl-xl-0 {
+    padding-left: 0 !important; }
+  .file-manager-module .px-xl-0 {
+    padding-right: 0 !important;
+    padding-left: 0 !important; }
+  .file-manager-module .py-xl-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important; }
+  .file-manager-module .p-xl-1 {
+    padding: 0.25rem 0.25rem !important; }
+  .file-manager-module .pt-xl-1 {
+    padding-top: 0.25rem !important; }
+  .file-manager-module .pr-xl-1 {
+    padding-right: 0.25rem !important; }
+  .file-manager-module .pb-xl-1 {
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .pl-xl-1 {
+    padding-left: 0.25rem !important; }
+  .file-manager-module .px-xl-1 {
+    padding-right: 0.25rem !important;
+    padding-left: 0.25rem !important; }
+  .file-manager-module .py-xl-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important; }
+  .file-manager-module .p-xl-2 {
+    padding: 0.5rem 0.5rem !important; }
+  .file-manager-module .pt-xl-2 {
+    padding-top: 0.5rem !important; }
+  .file-manager-module .pr-xl-2 {
+    padding-right: 0.5rem !important; }
+  .file-manager-module .pb-xl-2 {
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .pl-xl-2 {
+    padding-left: 0.5rem !important; }
+  .file-manager-module .px-xl-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important; }
+  .file-manager-module .py-xl-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important; }
+  .file-manager-module .p-xl-3 {
+    padding: 1rem 1rem !important; }
+  .file-manager-module .pt-xl-3 {
+    padding-top: 1rem !important; }
+  .file-manager-module .pr-xl-3 {
+    padding-right: 1rem !important; }
+  .file-manager-module .pb-xl-3 {
+    padding-bottom: 1rem !important; }
+  .file-manager-module .pl-xl-3 {
+    padding-left: 1rem !important; }
+  .file-manager-module .px-xl-3 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important; }
+  .file-manager-module .py-xl-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important; }
+  .file-manager-module .p-xl-4 {
+    padding: 1.5rem 1.5rem !important; }
+  .file-manager-module .pt-xl-4 {
+    padding-top: 1.5rem !important; }
+  .file-manager-module .pr-xl-4 {
+    padding-right: 1.5rem !important; }
+  .file-manager-module .pb-xl-4 {
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .pl-xl-4 {
+    padding-left: 1.5rem !important; }
+  .file-manager-module .px-xl-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important; }
+  .file-manager-module .py-xl-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important; }
+  .file-manager-module .p-xl-5 {
+    padding: 3rem 3rem !important; }
+  .file-manager-module .pt-xl-5 {
+    padding-top: 3rem !important; }
+  .file-manager-module .pr-xl-5 {
+    padding-right: 3rem !important; }
+  .file-manager-module .pb-xl-5 {
+    padding-bottom: 3rem !important; }
+  .file-manager-module .pl-xl-5 {
+    padding-left: 3rem !important; }
+  .file-manager-module .px-xl-5 {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important; }
+  .file-manager-module .py-xl-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important; }
+  .file-manager-module .m-xl-auto {
+    margin: auto !important; }
+  .file-manager-module .mt-xl-auto {
+    margin-top: auto !important; }
+  .file-manager-module .mr-xl-auto {
+    margin-right: auto !important; }
+  .file-manager-module .mb-xl-auto {
+    margin-bottom: auto !important; }
+  .file-manager-module .ml-xl-auto {
+    margin-left: auto !important; }
+  .file-manager-module .mx-xl-auto {
+    margin-right: auto !important;
+    margin-left: auto !important; }
+  .file-manager-module .my-xl-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important; } }
+
+.file-manager-module .text-justify {
+  text-align: justify !important; }
+
+.file-manager-module .text-nowrap {
+  white-space: nowrap !important; }
+
+.file-manager-module .text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.file-manager-module .text-left {
+  text-align: left !important; }
+
+.file-manager-module .text-right {
+  text-align: right !important; }
+
+.file-manager-module .text-center {
+  text-align: center !important; }
+
+@media (min-width: 576px) {
+  .file-manager-module .text-sm-left {
+    text-align: left !important; }
+  .file-manager-module .text-sm-right {
+    text-align: right !important; }
+  .file-manager-module .text-sm-center {
+    text-align: center !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .text-md-left {
+    text-align: left !important; }
+  .file-manager-module .text-md-right {
+    text-align: right !important; }
+  .file-manager-module .text-md-center {
+    text-align: center !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .text-lg-left {
+    text-align: left !important; }
+  .file-manager-module .text-lg-right {
+    text-align: right !important; }
+  .file-manager-module .text-lg-center {
+    text-align: center !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .text-xl-left {
+    text-align: left !important; }
+  .file-manager-module .text-xl-right {
+    text-align: right !important; }
+  .file-manager-module .text-xl-center {
+    text-align: center !important; } }
+
+.file-manager-module .text-lowercase {
+  text-transform: lowercase !important; }
+
+.file-manager-module .text-uppercase {
+  text-transform: uppercase !important; }
+
+.file-manager-module .text-capitalize {
+  text-transform: capitalize !important; }
+
+.file-manager-module .font-weight-normal {
+  font-weight: normal; }
+
+.file-manager-module .font-weight-bold {
+  font-weight: bold; }
+
+.file-manager-module .font-italic {
+  font-style: italic; }
+
+.file-manager-module .text-white {
+  color: #fff !important; }
+
+.file-manager-module .text-muted {
+  color: #777777 !important; }
+
+.file-manager-module a.text-muted:focus, .file-manager-module a.text-muted:hover {
+  color: #5e5e5e !important; }
+
+.file-manager-module .text-primary {
+  color: #241E28 !important; }
+
+.file-manager-module a.text-primary:focus, .file-manager-module a.text-primary:hover {
+  color: #0a080b !important; }
+
+.file-manager-module .text-success {
+  color: #5CB85C !important; }
+
+.file-manager-module a.text-success:focus, .file-manager-module a.text-success:hover {
+  color: #449d44 !important; }
+
+.file-manager-module .text-info {
+  color: #5BC0DE !important; }
+
+.file-manager-module a.text-info:focus, .file-manager-module a.text-info:hover {
+  color: #31b0d5 !important; }
+
+.file-manager-module .text-warning {
+  color: #F0AD4E !important; }
+
+.file-manager-module a.text-warning:focus, .file-manager-module a.text-warning:hover {
+  color: #ec971f !important; }
+
+.file-manager-module .text-danger {
+  color: #D9534F !important; }
+
+.file-manager-module a.text-danger:focus, .file-manager-module a.text-danger:hover {
+  color: #c9302c !important; }
+
+.file-manager-module .text-gray-dark {
+  color: #515151 !important; }
+
+.file-manager-module a.text-gray-dark:focus, .file-manager-module a.text-gray-dark:hover {
+  color: #373737 !important; }
+
+.file-manager-module .text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+.file-manager-module .invisible {
+  visibility: hidden !important; }
+
+.file-manager-module .hidden-xs-up {
+  display: none !important; }
+
+@media (max-width: 575px) {
+  .file-manager-module .hidden-xs-down {
+    display: none !important; } }
+
+@media (min-width: 576px) {
+  .file-manager-module .hidden-sm-up {
+    display: none !important; } }
+
+@media (max-width: 767px) {
+  .file-manager-module .hidden-sm-down {
+    display: none !important; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .hidden-md-up {
+    display: none !important; } }
+
+@media (max-width: 991px) {
+  .file-manager-module .hidden-md-down {
+    display: none !important; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .hidden-lg-up {
+    display: none !important; } }
+
+@media (max-width: 1199px) {
+  .file-manager-module .hidden-lg-down {
+    display: none !important; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .hidden-xl-up {
+    display: none !important; } }
+
+.file-manager-module .hidden-xl-down {
+  display: none !important; }
+
+.file-manager-module .visible-print-block {
+  display: none !important; }
+  @media print {
+    .file-manager-module .visible-print-block {
+      display: block !important; } }
+
+.file-manager-module .visible-print-inline {
+  display: none !important; }
+  @media print {
+    .file-manager-module .visible-print-inline {
+      display: inline !important; } }
+
+.file-manager-module .visible-print-inline-block {
+  display: none !important; }
+  @media print {
+    .file-manager-module .visible-print-inline-block {
+      display: inline-block !important; } }
+
+@media print {
+  .file-manager-module .hidden-print {
+    display: none !important; } }
+
+.file-manager-module {
+  box-sizing: border-box;
+  font: normal 14px/1.5 Raleway, sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+.file-manager-module *,
+.file-manager-module *::before,
+.file-manager-module *::after {
+  box-sizing: inherit; }
+
+.file-manager-module body {
+  margin: 0; }
+
+@font-face {
+  .file-manager-module {
+    font-family: 'Raleway';
+    src: url("../fonts/Raleway-Regular.woff"), url("../fonts/Raleway-Regular.woff2");
+    font-weight: normal; } }
+
+@font-face {
+  .file-manager-module {
+    font-family: 'Raleway';
+    src: url("../fonts/Raleway-SemiBold.woff"), url("../fonts/Raleway-SemiBold.woff2");
+    font-weight: 500; } }
+
+.file-manager-module label {
+  margin-bottom: 0.5rem; }
+
+.file-manager-module select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+  .file-manager-module select.form-control:not([multiple]) {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="1.5rem" viewBox="0 0 24 24"><path fill="%23241E28" d="M12 18.188l3.188-3.188 1.406 1.406-4.594 4.594-4.594-4.594 1.406-1.406zM12 5.813l-3.188 3.188-1.406-1.406 4.594-4.594 4.594 4.594-1.406 1.406z"></path></svg>') right center no-repeat; }
+
+.file-manager-module .has-success .form-control {
+  background-color: #f1f9f1; }
+
+.file-manager-module .has-warning .form-control {
+  background-color: #fef9f3; }
+
+.file-manager-module .has-danger .form-control {
+  background: #fbefee; }
+
+.file-manager-module .icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block; }
+
+.file-manager-module .icon:before {
+  font-family: 'icon';
+  font-size: 1.15em;
+  font-weight: normal;
+  vertical-align: top;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor; }
+
+.file-manager-module .modal-open .modal {
+  display: block; }
+
+.file-manager-module .modal-header .close {
+  height: 1em;
+  width: 1em;
+  font-size: 2em;
+  line-height: 1em;
+  text-align: center;
+  color: #241E28; }
+  .file-manager-module .modal-header .close:hover {
+    color: #a595b0;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 1px 0 rgba(254, 254, 254, 0.15), 0 1px 1px rgba(17, 17, 17, 0.075); }
+
+.file-manager-module .nav-column {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px; }
+  @media (min-width: 576px) {
+    .file-manager-module .nav-column {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 768px) {
+    .file-manager-module .nav-column {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 992px) {
+    .file-manager-module .nav-column {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  @media (min-width: 1200px) {
+    .file-manager-module .nav-column {
+      margin-right: -15px;
+      margin-left: -15px; } }
+  .file-manager-module .nav-column > * {
+    padding: 0.2em 15px; }
+
+.file-manager-module .nav + .nav {
+  border-top: 3px solid #1f1a22;
+  padding-top: 0.5em; }
+
+.file-manager-module .nav-link {
+  color: #c4c4c4; }
+  .file-manager-module .nav-link:focus, .file-manager-module .nav-link:hover {
+    color: #a595b0;
+    text-decoration: none; }
+
+.file-manager-module .nav-link.active {
+  color: #a595b0; }
+
+.file-manager-module .nav-link.success {
+  color: #241E28;
+  background-color: #5CB85C; }
+
+.file-manager-module .progress {
+  border: 1px solid rgba(17, 17, 17, 0.1); }
+
+.file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-top-collapse) {
+  padding-top: 15px; }
+
+.file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-bottom-collapse) {
+  padding-bottom: 15px; }
+
+@media (min-width: 576px) {
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-top-collapse) {
+    padding-top: 15px; }
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-bottom-collapse) {
+    padding-bottom: 15px; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-top-collapse) {
+    padding-top: 15px; }
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-bottom-collapse) {
+    padding-bottom: 15px; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-top-collapse) {
+    padding-top: 15px; }
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-bottom-collapse) {
+    padding-bottom: 15px; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-top-collapse) {
+    padding-top: 15px; }
+  .file-manager-module .section:not(.file-manager-module .section-collapse):not(.file-manager-module .section-bottom-collapse) {
+    padding-bottom: 15px; } }
+
+@media (min-width: 576px) {
+  .file-manager-module .section-hover {
+    box-shadow: 0.25em 0.25em 0 0 rgba(119, 119, 119, 0.25);
+    transition: box-shadow 0.3s; }
+    .file-manager-module .section-hover:hover {
+      box-shadow: 0.5em 0.5em 0 0 rgba(119, 119, 119, 0.4); } }
+
+.file-manager-module .section-primary {
+  background-color: #241E28; }
+
+.file-manager-module .section-white {
+  background-color: #FEFEFE; }
+
+.file-manager-module .section,
+.file-manager-module .section .row {
+  margin-bottom: 1rem; }
+
+.file-manager-module .section .section {
+  margin-bottom: 0; }
+
+.file-manager-module .table thead th {
+  font-weight: 400; }
+
+.file-manager-module .table td:first-child, .file-manager-module .table th:first-child {
+  padding-left: 15px; }
+
+.file-manager-module .table td:last-child, .file-manager-module .table th:last-child {
+  padding-right: 15px; }
+
+@media (min-width: 576px) {
+  .file-manager-module .table td:first-child, .file-manager-module .table th:first-child {
+    padding-left: 15px; }
+  .file-manager-module .table td:last-child, .file-manager-module .table th:last-child {
+    padding-right: 15px; } }
+
+@media (min-width: 768px) {
+  .file-manager-module .table td:first-child, .file-manager-module .table th:first-child {
+    padding-left: 15px; }
+  .file-manager-module .table td:last-child, .file-manager-module .table th:last-child {
+    padding-right: 15px; } }
+
+@media (min-width: 992px) {
+  .file-manager-module .table td:first-child, .file-manager-module .table th:first-child {
+    padding-left: 15px; }
+  .file-manager-module .table td:last-child, .file-manager-module .table th:last-child {
+    padding-right: 15px; } }
+
+@media (min-width: 1200px) {
+  .file-manager-module .table td:first-child, .file-manager-module .table th:first-child {
+    padding-left: 15px; }
+  .file-manager-module .table td:last-child, .file-manager-module .table th:last-child {
+    padding-right: 15px; } }
+
+.file-manager-module .text-primary {
+  color: #241E28; }
+
+.file-manager-module .text-secondary {
+  color: #5FC5C7; }
+
+.file-manager-module .text-tertiary {
+  color: #60C662; }
+
+.file-manager-module .text-base-size {
+  font-size: 1rem; }
+
+.file-manager-module .text-small {
+  font-size: 90%; }
+
+.file-manager-module .text-semi-bold {
+  font-weight: 500; }
+
+.file-manager-module .text-thin {
+  font-weight: 300; }
+
+.file-manager-module .text-gray-lightest {
+  color: #eaeaea; }
+
+.file-manager-module .text-gray-lighter {
+  color: #c4c4c4; }
+
+.file-manager-module .text-gray-light {
+  color: #9d9d9d; }
+
+.file-manager-module .text-gray-dark {
+  color: #515151; }
+
+.file-manager-module .text-gray-darker {
+  color: #2b2b2b; }
+
+.file-manager-module .text-gray-darkest {
+  color: #040404; }
+
+.file-manager-module .flex-justify {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between; }
+
+.file-manager-module .col-expand {
+  flex: 1 0 auto;
+  width: auto; }
+
+.file-manager-module [role=link] {
+  cursor: pointer; }
+
+.file-manager-module .details-view .icon {
+  color: #515151;
+  margin-right: .5em; }
+  .file-manager-module .details-view .icon.icon-folder {
+    color: #5FC5C7; }
+    .file-manager-module .details-view .icon.icon-folder.open {
+      cursor: n-resize; }
+    .file-manager-module .details-view .icon.icon-folder.closed {
+      cursor: s-resize; }
+
+.file-manager-module .details-view .directory-list td:first-of-type {
+  cursor: pointer; }
+
+.file-manager-module .inline-progress .progress {
+  margin-bottom: 15px; }
+
+.file-manager-module .dragging {
+  outline: 2px solid #5FC5C7; }
+
+.file-manager-module p.directory-name {
+  margin: 0;
+  cursor: pointer; }
+
+.file-manager-module ul.directory {
+  list-style: none;
+  padding: 0; }
+  .file-manager-module ul.directory ul.directory {
+    padding-left: 1.5em; }
+
+.file-manager-module p.directory-name .icon,
+.file-manager-module ul.directory .icon {
+  color: #515151;
+  margin-right: .5em; }
+  .file-manager-module p.directory-name .icon.icon-root, .file-manager-module p.directory-name .icon.icon-folder, .file-manager-module p.directory-name .icon.icon-folder-fill,
+  .file-manager-module ul.directory .icon.icon-root,
+  .file-manager-module ul.directory .icon.icon-folder,
+  .file-manager-module ul.directory .icon.icon-folder-fill {
+    color: #5FC5C7; }
+    .file-manager-module p.directory-name .icon.icon-root.open, .file-manager-module p.directory-name .icon.icon-folder.open, .file-manager-module p.directory-name .icon.icon-folder-fill.open,
+    .file-manager-module ul.directory .icon.icon-root.open,
+    .file-manager-module ul.directory .icon.icon-folder.open,
+    .file-manager-module ul.directory .icon.icon-folder-fill.open {
+      cursor: n-resize; }
+    .file-manager-module p.directory-name .icon.icon-root.closed, .file-manager-module p.directory-name .icon.icon-folder.closed, .file-manager-module p.directory-name .icon.icon-folder-fill.closed,
+    .file-manager-module ul.directory .icon.icon-root.closed,
+    .file-manager-module ul.directory .icon.icon-folder.closed,
+    .file-manager-module ul.directory .icon.icon-folder-fill.closed {
+      cursor: s-resize; }
+
+.file-manager-module .info-view .image-container {
+  background: #eaeaea;
+  margin-bottom: 15px;
+  padding-bottom: 45%;
+  position: relative; }
+  .file-manager-module .info-view .image-container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-height: 100%;
+    transform: translate(-50%, -50%); }
+
+.file-manager-module .upload-clipboard {
+  overflow-x: scroll;
+  white-space: nowrap; }
+
+.file-manager-module .clipboard {
+  cursor: copy;
+  position: relative; }
+  .file-manager-module .clipboard:after {
+    opacity: 1;
+    content: ''; }
+  .file-manager-module .clipboard.copied:after {
+    transition: opacity 1s ease-out 0.2s;
+    opacity: 0;
+    content: 'Copied!';
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; }
