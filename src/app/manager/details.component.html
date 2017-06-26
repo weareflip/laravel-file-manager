@@ -30,7 +30,7 @@
                 </td>
             </tr>
             <tr class="file-list" *ngFor="let file of directory.files">
-                <td class="w-100">
+                <td class="w-100" role="link" (click)="select(file)">
                     <i class="icon" [ngClass]="file.icon"></i>
                     {{ file.name }}
                 </td>

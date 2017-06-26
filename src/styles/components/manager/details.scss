@@ -17,6 +17,10 @@
     }
 }
 
+.inline-progress .progress {
+    margin-bottom: $gutter-half;
+}
+
 .dragging {
     outline: 2px solid $brand-secondary;
 }

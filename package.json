@@ -6,10 +6,11 @@
     "watch": "./node_modules/.bin/webpack -w --env dev"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.0-beta.32.3",
+    "@angular/cli": "^1.0.0-beta.28.3",
     "@angular/compiler-cli": "latest",
     "@angular/platform-server": "latest",
     "@angular/upgrade": "^2.4.7",
+    "@ngtools/webpack": "^1.4",
     "@types/node": "^7.0.5",
     "angular2-template-loader": "^0.6.2",
     "assets-webpack-plugin": "^3.5.1",
@@ -42,7 +43,8 @@
     "@angular/platform-browser": "latest",
     "@angular/platform-browser-dynamic": "latest",
     "@angular/router": "latest",
-    "@ngtools/webpack": "^1.2.10",
+    "@types/clipboard": "^1.5.34",
+    "clipboard": "^1.7.1",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.1",
     "whatwg-fetch": "^2.0.2",

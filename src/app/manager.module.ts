@@ -4,8 +4,8 @@ import { SharedModule } from "./shared/shared.module";
 
 import { DetailsComponent } from "./manager/details.component";
 import { DirectoryComponent } from "./manager/directory.component";
+import { InfoComponent } from "./manager/info.component";
 import { ManagerComponent } from "./manager.component";
-import { ProgressBarComponent } from "./upload/progress-bar.component";
 import { UploadComponent } from "./upload/upload.component";
 
 import { FileValueAccessor } from "./upload/validation/file-value-accessor.directive";
@@ -15,8 +15,8 @@ const DECLARATIONS: any = [
   // Component
   DetailsComponent,
   DirectoryComponent,
+  InfoComponent,
   ManagerComponent,
-  ProgressBarComponent,
   UploadComponent,
 
   // Validation

@@ -18,6 +18,10 @@ export class DetailsComponent {
     return this.manager.directory;
   }
 
+  select(file: File) {
+    this.manager.select(file);
+  }
+
   navigate(directory: Directory) {
     this.manager.navigate(directory.path);
   }

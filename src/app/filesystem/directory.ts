@@ -2,12 +2,7 @@ import { File } from './file';
 import { FilesystemService } from "./filesystem.service";
 import { FilesystemObject } from "./filesystem-object";
 
-export class Directory implements FilesystemObject {
-
-  /**
-   * Fully qualified path
-   */
-  path: string;
+export class Directory extends FilesystemObject {
 
   /**
    * Child directories
@@ -18,8 +13,6 @@ export class Directory implements FilesystemObject {
   private _directories: Directory[] = [];
 
   /**
-   * Get directories
-   *
    * @returns {Directory[]}
    */
   get directories(): Directory[] {
@@ -27,8 +20,6 @@ export class Directory implements FilesystemObject {
   }
 
   /**
-   * Set directories
-   *
    * @param directories
    */
   set directories(directories: Directory[]) {
@@ -51,13 +42,10 @@ export class Directory implements FilesystemObject {
    * Contained files
    *
    * @type {Array}
-   * @private
    */
   private _files: File[] = [];
 
   /**
-   * Get Files
-   *
    * @returns {File[]}
    */
   get files(): File[] {
@@ -65,8 +53,6 @@ export class Directory implements FilesystemObject {
   }
 
   /**
-   * Set files
-   *
    * @param files
    */
   set files(files: File[]) {
@@ -81,17 +67,43 @@ export class Directory implements FilesystemObject {
    * @param culprit {File|FilesystemObject}
    */
   removeFile(culprit: File|FilesystemObject) {
+    if (this.selected && this.selected.equals(culprit)) {
+      this._selected = undefined;
+    }
+
     this._files = this._files
       .filter((file: File) => culprit.path !== file.path);
   }
 
   /**
-   * Get name
-   *
-   * @returns {string}
+   * @param file
+   * @returns {boolean}
    */
-  get name(): string {
-    return FilesystemService.lastPathSegment(this.path);
+  contains(file: File): boolean {
+    return this.files.map((item: File) => file.equals(item)).length > 0;
+  }
+
+  /**
+   * Selected file to provide info
+   *
+   * @type {File}
+   */
+  private _selected: File;
+
+  /**
+   * @returns {File}
+   */
+  get selected(): File {
+    return this._selected;
+  }
+
+  /**
+   * @param selected
+   */
+  set selected(selected: File) {
+    if (this.contains(selected)) {
+      this._selected = this.files.filter((file: File) => file.path === selected.path)[0];
+    }
   }
 
   /**
@@ -101,9 +113,5 @@ export class Directory implements FilesystemObject {
    */
   get location(): string {
     return FilesystemService.lastPathDirectory(this.path);
-  }
-
-  equals(directory: Directory): boolean {
-    return this.path === directory.path;
   }
 }

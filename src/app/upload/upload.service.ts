@@ -17,16 +17,30 @@ export class UploadService {
    */
   private progressSubscriber: Subscriber<number>;
 
+  /**
+   * @type {number}
+   */
+  private _progress: number = 0;
+
   constructor() {
     this.progress$ = new Observable((subscriber: Subscriber<number>) => this.progressSubscriber = subscriber);
   }
 
-  public getObserver(): Observable<number> {
+  get progress(): number {
+    return this._progress;
+  }
+
+  get inProgress(): boolean {
+    return this.progress > 0 && this.progress < 100;
+  }
+
+  get observer(): Observable<number> {
     return this.progress$;
   }
 
   public upload(url: string, files: File[], path: string): Promise<UploadResponse> {
     return new Promise((resolve, reject) => {
+      window.onbeforeunload = () => "An upload is in progress. Are you sure you want to navigate away?";
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
 
@@ -36,6 +50,7 @@ export class UploadService {
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
+          window.onbeforeunload = undefined;
           xhr.status >= 200 && xhr.status < 300
             ? resolve(JSON.parse(xhr.response))
             : reject(xhr.response);
@@ -43,9 +58,8 @@ export class UploadService {
       };
 
       xhr.upload.onprogress = (event) => {
-        if (this.progressSubscriber) {
-          this.progressSubscriber.next(event.loaded / event.total * 100);
-        }
+        this._progress = Math.ceil(event.loaded / event.total * 100);
+        this.progressSubscriber.next(this._progress);
       };
 
       xhr.open('POST', process.env.API_LOCATION + url, true);

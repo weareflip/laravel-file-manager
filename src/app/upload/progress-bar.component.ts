@@ -5,8 +5,8 @@ import { UploadService } from "./upload.service";
   selector: 'progress-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="progress">
-      <div class="progress-bar bg-success" 
+    <div class="progress" *ngIf="inProgress">
+      <div class="progress-bar bg-success"
            [ngClass]="{'progress-bar-striped progress-bar-animated': inProgress}"
            [ngStyle]="{width: width}">
       </div>
@@ -15,29 +15,21 @@ import { UploadService } from "./upload.service";
 })
 export class ProgressBarComponent implements OnInit {
 
-  /**
-   * Progress percentage
-   *
-   * @type {number}
-   */
-  public progress: number = 0;
+  constructor(
+    private cd: ChangeDetectorRef,
+    protected upload: UploadService
+  ) { }
 
   get width(): string {
-    return this.progress + '%';
+    return this.upload.progress + '%';
   }
 
   get inProgress(): boolean {
-    return this.progress > 0 && this.progress < 100;
+    return this.upload.inProgress;
   }
 
-  constructor(
-    private cd: ChangeDetectorRef,
-    private uploadService: UploadService,
-  ) { }
-
   ngOnInit(): void {
-    this.uploadService.getObserver().subscribe((progress) => {
-      this.progress = Math.ceil(progress);
+    this.upload.observer.subscribe((progress: number) => {
       this.cd.detectChanges();
     });
   }

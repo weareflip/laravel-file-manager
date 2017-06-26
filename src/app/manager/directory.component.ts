@@ -79,7 +79,7 @@ export class DirectoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.manager.observer.subscribe((directory: Directory) => {
+    this.manager.directory$.subscribe((directory: Directory) => {
       if (this.path === directory.path) {
         this.directory = directory
       }

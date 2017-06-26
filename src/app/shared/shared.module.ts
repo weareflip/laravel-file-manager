@@ -2,10 +2,13 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
+import { ClipboardDirective } from "./utility/clipboard.directive";
+import { DropzoneDirective } from "../upload/dropzone.directive";
+import { ProgressBarComponent } from "../upload/progress-bar.component";
+
 import { FilesystemService } from "../filesystem/filesystem.service";
 import { ManagerService } from "../manager/manager.service";
 import { UploadService } from "../upload/upload.service";
-import { DropzoneDirective } from "../upload/dropzone.directive";
 
 const MODULES: any = [
   CommonModule,
@@ -13,7 +16,9 @@ const MODULES: any = [
 ];
 
 const DECLARATIONS: any = [
-  DropzoneDirective
+  ClipboardDirective,
+  DropzoneDirective,
+  ProgressBarComponent,
 ];
 
 const PROVIDERS: any = [

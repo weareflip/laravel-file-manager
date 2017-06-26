@@ -1,0 +1,30 @@
+<div *ngIf="file">
+    <div *ngIf="file.type === 'image'" class="image-container">
+        <img src="{{ file.url }}">
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>
+                {{ file.name }}
+            </h4>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <p *ngIf="file">
+                <b>Link</b>
+                <br>
+                <span [clipboard]>{{ file.url }}</span>
+            </p>
+            <p *ngIf="file">
+                <b>Last modified</b>
+                <br>
+                {{ file.date_modified }}
+            </p>
+        </div>
+    </div>
+</div>

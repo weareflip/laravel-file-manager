@@ -1,0 +1,16 @@
+.clipboard {
+    cursor: copy;
+
+    &:after {
+        content: '';
+        opacity: 1;
+    }
+
+    &.copied:after {
+        opacity: 0;
+        @include transition(opacity 1s ease-out .5s);
+        content: 'Copied!';
+        @extend .badge;
+        @extend .badge-success;
+    }
+}
