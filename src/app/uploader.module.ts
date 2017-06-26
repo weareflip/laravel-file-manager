@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { SharedModule } from "./shared/shared.module";
 
-import { ProgressBarComponent } from "./upload/progress-bar.component";
 import { UploadComponent } from "./upload/upload.component";
 import { UploaderComponent } from "./uploader.component";
 
@@ -11,7 +10,6 @@ import { RequiredFileValidator } from "./upload/validation/required-file.validat
 
 const DECLARATIONS: any = [
   // Component
-  ProgressBarComponent,
   UploadComponent,
   UploaderComponent,
 

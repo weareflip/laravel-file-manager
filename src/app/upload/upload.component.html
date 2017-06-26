@@ -30,8 +30,8 @@
                         <div class="col col-auto">
                             Link URL
                         </div>
-                        <div class="col">
-                            <input title="Link URL" type="text" [value]="file.url" class="form-control">
+                        <div class="col upload-clipboard">
+                            <span [clipboard] role="link">{{ file.url }}</span>
                         </div>
                     </div>
                 </div>
