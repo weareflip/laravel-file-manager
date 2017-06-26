@@ -8,8 +8,8 @@ export class FilesystemCache {
     this.map = new Map();
   }
 
-  bust(object: FilesystemObject) {
-    this.map.delete(object.path);
+  bust(path: string) {
+    this.map.delete(path);
   }
 
   retrieve(path: string, store: (path: string) => Promise<FilesystemObject>): Promise<FilesystemObject> {

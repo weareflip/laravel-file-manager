@@ -44,11 +44,14 @@ export class FilesystemService {
       files.push(fileList.item(i));
     }
 
-    if (this.pathSubscriber) {
-      this.pathSubscriber.next(path);
-    }
+    return this.uploadService.upload('file', files, path)
+      .then((res: UploadResponse) => {
+        if (this.pathSubscriber) {
+          this.pathSubscriber.next(path);
+        }
 
-    return this.uploadService.upload('file', files);
+        return res;
+      });
   }
 
   destroy(path: string): Promise<Object> {

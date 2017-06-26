@@ -3,7 +3,7 @@
     <div class="col">
         <h4><i class="icon icon-folder-fill"></i>{{ directory.path }}<small *ngIf="directory.path === '/'" class="text-gray-light">&nbsp;Parent Directory</small></h4>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped" [fmDropzone]="directory.path">
         <thead>
             <tr>
                 <th class="w-100">Name</th>
@@ -12,8 +12,13 @@
                 <th></th>
             </tr>
         </thead>
+        <tbody *ngIf="directory.directories.length === 0 && directory.files.length === 0">
+            <tr class="text-center">
+                <td colspan="4">Drag and drop to upload files</td>
+            </tr>
+        </tbody>
         <tbody>
-            <tr class="directory-list" *ngFor="let dir of directory.directories">
+            <tr class="directory-list" *ngFor="let dir of directory.directories" [fmDropzone]="dir.path">
                 <td class="w-100" (click)="navigate(dir)">
                     <i class="icon icon-folder"></i>
                     {{ dir.name }}

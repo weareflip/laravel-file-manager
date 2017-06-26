@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 
 import { Directory } from "../filesystem/directory";
 import { File } from "../filesystem/file";
@@ -24,6 +24,13 @@ export class ManagerService {
   ) {
     this.cache = new FilesystemCache();
     this.manager$ = new Observable((subscriber: Subscriber<Directory>) => this.managerSubscriber = subscriber);
+
+    this.filesystem.observer.subscribe((path: string) => {
+      this.cache.bust(path);
+      if (this.directory.path === path) {
+        this.navigate(path);
+      }
+    });
   }
 
   get observer() {
@@ -53,7 +60,7 @@ export class ManagerService {
           this.directory.removeDirectory(culprit);
         }
 
-        this.cache.bust(this.directory);
+        this.cache.bust(this.directory.path);
       })
       .catch((err) => console.log(err.message));
   }

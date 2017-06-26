@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { FilesystemService } from "../filesystem/filesystem.service";
 import { ManagerService } from "../manager/manager.service";
 import { UploadService } from "../upload/upload.service";
+import { DropzoneDirective } from "../upload/dropzone.directive";
 
 const MODULES: any = [
   CommonModule,
@@ -12,7 +13,7 @@ const MODULES: any = [
 ];
 
 const DECLARATIONS: any = [
-
+  DropzoneDirective
 ];
 
 const PROVIDERS: any = [

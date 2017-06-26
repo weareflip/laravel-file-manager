@@ -25,12 +25,12 @@ export class UploadService {
     return this.progress$;
   }
 
-  public upload(url: string, files: File[]): Promise<UploadResponse> {
+  public upload(url: string, files: File[], path: string): Promise<UploadResponse> {
     return new Promise((resolve, reject) => {
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
 
-      formData.append('path', '/');
+      formData.append('path', path);
       formData.append('_method', 'PUT');
       files.forEach((file) => formData.append("files[]", file, file.name));
 
@@ -43,7 +43,9 @@ export class UploadService {
       };
 
       xhr.upload.onprogress = (event) => {
-        this.progressSubscriber.next(event.loaded / event.total * 100);
+        if (this.progressSubscriber) {
+          this.progressSubscriber.next(event.loaded / event.total * 100);
+        }
       };
 
       xhr.open('POST', process.env.API_LOCATION + url, true);
