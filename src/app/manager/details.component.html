@@ -1,7 +1,11 @@
 <div class="row" *ngIf="directory">
+    <upload #upload [path]="directory.path"></upload>
     <br>
-    <div class="col">
+    <div class="col-6">
         <h4><i class="icon icon-folder-fill"></i>{{ directory.path }}<small *ngIf="directory.path === '/'" class="text-gray-light">&nbsp;Parent Directory</small></h4>
+    </div>
+    <div class="col-6 text-right">
+        <a href="javascript:;" class="btn btn-sm btn-info" (click)="upload.toggle()">Upload</a>
     </div>
     <table class="table table-striped" [fmDropzone]="directory.path">
         <thead>
@@ -26,7 +30,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a href="javascript:;" (click)="destroy(dir)">Delete</a>
+                    <a href="javascript:;" class="btn btn-sm btn-danger" (click)="destroy(dir)">Delete</a>
                 </td>
             </tr>
             <tr class="file-list" *ngFor="let file of directory.files">
@@ -41,7 +45,7 @@
                     {{ file.date_modified }}
                 </td>
                 <td class="text-nowrap">
-                    <a href="javascript:;" (click)="destroy(file)">Delete</a>
+                    <a href="javascript:;" class="btn btn-sm btn-danger" (click)="destroy(file)">Delete</a>
                 </td>
             </tr>
         </tbody>
