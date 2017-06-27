@@ -5,8 +5,8 @@ namespace Flip\FileManager;
 use Flip\FileManager\Exceptions\FileNotSupported;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Flip\FileManager\FileSystem\File;
-use Flip\FileManager\FileSystem\FileFactory;
+use Flip\FileManager\Filesystem\File;
+use Flip\FileManager\Filesystem\FileFactory;
 
 class FileManager
 {
