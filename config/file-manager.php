@@ -23,7 +23,7 @@ return [
     'media' => [
 
         'file' => [
-            'class' => \Flip\FileManager\FileSystem\Document::class,
+            'class' => \Flip\FileManager\Filesystem\Document::class,
             'mimes' => [
                 'application/pdf',
                 'application/msword',
@@ -38,7 +38,7 @@ return [
         ],
 
         'image' => [
-            'class' => \Flip\FileManager\FileSystem\Image::class,
+            'class' => \Flip\FileManager\Filesystem\Image::class,
             'mimes' => [
                 'image/gif',
                 'image/jpeg',
@@ -47,7 +47,7 @@ return [
         ],
 
         'video' => [
-            'class' => \Flip\FileManager\FileSystem\Video::class,
+            'class' => \Flip\FileManager\Filesystem\Video::class,
             'mimes' => [
                 'video/mp4',
                 'video/x-msvideo',
