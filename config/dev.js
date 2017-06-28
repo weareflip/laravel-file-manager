@@ -14,11 +14,5 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, '../dist'),
     watchContentBase: true
-  },
-  plugins: [
-    new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      __dirname
-    )
-  ]
+  }
 };

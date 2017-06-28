@@ -1,35 +1,36 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { UploadService } from "./upload.service";
+import { ProgressStream } from "./progress-stream";
 
 @Component({
   selector: 'progress-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="progress" *ngIf="inProgress">
-      <div class="progress-bar bg-success"
-           [ngClass]="{'progress-bar-striped progress-bar-animated': inProgress}"
-           [ngStyle]="{width: width}">
+    <div *ngFor="let stream of streams">
+      <div *ngIf="stream.inProgress">
+        <span>Uploading {{ stream.name }}</span>
+        <div class="progress">
+          <div class="progress-bar bg-success"
+               [ngClass]="{'progress-bar-striped progress-bar-animated': stream.inProgress}"
+               [ngStyle]="{width: stream.progress + '%'}">
+          </div>
+        </div>
       </div>
     </div>
   `
 })
 export class ProgressBarComponent implements OnInit {
 
+  public streams: ProgressStream[];
+
   constructor(
     private cd: ChangeDetectorRef,
     protected upload: UploadService
   ) { }
 
-  get width(): string {
-    return this.upload.progress + '%';
-  }
-
-  get inProgress(): boolean {
-    return this.upload.inProgress;
-  }
-
   ngOnInit(): void {
-    this.upload.observer.subscribe((progress: number) => {
+    this.upload.observer.subscribe((streams: ProgressStream[]) => {
+      this.streams = streams;
       this.cd.detectChanges();
     });
   }
