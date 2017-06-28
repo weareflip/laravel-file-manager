@@ -59,8 +59,7 @@ class FileManager
 
     public function destroy(string $path): bool
     {
-        // Unsure how else to determine if path is a directory.
-        return Storage::getMetadata($path)['type'] === 'dir'
+        return in_array($path, Storage::directories(dirname($path)))
             ? Storage::deleteDirectory($path)
             : Storage::delete($path);
     }
