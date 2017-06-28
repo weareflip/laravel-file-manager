@@ -1,6 +1,6 @@
 <div *ngIf="modalOpen" class="modal-open">
     <div class="modal fade" [ngClass]="{'show': open}" (click)="toggle()">
-        <div class="modal-dialog" role="document" (click)="$event.stopPropagation()">
+        <div class="modal-dialog modal-lg" role="document" (click)="$event.stopPropagation()">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Upload</h5>
@@ -30,8 +30,8 @@
                         <div class="col col-auto">
                             Link URL
                         </div>
-                        <div class="col upload-clipboard">
-                            <span [clipboard] role="link">{{ file.url }}</span>
+                        <div class="col">
+                            <input title="Link URL" type="text" [clipboard] role="link" [value]="file.url" class="form-control">
                         </div>
                     </div>
                 </div>

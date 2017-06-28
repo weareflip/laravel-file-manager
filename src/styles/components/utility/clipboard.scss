@@ -1,21 +1,16 @@
 .clipboard {
     cursor: copy;
-    position: relative;
 
     &:after {
-        opacity: 1;
         content: '';
+        opacity: 1;
     }
 
     &.copied:after {
-        @include transition(opacity 1s ease-out .2s);
         opacity: 0;
+        @include transition(opacity 1s ease-out .5s);
         content: 'Copied!';
-        position: absolute;
-        background-color: white;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
+        @extend .badge;
+        @extend .badge-success;
     }
 }

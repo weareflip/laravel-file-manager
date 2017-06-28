@@ -53,11 +53,11 @@ export class UploadService {
           window.onbeforeunload = undefined;
           xhr.status >= 200 && xhr.status < 300
             ? resolve(JSON.parse(xhr.response))
-            : reject(xhr.response);
+            : reject(JSON.parse(xhr.response));
         }
       };
 
-      xhr.upload.onprogress = (event) => {
+      xhr.upload.onprogress = (event: ProgressEvent) => {
         this._progress = Math.ceil(event.loaded / event.total * 100);
         this.progressSubscriber.next(this._progress);
       };

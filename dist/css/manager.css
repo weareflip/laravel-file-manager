@@ -203,7 +203,7 @@
 .file-manager-module [hidden] {
   display: none !important; }
 
-.file-manager-module .badge {
+.file-manager-module .badge, .file-manager-module .clipboard.copied:after {
   display: inline-block;
   padding: 0.25em 0.4em;
   font-size: 90%;
@@ -214,14 +214,14 @@
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem; }
-  .file-manager-module .badge:empty {
+  .file-manager-module .badge:empty, .file-manager-module .clipboard.copied:empty:after {
     display: none; }
 
-.file-manager-module .btn .badge {
+.file-manager-module .btn .badge, .file-manager-module .btn .clipboard.copied:after {
   position: relative;
   top: -1px; }
 
-.file-manager-module a.badge:focus, .file-manager-module a.badge:hover {
+.file-manager-module a.badge:focus, .file-manager-module a.clipboard.copied:focus:after, .file-manager-module a.badge:hover, .file-manager-module a.clipboard.copied:hover:after {
   color: #FEFEFE;
   text-decoration: none;
   cursor: pointer; }
@@ -241,9 +241,9 @@
   .file-manager-module .badge-primary[href]:focus, .file-manager-module .badge-primary[href]:hover {
     background-color: #0a080b; }
 
-.file-manager-module .badge-success {
+.file-manager-module .badge-success, .file-manager-module .clipboard.copied:after {
   background-color: #5CB85C; }
-  .file-manager-module .badge-success[href]:focus, .file-manager-module .badge-success[href]:hover {
+  .file-manager-module .badge-success[href]:focus, .file-manager-module [href].clipboard.copied:focus:after, .file-manager-module .badge-success[href]:hover, .file-manager-module [href].clipboard.copied:hover:after {
     background-color: #449d44; }
 
 .file-manager-module .badge-info {
@@ -4617,23 +4617,12 @@
     max-height: 100%;
     transform: translate(-50%, -50%); }
 
-.file-manager-module .upload-clipboard {
-  overflow-x: scroll;
-  white-space: nowrap; }
-
 .file-manager-module .clipboard {
-  cursor: copy;
-  position: relative; }
+  cursor: copy; }
   .file-manager-module .clipboard:after {
-    opacity: 1;
-    content: ''; }
+    content: '';
+    opacity: 1; }
   .file-manager-module .clipboard.copied:after {
-    transition: opacity 1s ease-out 0.2s;
     opacity: 0;
-    content: 'Copied!';
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0; }
+    transition: opacity 1s ease-out 0.5s;
+    content: 'Copied!'; }

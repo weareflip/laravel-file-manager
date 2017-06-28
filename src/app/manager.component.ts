@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef } from "@angular/core";
 
 import { ManagerService } from "./manager/manager.service";
 import { FilesystemObject } from "./filesystem/filesystem-object";
@@ -9,9 +9,14 @@ import { FilesystemObject } from "./filesystem/filesystem-object";
 })
 export class ManagerComponent {
 
+  public path: string;
+
   constructor(
-    protected manager: ManagerService
-  ) { }
+    protected el: ElementRef,
+    protected manager: ManagerService,
+  ) {
+    this.path = el.nativeElement.getAttribute('path') || '/';
+  }
 
   public file: FilesystemObject;
 
