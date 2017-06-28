@@ -10066,7 +10066,7 @@ var ComponentFactory_ = (function (_super) {
      * @param {?} ngContentSelectors
      */
     function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -14060,7 +14060,7 @@ var NgModuleFactory_ = (function (_super) {
      * @param {?} _ngModuleDefFactory
      */
     function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -30714,7 +30714,6 @@ var ManagerService = (function () {
         this.navigatedTo = path;
         return this.cache.retrieve(path, this.filesystem.list)
             .then(function (directory) {
-            console.log(_this.navigatedTo, directory.path);
             if (_this.navigatedTo === directory.path) {
                 _this._directory = directory;
             }
@@ -55955,7 +55954,7 @@ var ForJitSerializer = (function () {
         var /** @type {?} */ expressions = [this.serializeSummary(summary)];
         var /** @type {?} */ providers = [];
         if (metadata instanceof CompileNgModuleMetadata) {
-            expressions.push.apply(expressions, 
+            expressions.push.apply(expressions,
             // For directives / pipes, we only add the declared ones,
             // and rely on transitively importing NgModules to get the transitive
             // summaries.
