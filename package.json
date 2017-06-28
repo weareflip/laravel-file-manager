@@ -18,8 +18,6 @@
     "bootstrap": "4.0.0-alpha.6",
     "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "font64-loader": "^2.1.7",
     "node-sass": "^4.5.0",
     "normalize.css": "^5.0.0",
     "raw-loader": "^0.5.1",

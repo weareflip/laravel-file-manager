@@ -3,21 +3,19 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const publicPath = '/file_manager/';
 
 module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), {
   entry: {
     polyfills: 'polyfills.ts',
-    vendor: 'vendor.ts',
     manager: 'manager.ts',
     uploader: 'uploader.ts',
   },
   output: {
     publicPath,
-    filename: 'js/[name].js',
-    sourceMapFilename: 'js/[name].map'
+    filename: '[chunkhash].js',
+    sourceMapFilename: '[chunkhash].js.map'
   },
   module: {
     rules: [{
@@ -25,36 +23,30 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
       loader: 'raw-loader'
     }, {
       test: /\.s?css$/,
-      loaders: ExtractTextPlugin.extract({
-        fallback: 'style-loader', use: 'css-loader?-url!resolve-url-loader?root!sass-loader?sourceMap'
-      })
+      use: [
+        'style-loader',
+        'css-loader',
+        'resolve-url-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
     }, {
       test: /\.woff2?$/,
       include: path.resolve(__dirname, 'src/fonts'),
-      loader: 'file-loader',
-      options: {
-        name: 'fonts/[name].[ext]'
-      }
-    }, {
-      test: /\.(png|gif|jpe?g|svg)$/,
-      loader: 'file-loader',
-      options: {
-        name: 'images/[name].[ext]'
-      }
+      loader: 'file-loader'
     }, {
       test: /icons\.json$/,
-      loaders: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          'css-loader',
-          {
-            loader: 'webfonts-loader',
-            options: {
-              fileName: 'fonts/[fontname].[ext]'
-            }
-          }
-        ]
-      })
+      use: [
+        'style-loader',
+        'css-loader',
+        {
+          loader: 'webfonts-loader'
+        }
+      ]
     }]
   },
   resolve: {
@@ -72,7 +64,6 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
       path: path.join('dist')
     }),
     new CleanWebpackPlugin(['dist']),
-    new ExtractTextPlugin('css/[name].css'),
     new webpack.optimize.CommonsChunkPlugin({ name: ['manifest'] }),
     new webpack.DefinePlugin({
       'process.env': {
