@@ -43886,7 +43886,7 @@ exports = module.exports = __webpack_require__(66)();
 
 
 // module
-exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/86f158ee84fe26bc888fcece6f881026-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
+exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/b47616343b6e913fba74b92a3cbab7a9-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
 
 // exports
 
@@ -61090,9 +61090,17 @@ var ManagerService = (function () {
     };
     ManagerService.prototype.navigate = function (path) {
         var _this = this;
+        /**
+         * Store the last navigated path to
+         * check upon navigation promise resolve
+         */
+        this.navigatedTo = path;
         return this.cache.retrieve(path, this.filesystem.list)
             .then(function (directory) {
-            _this._directory = directory;
+            console.log(_this.navigatedTo, directory.path);
+            if (_this.navigatedTo === directory.path) {
+                _this._directory = directory;
+            }
             _this.directorySubscriber.next(directory);
             _this.selectedSubscriber.next(directory.selected);
             return directory;

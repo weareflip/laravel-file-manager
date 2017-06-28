@@ -16,6 +16,8 @@ export class ManagerService {
 
   private cache: FilesystemCache;
 
+  private navigatedTo: string;
+
   public directory$: Observable<Directory>;
 
   private directorySubscriber: Subscriber<Directory>;
@@ -49,9 +51,17 @@ export class ManagerService {
   }
 
   navigate(path: string): Promise<Directory> {
+    /**
+     * Store the last navigated path to
+     * check upon navigation promise resolve
+     */
+    this.navigatedTo = path;
+
     return this.cache.retrieve(path, this.filesystem.list)
       .then((directory: Directory) => {
-        this._directory = directory;
+        if (this.navigatedTo === directory.path) {
+          this._directory = directory;
+        }
         this.directorySubscriber.next(directory);
         this.selectedSubscriber.next(directory.selected);
         return directory;
