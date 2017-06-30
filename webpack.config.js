@@ -7,6 +7,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const publicPath = '/file_manager/';
 
 module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), {
+  entry: {
+    polyfills: 'polyfills.ts',
+    manager: 'manager.ts',
+    uploader: 'uploader.ts',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath,

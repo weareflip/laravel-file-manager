@@ -3,11 +3,6 @@ const webpack = require('webpack');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 module.exports = {
-  entry: {
-    polyfills: 'polyfills.ts',
-    manager: 'manager.aot.ts',
-    uploader: 'uploader.aot.ts',
-  },
   output: {
   },
   module: {
@@ -20,8 +15,8 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
 
     new AotPlugin({
-      tsConfigPath: path.resolve(__dirname, '../tsconfig.aot.json'),
-      entryModule: path.resolve(__dirname, '../src/app/manager.module#ManagerModule')
+      entryModule: path.resolve(__dirname, '../src/app/manager.module#ManagerModule'),
+      tsConfigPath: path.resolve(__dirname, '../tsconfig.json')
     })
   ]
 };
