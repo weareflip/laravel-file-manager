@@ -1,5 +1,5 @@
 @section('manager')
-    <manager path="{{ $path }}" class="file-manager-module"></manager>
+    <manager path="{{ $path ?? '/' }}" class="file-manager-module"></manager>
 @endsection
 
 @push('scripts')

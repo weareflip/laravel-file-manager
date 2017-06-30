@@ -2,6 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  entry: {
+    polyfills: 'polyfills.ts',
+    manager: 'manager.ts',
+    uploader: 'uploader.ts',
+  },
   output: {
     path: path.resolve(__dirname, '../dist')
   },

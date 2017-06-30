@@ -18,6 +18,8 @@ export class ManagerService {
 
   private navigatedTo: string;
 
+  public basepath: string;
+
   public directory$: Observable<Directory>;
 
   private directorySubscriber: Subscriber<Directory>;

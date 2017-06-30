@@ -3,8 +3,12 @@ const webpack = require('webpack');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 module.exports = {
+  entry: {
+    polyfills: 'polyfills.ts',
+    manager: 'manager.aot.ts',
+    uploader: 'uploader.aot.ts',
+  },
   output: {
-    path: path.resolve(__dirname, '../dist')
   },
   module: {
     rules: [{
@@ -17,7 +21,7 @@ module.exports = {
 
     new AotPlugin({
       tsConfigPath: path.resolve(__dirname, '../tsconfig.aot.json'),
-      entryModule: path.resolve(__dirname, '../src/app/app.module#AppModule')
+      entryModule: path.resolve(__dirname, '../src/app/manager.module#ManagerModule')
     })
   ]
 };

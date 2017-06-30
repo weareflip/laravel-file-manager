@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { UploadService } from "./upload.service";
 import { ProgressStream } from "./progress-stream";
 

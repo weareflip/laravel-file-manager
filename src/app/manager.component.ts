@@ -15,7 +15,7 @@ export class ManagerComponent {
     protected el: ElementRef,
     protected manager: ManagerService,
   ) {
-    this.path = el.nativeElement.getAttribute('path') || '/';
+    manager.basepath = this.path = el.nativeElement.getAttribute('path') || '/';
   }
 
   public file: FilesystemObject;

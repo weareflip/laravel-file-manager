@@ -17,14 +17,16 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "files": [
-    "src/app/app.module.ts",
-    "src/main.ts"
+    "src/app/manager.module.ts",
+    "src/app/uploader.module.ts",
+    "src/manager.aot.ts",
+    "src/uploader.aot.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot",
     "skipMetadataEmit": true
   },
   "include": [
-    "src/fm/**/*"
+    "src/**/*"
   ]
 }

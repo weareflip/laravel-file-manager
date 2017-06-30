@@ -4,3 +4,9 @@
 .DS_Store
 Thumbs.db
 *.log
+
+/src/app/**/*.ngfactory.ts
+/src/app/**/*.ngsummary.json
+/src/app/**/*.metadata.json
+/src/app/**/*.js
+/src/app/**/*.js.map

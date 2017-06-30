@@ -2,7 +2,11 @@
     <upload #upload [path]="directory.path"></upload>
     <br>
     <div class="col-6">
-        <h4><i class="icon icon-folder-fill"></i>{{ directory.path }}<small *ngIf="directory.path === '/'" class="text-gray-light">&nbsp;Parent Directory</small></h4>
+        <h4>
+            <i class="icon icon-folder-fill"></i>
+            <span *ngIf="! isParentDirectory(directory.path)">{{ directory.path }}</span>
+            <span *ngIf="isParentDirectory(directory.path)" class="text-gray-light">Parent Directory</span>
+        </h4>
     </div>
     <div class="col-6 text-right">
         <a href="javascript:;" class="btn btn-sm btn-info" (click)="upload.toggle()">Upload</a>

@@ -18,6 +18,10 @@ export class DetailsComponent {
     return this.manager.directory;
   }
 
+  isParentDirectory(path: string): boolean {
+    return this.manager.basepath === path;
+  }
+
   select(file: File) {
     this.manager.select(file);
   }

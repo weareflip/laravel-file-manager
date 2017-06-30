@@ -3,8 +3,17 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 import { ClipboardDirective } from "./utility/clipboard.directive";
-import { DropzoneDirective } from "../upload/dropzone.directive";
-import { ProgressBarComponent } from "../upload/progress-bar.component";
+
+import {
+  DropzoneDirective,
+  ProgressBarComponent,
+  UploadComponent
+} from "../upload";
+
+import {
+  RequiredFileValidator,
+  FileValueAccessor
+} from "../upload/validation";
 
 import { FilesystemService } from "../filesystem/filesystem.service";
 import { ManagerService } from "../manager/manager.service";
@@ -16,9 +25,15 @@ const MODULES: any = [
 ];
 
 const DECLARATIONS: any = [
+  // Utility
   ClipboardDirective,
+
+  // Upload
   DropzoneDirective,
   ProgressBarComponent,
+  UploadComponent,
+  FileValueAccessor,
+  RequiredFileValidator,
 ];
 
 const PROVIDERS: any = [
