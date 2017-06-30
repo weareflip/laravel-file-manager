@@ -17,7 +17,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "noEmit": true
   },
-  "include": [
-    "src/**/*"
+  "exclude": [
+    "vendor",
+    "node_modules"
   ]
 }

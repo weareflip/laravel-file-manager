@@ -8,9 +8,9 @@ const publicPath = '/file_manager/';
 
 module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), {
   entry: {
-    polyfills: 'polyfills.ts',
-    manager: 'manager.ts',
-    uploader: 'uploader.ts',
+    polyfills: './src/polyfills.ts',
+    manager: './src/manager.ts',
+    uploader: './src/uploader.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -51,12 +51,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
     }]
   },
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
-    modules: [
-      'node_modules',
-      'vendor',
-      path.resolve(__dirname, 'src')
-    ]
+    extensions: ['.ts', '.js', '.json']
   },
   plugins: [
     new AssetsPlugin({

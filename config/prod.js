@@ -3,8 +3,6 @@ const webpack = require('webpack');
 const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 module.exports = {
-  output: {
-  },
   module: {
     rules: [{
       test: /\.ts$/,
@@ -13,9 +11,8 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
-
     new AotPlugin({
-      entryModule: path.resolve(__dirname, '../src/app/manager.module#ManagerModule'),
+      mainPath: path.resolve(__dirname, '../src/manager.ts'),
       tsConfigPath: path.resolve(__dirname, '../tsconfig.json')
     })
   ]
