@@ -1,5 +1,5 @@
 @section('uploader')
-    <uploader path="{{ $path ?? '/' }}" class="file-manager-module"></uploader>
+    <uploader path="{{ $path ?? '/' }}" label="{{ $label ?? 'Upload' }}" class="file-manager-module"></uploader>
 @endsection
 
 @push('scripts')

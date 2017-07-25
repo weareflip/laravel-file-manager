@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const publicPath = '/file_manager/';
 
-module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), {
+module.exports = (env) => webpackMerge(require('./config/' + env + '.js'), {
   entry: {
     polyfills: './src/polyfills.ts',
     manager: './src/manager.ts',
@@ -15,6 +15,7 @@ module.exports = (env, api) => webpackMerge(require('./config/' + env + '.js'), 
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath,
+    jsonpFunction: 'webpackFm',
     filename: '[chunkhash].js',
     sourceMapFilename: '[chunkhash].js.map'
   },
