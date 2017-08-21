@@ -1,16 +1,24 @@
-<div class="row" *ngIf="directory">
+<div *ngIf="directory">
     <upload #upload [path]="directory.path"></upload>
     <br>
-    <div class="col-6">
-        <h4>
-            <i class="icon icon-folder-fill"></i>
-            <span *ngIf="! isParentDirectory(directory.path)">{{ directory.path }}</span>
-            <span *ngIf="isParentDirectory(directory.path)" class="text-gray-light">Parent Directory</span>
-        </h4>
+
+    <div class="row">
+        <div class="col-6">
+            <h4>
+                <i class="icon icon-folder-fill"></i>
+                <span *ngIf="! isParentDirectory(directory.path)">{{ directory.path }}</span>
+                <span *ngIf="isParentDirectory(directory.path)" class="text-gray-light">Parent Directory</span>
+            </h4>
+        </div>
+        <div class="col-6 text-right">
+            <a href="javascript:;" class="btn btn-sm btn-info" (click)="upload.toggle()">Upload</a>
+        </div>
     </div>
-    <div class="col-6 text-right">
-        <a href="javascript:;" class="btn btn-sm btn-info" (click)="upload.toggle()">Upload</a>
+
+    <div class="form-group">
+        <input type="text" placeholder="Type to filter..." class="form-control" (input)="query.next($event.target.value)">
     </div>
+
     <table class="table table-striped" [fmDropzone]="directory.path">
         <thead>
             <tr>
@@ -35,7 +43,7 @@
                     <a href="javascript:;" class="btn btn-sm btn-danger" (click)="destroy(dir)">Delete</a>
                 </td>
             </tr>
-            <tr class="file-list" *ngFor="let file of directory.files">
+            <tr class="file-list" *ngFor="let file of files">
                 <td class="w-100" role="link" (click)="select(file)">
                     <i class="icon" [ngClass]="file.icon"></i>
                     {{ file.name }}
