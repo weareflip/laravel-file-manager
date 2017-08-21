@@ -24,7 +24,7 @@ if (! function_exists('fm_asset')) {
      */
     function fm_asset(string $bundle, string $type = 'js'): string
     {
-        $path = __DIR__.'/../dist/manifest.json';
+        $path = __DIR__.'/../public/dist/manifest.json';
 
         if (! file_exists($path)) {
             throw new InvalidArgumentException('Unable to locate webpack manifest');

@@ -32,7 +32,7 @@ class Symlink extends Command
         }
 
         $this->laravel->make('files')->link(
-            base_path('vendor/flipninja/file-manager/dist'), public_path($dir)
+            base_path('vendor/flipninja/file-manager/public'), public_path($dir)
         );
 
         $this->info('The [public/'.$dir.'] directory has been linked.');

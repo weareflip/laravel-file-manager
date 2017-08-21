@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const publicPath = '/file_manager/';
+const publicPath = '/file_manager/dist/';
 
 module.exports = (env) => webpackMerge(require('./config/' + env + '.js'), {
   entry: {
@@ -13,11 +13,11 @@ module.exports = (env) => webpackMerge(require('./config/' + env + '.js'), {
     uploader: './src/uploader.ts',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public/dist'),
     publicPath,
     jsonpFunction: 'webpackFm',
-    filename: '[chunkhash].js',
-    sourceMapFilename: '[chunkhash].js.map'
+    filename: '[name].[chunkhash].js',
+    sourceMapFilename: '[name].[chunkhash].js.map'
   },
   module: {
     rules: [{
@@ -58,9 +58,9 @@ module.exports = (env) => webpackMerge(require('./config/' + env + '.js'), {
     new AssetsPlugin({
       filename: 'manifest.json',
       includeManifest: 'manifest',
-      path: path.join('dist')
+      path: path.resolve(__dirname, 'public/dist'),
     }),
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin('public/dist/*'),
     new webpack.optimize.CommonsChunkPlugin({ name: ['manifest'] }),
     new webpack.DefinePlugin({
       'process.env': {
