@@ -1,19 +1,17 @@
 <div class="container-fluid">
     <div class="row section section-white">
-        <div class="col col-auto directory">
+        <div class="col-2 directory">
             <directory [path]="path" [root]="true"></directory>
         </div>
-        <div class="col details-view">
+        <div class="col-6 details-view">
             <details-view></details-view>
+        </div>
+        <div class="col-4 info-view" *ngIf="selected">
+            <info *ngIf="file" [file]="file"></info>
         </div>
     </div>
     <div class="inline-progress">
         <progress-bar></progress-bar>
-    </div>
-    <div class="row section section-white" *ngIf="selected">
-        <div class="col info-view">
-            <info *ngIf="file" [file]="file"></info>
-        </div>
     </div>
 </div>
 <upload></upload>
