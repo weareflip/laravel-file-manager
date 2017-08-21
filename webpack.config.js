@@ -60,7 +60,7 @@ module.exports = (env) => webpackMerge(require('./config/' + env + '.js'), {
       includeManifest: 'manifest',
       path: path.resolve(__dirname, 'public/dist'),
     }),
-    new CleanWebpackPlugin('public/dist/*'),
+    new CleanWebpackPlugin('public/dist/*', { watch: true }),
     new webpack.optimize.CommonsChunkPlugin({ name: ['manifest'] }),
     new webpack.DefinePlugin({
       'process.env': {

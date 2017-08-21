@@ -12,7 +12,7 @@
     </div>
     <div class="row section section-white" *ngIf="selected">
         <div class="col info-view">
-            <info [file]="file"></info>
+            <info *ngIf="file" [file]="file"></info>
         </div>
     </div>
 </div>

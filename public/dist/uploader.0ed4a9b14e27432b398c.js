@@ -61308,7 +61308,7 @@ exports = module.exports = __webpack_require__(64)();
 
 
 // module
-exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/dist/bd2b61f4a6868c8e3b9f54b1598491fd-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
+exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/dist/e9abcc2b6b2b0b928efc7f519d754718-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
 
 // exports
 

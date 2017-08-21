@@ -1,4 +1,4 @@
-<div *ngIf="file">
+<div>
     <div *ngIf="file.type === 'image'" class="image-container">
         <img src="{{ file.url }}">
     </div>
@@ -15,15 +15,18 @@
     <hr>
     <div class="row">
         <div class="col">
-            <p *ngIf="file">
+            <p>
                 <b>Link</b>
                 <br>
                 <span [clipboard]>{{ file.url }}</span>
             </p>
-            <p *ngIf="file">
+            <p>
                 <b>Last modified</b>
                 <br>
                 {{ file.date_modified }}
+            </p>
+            <p>
+                <a class="btn btn-primary" download target="_blank" [href]="file.url">Download</a>
             </p>
         </div>
     </div>

@@ -9,15 +9,12 @@ import { File } from "../filesystem/file";
   templateUrl: './info.component.html'
 })
 export class InfoComponent implements OnInit {
-
-  constructor(
-    protected manager: ManagerService
-  ) { }
+  constructor(protected manager: ManagerService) {}
 
   @Input() file: File;
 
   get background(): string {
-    return 'transparent url("' + this.file.url + '") center center no-repeat contain';
+    return `transparent url("${this.file.url}") center center no-repeat contain`;
   }
 
   ngOnInit() {

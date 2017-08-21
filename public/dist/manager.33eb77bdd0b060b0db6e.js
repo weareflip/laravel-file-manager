@@ -61308,7 +61308,7 @@ exports = module.exports = __webpack_require__(64)();
 
 
 // module
-exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/dist/bd2b61f4a6868c8e3b9f54b1598491fd-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
+exports.push([module.i, "@font-face {\n\tfont-family: \"icon\";\n\tsrc: url(\"/file_manager/dist/e9abcc2b6b2b0b928efc7f519d754718-icon.woff\") format(\"woff\");\n}\n\n.icon {\n\tline-height: 1;\n}\n\n.icon:before {\n\tfont-family: icon !important;\n\tfont-style: normal;\n\tfont-weight: normal !important;\n\tvertical-align: top;\n}\n\n.icon-file:before {\n\tcontent: \"\\F101\";\n}\n.icon-folder-fill:before {\n\tcontent: \"\\F102\";\n}\n.icon-folder:before {\n\tcontent: \"\\F103\";\n}\n.icon-image:before {\n\tcontent: \"\\F104\";\n}\n.icon-root:before {\n\tcontent: \"\\F105\";\n}\n.icon-video:before {\n\tcontent: \"\\F106\";\n}\n", ""]);
 
 // exports
 
@@ -63377,7 +63377,7 @@ var InfoComponent = (function () {
     }
     Object.defineProperty(InfoComponent.prototype, "background", {
         get: function () {
-            return 'transparent url("' + this.file.url + '") center center no-repeat contain';
+            return "transparent url(\"" + this.file.url + "\") center center no-repeat contain";
         },
         enumerable: true,
         configurable: true
@@ -63584,7 +63584,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 /* 376 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"row section section-white\">\n        <div class=\"col col-auto directory\">\n            <directory [path]=\"path\" [root]=\"true\"></directory>\n        </div>\n        <div class=\"col details-view\">\n            <details-view></details-view>\n        </div>\n    </div>\n    <div class=\"inline-progress\">\n        <progress-bar></progress-bar>\n    </div>\n    <div class=\"row section section-white\" *ngIf=\"selected\">\n        <div class=\"col info-view\">\n            <info [file]=\"file\"></info>\n        </div>\n    </div>\n</div>\n<upload></upload>\n"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row section section-white\">\n        <div class=\"col col-auto directory\">\n            <directory [path]=\"path\" [root]=\"true\"></directory>\n        </div>\n        <div class=\"col details-view\">\n            <details-view></details-view>\n        </div>\n    </div>\n    <div class=\"inline-progress\">\n        <progress-bar></progress-bar>\n    </div>\n    <div class=\"row section section-white\" *ngIf=\"selected\">\n        <div class=\"col info-view\">\n            <info *ngIf=\"file\" [file]=\"file\"></info>\n        </div>\n    </div>\n</div>\n<upload></upload>\n"
 
 /***/ }),
 /* 377 */
@@ -63602,7 +63602,7 @@ module.exports = "<p class=\"directory-name\" (click)=\"toggle()\">\n    <i clas
 /* 379 */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"file\">\n    <div *ngIf=\"file.type === 'image'\" class=\"image-container\">\n        <img src=\"{{ file.url }}\">\n    </div>\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4>\n                {{ file.name }}\n            </h4>\n        </div>\n        <div class=\"col\">\n\n        </div>\n    </div>\n    <hr>\n    <div class=\"row\">\n        <div class=\"col\">\n            <p *ngIf=\"file\">\n                <b>Link</b>\n                <br>\n                <span [clipboard]>{{ file.url }}</span>\n            </p>\n            <p *ngIf=\"file\">\n                <b>Last modified</b>\n                <br>\n                {{ file.date_modified }}\n            </p>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div>\n    <div *ngIf=\"file.type === 'image'\" class=\"image-container\">\n        <img src=\"{{ file.url }}\">\n    </div>\n    <div class=\"row\">\n        <div class=\"col\">\n            <h4>\n                {{ file.name }}\n            </h4>\n        </div>\n        <div class=\"col\">\n\n        </div>\n    </div>\n    <hr>\n    <div class=\"row\">\n        <div class=\"col\">\n            <p>\n                <b>Link</b>\n                <br>\n                <span [clipboard]>{{ file.url }}</span>\n            </p>\n            <p>\n                <b>Last modified</b>\n                <br>\n                {{ file.date_modified }}\n            </p>\n            <p>\n                <a class=\"btn btn-primary\" download target=\"_blank\" [href]=\"file.url\">Download</a>\n            </p>\n        </div>\n    </div>\n</div>\n"
 
 /***/ })
 ],[227]);
