@@ -20,12 +20,10 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody *ngIf="directory.directories.length === 0 && directory.files.length === 0">
-            <tr class="text-center">
+        <tbody>
+            <tr class="text-center" *ngIf="directory.directories.length === 0 && directory.files.length === 0">
                 <td colspan="4">Drag and drop to upload files</td>
             </tr>
-        </tbody>
-        <tbody>
             <tr class="directory-list" *ngFor="let dir of directory.directories" [fmDropzone]="dir.path">
                 <td class="w-100" (click)="navigate(dir)">
                     <i class="icon icon-folder"></i>

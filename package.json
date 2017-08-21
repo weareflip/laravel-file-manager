@@ -1,7 +1,7 @@
 {
   "scripts": {
+    "build": "./node_modules/.bin/webpack --env prod",
     "dev": "./node_modules/.bin/webpack --env dev",
-    "prod": "./node_modules/.bin/webpack --env prod",
     "start": "./node_modules/.bin/webpack-dev-server --env dev",
     "watch": "./node_modules/.bin/webpack -w --env dev"
   },

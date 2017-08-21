@@ -15,6 +15,12 @@
             cursor: pointer;
         }
     }
+
+    table {
+        display: block;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
 }
 
 .inline-progress .progress {
