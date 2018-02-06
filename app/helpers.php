@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('fm_max_upload_size')) {
+if (! function_exists('fm_format_bytes')) {
     function fm_format_bytes($bytes) {
         $formats = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
 
